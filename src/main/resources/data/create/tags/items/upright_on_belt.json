@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "ccawires:cake_base",
+    "ccawires:cake_base_baked",
+    "ccawires:chocolate_cake",
+    "ccawires:honey_cake",
+    "minecraft:cake",
+    "ccawires:seed_oil_bucket",
+    "ccawires:bioethanol_bucket"
+  ]
+}

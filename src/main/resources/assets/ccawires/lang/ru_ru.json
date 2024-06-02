@@ -1,0 +1,300 @@
+{
+	"ccawires.tooltip.energy.stored": "Накопленная энергия:",
+	"ccawires.tooltip.energy.capacity": "Вместимость:",
+	"ccawires.tooltip.energy.consumption": "Использование энергии:",
+	"ccawires.tooltip.energy.production": "Производимая энергия:",
+	"ccawires.tooltip.energy.charged": "Полностью заряжено",
+	"ccawires.tooltip.energy.usage": "Использование сетью:",
+	"ccawires.tooltip.energy.demand": "Потребление сети:",
+	"ccawires.tooltip.energy.supply": "Выработка сети:",
+	"ccawires.tooltip.energy.selected": "Сфокусированный коннектор:",
+	"ccawires.tooltip.energy.input": "Ввод",
+	"ccawires.tooltip.energy.output": "Вывод",
+
+	"ccawires.tooltip.energy.mode": "Режим:",
+	"ccawires.tooltip.energy.push": "Брать",
+	"ccawires.tooltip.energy.pull": "Отдавать",
+	"ccawires.tooltip.energy.passive": "Пассивный ",
+	"ccawires.tooltip.energy.none": "Нет",
+
+	"ccawires.tooltip.accumulator.info": "Информация об аккумуляторе:",
+	"ccawires.tooltip.relay.info": "Информация о реле:",
+	"ccawires.tooltip.connector.info": "Информация об коннекторе:",
+
+	"ccawires.recipe.rolling": "Прокатка",
+	"ccawires.recipe.rolling.sequence": "Прокатка в станке",
+	"ccawires.recipe.charging": "Зарядка",
+	"ccawires.recipe.liquid_burning": "Сжигание жидкого топлива",
+
+	"ccawires.recipe.liquid_burning.burn_time": "Время горения",
+
+	"ccawires.command.cca_api.link": "Нажмите здесь, чтобы открыть документацию по API",
+
+	"desc.immersiveengineering.info.mineral.sphalerite": "Сфалерит",
+
+	"item.ccawires.capacitor": "Конденсатор",
+
+	"item.ccawires.diamond_grit": "Измельченный алмаз",
+	"item.ccawires.diamond_grit_sandpaper": "Алмазная наждачная бумага",
+	"item.ccawires.diamond_grit_sandpaper.tooltip": "АЛМАЗНАЯ НАЖДАЧНАЯ БУМАГА",
+
+	"item.ccawires.zinc_sheet": "Цинковый лист",
+
+	"item.ccawires.copper_spool": "Медная катушка",
+	"item.ccawires.copper_spool.tooltip": "КАТУШКА",
+	"item.ccawires.copper_spool.tooltip.condition1": "Низкий ток",
+	"item.ccawires.copper_spool.tooltip.behaviour1": "Подключается к _низковольтным коннекторам_.",
+	"item.ccawires.copper_spool.tooltip.condition2": "ПКМ по двум коннекторам",
+	"item.ccawires.copper_spool.tooltip.behaviour2": "Между ними будет проложен провод, _Пустая катушка_ сохранится!",
+	"item.ccawires.copper_wire": "Медный провод",
+	"item.ccawires.copper_rod": "Медный стержень",
+
+	"item.ccawires.festive_spool": "Медная катушка с гирляндой",
+	"item.ccawires.festive_spool.tooltip": "КАТУШКА",
+	"item.ccawires.festive_spool.tooltip.condition1": "Низкий ток",
+	"item.ccawires.festive_spool.tooltip.behaviour1": "Подключается к _низковольтным коннекторам_.",
+	"item.ccawires.festive_spool.tooltip.condition2": "ПКМ по двум коннекторам",
+	"item.ccawires.festive_spool.tooltip.behaviour2": "Между ними будет проложен провод, _Пустая катушка_ сохранится!",
+
+	"item.ccawires.iron_wire": "Железная катушка",
+	"item.ccawires.iron_rod": "Железный стержень",
+
+	"item.ccawires.gold_spool": "Золотая катушка",
+	"item.ccawires.gold_spool.tooltip": "КАТУШКА",
+
+	"item.ccawires.gold_spool.tooltip.condition1": "Высокий ток",
+	"item.ccawires.gold_spool.tooltip.behaviour1": "Подключается к _низковольтным коннекторам_.",
+	"item.ccawires.gold_spool.tooltip.condition2": "ПКМ по двум коннекторам",
+	"item.ccawires.gold_spool.tooltip.behaviour2": "Между ними будет проложен провод, _Пустая катушка_ сохранится!",
+	"item.ccawires.gold_wire": "Золотой провод",
+	"item.ccawires.gold_rod": "Золотой стержень",
+
+	"item.ccawires.electrum_ingot": "Слиток электра",
+	"item.ccawires.electrum_nugget": "Кусочек электра",
+	"item.ccawires.electrum_sheet": "Электровый лист",
+	"item.ccawires.electrum_spool": "Электровая катушка",
+	"item.ccawires.electrum_spool.tooltip": "КАТУШКА",
+	"item.ccawires.electrum_spool.tooltip.condition1": "Высокий ток",
+	"item.ccawires.electrum_spool.tooltip.behaviour1": "Подключается к _Высоковольтным коннекторам_.",
+	"item.ccawires.electrum_spool.tooltip.condition2": "ПКМ по двум коннекторам",
+	"item.ccawires.electrum_spool.tooltip.behaviour2": "Между ними будет проложен провод, _Пустая катушка_ сохранится!",
+	"item.ccawires.electrum_wire": "Электровый провод",
+	"item.ccawires.electrum_rod": "Электровый стержень",
+
+	"item.ccawires.brass_rod": "Латунный стержень",
+	"item.ccawires.bronze_rod": "Бронзовый стержень",
+
+	"item.ccawires.cake_base": "Основа торта",
+	"item.ccawires.cake_base_baked": "Запеченная основа торта",
+
+	"item.ccawires.straw": "Соломинка",
+
+	"item.ccawires.electrum_amulet": "Бледно-золотой амулет",
+	"item.ccawires.electrum_amulet.tooltip": "АМУЛЕТ_ИЗ_ЭЛЕКТРА",
+	"item.ccawires.electrum_amulet.tooltip.summary": "Когда _жизнь_ подводит вас, держа этот _амулет_ в кармане, вы почувствуете, что _удача_ вновь к вам вернулась.",
+
+	"item.ccawires.brass_figurine": "Латунная Фигурка",
+	"item.ccawires.brass_figurine.tooltip": "ЛАТУННАЯ_ФИГУРКА",
+	"item.ccawires.brass_figurine.tooltip.summary": ".",
+
+	"item.ccawires.copper_goblet": "Медный кубок",
+	"item.ccawires.copper_goblet.tooltip": "МЕДНЫЙ_КУБОК",
+	"item.ccawires.copper_goblet.tooltip.summary": "Необычайная способность этого _кубка_ к теплопередаче обеспечит вам прохладу, когда вам это нужно больше всего.",
+
+	"item.ccawires.gold_goblet": "Роскошный кубок",
+	"item.ccawires.gold_goblet.tooltip": "ЗОЛОТОЙ_КУБОК",
+	"item.ccawires.gold_goblet.tooltip.summary": "Питье из этого _кубка_ доставит больше удовольствия, чем из любой обычной бутылки.(наверное)",
+
+	"item.ccawires.seed_oil_bucket": "Ведро растительного масла",
+	"item.ccawires.seed_oil_bucket.tooltip": "ВЕДРО_РАСТИТЕЛЬНОГО_МАСЛА",
+	"item.ccawires.seed_oil_bucket.tooltip.summary": "Простая горючая жидкость.",
+	"fluid.ccawires.seed_oil": "Растительное масло",
+
+	"item.ccawires.bioethanol_bucket": "Ведро биоэтанола",
+	"item.ccawires.bioethanol_bucket.tooltip": "ВЕДРО_БИОЭТАНОЛА",
+	"item.ccawires.bioethanol_bucket.tooltip.summary": "Эффективная _горючая жидкость_.",
+	"fluid.ccawires.bioethanol": "Биоэтанол",
+
+	"item.ccawires.biomass": "Биомасса",
+	"item.ccawires.biomass_pellet": "Гранула биомассы",
+	"item.ccawires.biomass_pellet.tooltip": "ГРАНУЛА_БИОМАССЫ",
+	"item.ccawires.biomass_pellet.tooltip.summary": "Эффективное твердое топливо.",
+
+	"item.ccawires.spool": "Пустая катушка",
+	"item.ccawires.spool.nbt": "Наматывают провода обратно.",
+	"item.ccawires.spool.tooltip": "КАТУШКА",
+	"item.ccawires.spool.tooltip.condition1": "ПКМ по _соединенным коннекторам_.",
+	"item.ccawires.spool.tooltip.behaviour1": "Удалит соединение и вернет заполненную _катушку_.",
+
+	"statusbar.ccawires.wire.linked": "Узлы связаны",
+	"statusbar.ccawires.wire.linked_in": "Провод подключен ко входу",
+	"statusbar.ccawires.wire.linked_out": "Провод подключен к выходу",
+
+	"statusbar.ccawires.wire.connect": "Коннектор выбран",
+	"statusbar.ccawires.wire.connect_in": "Коннектор на вход выбран",
+	"statusbar.ccawires.wire.connect_out": "Коннектор на выход выбран",
+
+	"statusbar.ccawires.wire.long": "Провод слишком длинный",
+	"statusbar.ccawires.wire.count": "Слишком много подключений у узлу",
+	"statusbar.ccawires.wire.removed": "Соединение разорвано",
+	"statusbar.ccawires.wire.exists": "Такое соединение уже существует",
+	"statusbar.ccawires.wire.no_connection": "Здесь нет соединения",
+	"statusbar.ccawires.wire.invalid": "Неправильное соединение",
+	"statusbar.ccawires.wire.requires_high_current": "Для этого соединения требуется высоковольтный провод.",
+
+	"block.ccawires.electric_motor": "Электромотор",
+
+	"block.ccawires.alternator": "Генератор",
+
+	"block.ccawires.creative_energy": "Творческий генератор",
+	"block.ccawires.creative_energy.tooltip": "ТВОРЧЕСКИЙ_ГЕНЕРАТОР",
+	"block.ccawires.creative_energy.tooltip.summary": "Генерирует бесконечное количество _FE_.",
+
+	"block.ccawires.rolling_mill": "Прокатный станок",
+
+	"block.ccawires.accumulator": "Аккумулятор",
+	"block.ccawires.accumulator.tooltip": "АККУМУЛЯТОР",
+	"block.ccawires.accumulator.tooltip.summary": "Накапливает электричество. _Устарело и может быть удалено из будущих выпусков_.",
+	"block.ccawires.accumulator.tooltip.condition1": "Отдавать",
+	"block.ccawires.accumulator.tooltip.behaviour1": "Отдает _FE_  _проводам_, подключенным к _коннектору_, отмеченному стрелкой вверх.",
+	"block.ccawires.accumulator.tooltip.condition2": "Брать",
+	"block.ccawires.accumulator.tooltip.behaviour2": "Берет _FE_ от _проводов_, подключенных к _коннектору_, отмеченному стрелкой вниз.",
+
+	"block.ccawires.modular_accumulator": "Аккумулятор",
+
+	"block.ccawires.portable_energy_interface": "Портативный энергетический интерфейс",
+
+	"block.ccawires.connector": "Коннектор",
+	"block.ccawires.connector.tooltip": "КОННЕКТОР",
+	"block.ccawires.connector.tooltip.summary": "Соединяет совместимые с _Forge Energy_ блоки с помощью _проводов_ для передачи _FE_.",
+	"block.ccawires.connector.tooltip.condition1": "Низкий ток.",
+	"block.ccawires.connector.tooltip.behaviour1": "Подключается к _низковольтным проводам_.",
+	"block.ccawires.connector.tooltip.condition2": "ПКМ",
+	"block.ccawires.connector.tooltip.behaviour2": "Удерживая _Медную катушку_, _Золотую_ катушку_ или _Электровую катушку_, можно создать до 4 _соединений_ с другими коннекторами.",
+	"block.ccawires.connector.tooltip.condition3": "ПКМ с гаечным ключом",
+	"block.ccawires.connector.tooltip.behaviour3": "Для переключения между режимами _Брать_, _Отдавать_ и _Нет_.",
+
+	"block.ccawires.giant_connector": "Большой коннектор",
+	"block.ccawires.giant_connector.tooltip": "БОЛЬШОЙ_КОННЕКТОР",
+	"block.ccawires.giant_connector.tooltip.summary": "Соединяет совместимые с _Forge Energy_ блоки с помощью _проводов_ для передачи _FE_.",
+	"block.ccawires.giant_connector.tooltip.condition1": "Высокий ток",
+	"block.ccawires.giant_connector.tooltip.behaviour1": "Подключается к _Высоковольтным проводам_.",
+	"block.ccawires.giant_connector.tooltip.condition2": "ПКМ",
+	"block.ccawires.giant_connector.tooltip.behaviour2": "Удерживая _Золотую катушку_ или _Электровую катушку_, можно создать до 6 _соединений_ с другими разъемами ",
+	"block.ccawires.giant_connector.tooltip.condition3": "ПКМ с гаечным ключом",
+	"block.ccawires.giant_connector.tooltip.behaviour3": "Для переключения между режимами _Брать_, _Отдавать_ и _Нет_.",
+
+	"block.ccawires.redstone_relay": "Редстоун реле",
+	"block.ccawires.redstone_relay.tooltip": "РЕДСТОУН_РЕЛЕ",
+	"block.ccawires.redstone_relay.tooltip.summary": "Позволяет _FE_ переходить от входного разъема к выходному при получении _редстоун сигнала_.",
+	"block.ccawires.redstone_relay.tooltip.condition1": "Низкий ток.",
+	"block.ccawires.redstone_relay.tooltip.behaviour1": "Подключается к _низковольтным проводам_.",
+	"block.ccawires.redstone_relay.tooltip.condition2": "Отдает",
+	"block.ccawires.redstone_relay.tooltip.behaviour2": "Отдает _FE_  _проводам_, подключенным к _коннектору_, отмеченному стрелкой вверх.",
+	"block.ccawires.redstone_relay.tooltip.condition3": "Берет",
+	"block.ccawires.redstone_relay.tooltip.behaviour3": "Берет _FE_ от _проводов_, подключенных к _коннектору_, отмеченному стрелкой вниз.",
+
+	"block.ccawires.digital_adapter": "Цифровой адаптер",
+	"block.ccawires.digital_adapter.tooltip": "ЦИФРОВОЙ_АДАПТЕР",
+	"block.ccawires.digital_adapter.tooltip.summary": "_Computercraft Peripheral_, позволяет компьютерам взаимодействовать с _Механическим таблом_, _Спидометром_, _Стрессометром_, _Лебёдкой_, _Шланговым шкивом_, _Лифтовой лебёдкой_, _Механическим поршнем_, _Механическим вращателем_ и _Регулятором скорости вращения_.",
+
+	"block.ccawires.chocolate_cake": "Шоколадный торт",
+	"block.ccawires.honey_cake": "Медовик",
+
+	"block.ccawires.seed_oil": "Растительное масло",
+	"block.ccawires.bioethanol": "Биоэтанол",
+
+	"block.ccawires.barbed_wire": "Колючая проволока",
+	"block.ccawires.barbed_wire.tooltip": "КОЛЮЧАЯ_ПРОВОЛОКА",
+	"block.ccawires.barbed_wire.tooltip.summary": "Наносит урон при прохождении.",
+
+	"block.ccawires.tesla_coil": "Катушка Теслы",
+
+	"block.ccawires.liquid_blaze_burner": "Горелка всполоха с соломкой",
+
+	"itemGroup.ccawires:main": "CCA More Wires",
+
+	"ccawires.ponder.tag.electric": "Электрические приборы",
+	"ccawires.ponder.tag.electric.description": "Компоненты, использующие электричество",
+
+	"ccawires.ponder.electric_motor.header": "Генерация силы вращения с помощью Электродвигателя",
+	"ccawires.ponder.electric_motor.text_1": "Электродвигатели представляют собой компактный и настраиваемый источник силы вращения",
+	"ccawires.ponder.electric_motor.text_2": "ПКМ на задней панели изменяет скорость вращения двигателя.",
+	"ccawires.ponder.electric_motor.text_3": "Электродвигателю требуется источник энергии (FE).",
+	"ccawires.ponder.electric_motor.text_4": "Потребление энергии двигателем определяется установленным числом оборотов в минуту.",
+
+	"ccawires.ponder.alternator.header": "Генерация электрической энергии с помощью Генератора",
+	"ccawires.ponder.alternator.text_1": "Для работы генератора требуется не менее 32 об/мин.",
+	"ccawires.ponder.alternator.text_2": "Он генерирует электрическую энергию (FE) за счет силы вращения.",
+	"ccawires.ponder.alternator.text_3": "Производство энергии определяется входной частотой вращения.",
+
+	"ccawires.ponder.rolling_mill.header": "Прокатка металлов в стержни и проволоку",
+	"ccawires.ponder.rolling_mill.text_1": "Прокатный станок использует силу вращения для прокатки металлов в стержни и проволоку.",
+	"ccawires.ponder.rolling_mill.text_2": "Чтобы вручную ввести ресурсы, бросьте слитки или пластины на верхнюю часть мельницы.",
+	"ccawires.ponder.rolling_mill.text_3": "ПКМ по станку, чтобы вручную получить предметы со станка.",
+
+	"ccawires.ponder.automated_rolling_mill.header": "Автоматизация прокатного станка",
+	"ccawires.ponder.automated_rolling_mill.text_1": "Прокатный станок можно автоматизировать с помощью конвейера и двух шлюзов.",
+	"ccawires.ponder.automated_rolling_mill.text_2": "Входной шлюз",
+	"ccawires.ponder.automated_rolling_mill.text_3": "Выходной шлюз",
+
+	"ccawires.ponder.cc_electric_motor.header": "Использование ComputerCraft для управления электродвигателем",
+	"ccawires.ponder.cc_electric_motor.text_1": "Электродвигателем можно управлять с помощью ComputerCraft.",
+	"ccawires.ponder.cc_electric_motor.text_2": "Подключитесь к двигателю, используя 'peripheral.wrap(side)'",
+	"ccawires.ponder.cc_electric_motor.text_3": "Откройте документацию по API, введя в чате команду '/cca_api'.",
+
+	"ccawires.ponder.tesla_coil.header": "Использование катушки Теслы для зарядки предметов",
+	"ccawires.ponder.tesla_coil.text_1": "Катушка Теслы будет заряжать предметы под ней.",
+	"ccawires.ponder.tesla_coil.text_2": "Он зарядит любые предметы (FE) и многое другое!",
+
+	"ccawires.ponder.tesla_coil_hurt.header": "Опасная катушка Тесла",
+	"ccawires.ponder.tesla_coil_hurt.text_1": "Катушка Теслы также способна наносить урон ближайшим игрокам и мобам.",
+	"ccawires.ponder.tesla_coil_hurt.text_2": "Это можно активировать с помощью редстоун сигнала.",
+	"ccawires.ponder.tesla_coil_hurt.text_3": "Приготовьтесь быть шокированными!",
+
+	"ccawires.ponder.liquid_blaze_burner.header": "Сжигание жидкого топлива",
+	"ccawires.ponder.liquid_blaze_burner.text_1": "Дайте горелке всполоха соломинку",
+	"ccawires.ponder.liquid_blaze_burner.text_2": "Это позволит ему принимать жидкое топливо ведрами",
+	"ccawires.ponder.liquid_blaze_burner.text_3": "-или по трубам.",
+
+	"ccawires.ponder.modular_accumulator.header": "Многоблочный аккумулятор",
+	"ccawires.ponder.modular_accumulator.text_1": "Аккумулятор представляет собой многоблочную структуру.",
+	"ccawires.ponder.modular_accumulator.text_2": "Он может хранить большое количество электроэнергии.",
+	"ccawires.ponder.modular_accumulator.text_3": "Настройка входного коннектора",
+	"ccawires.ponder.modular_accumulator.text_4": "и выходного коннектора.",
+	"ccawires.ponder.modular_accumulator.text_5": "Чтобы улучшить совместимость модов, Аккумулятор будет активно передавать энергию блокам, расположенным на верхней и нижней гранях.",
+
+	"ccawires.display_source.digital_adapter_source": "Цифровой адаптер",
+	"ccawires.display_source.digital_adapter_source_digital_adapter": "Цифровой адаптер",
+	"ccawires.display_source.modular_accumulator": "Аккумулятор",
+	"ccawires.display_source.accumulator.progress_bar": "Шкала прогресса",
+	"ccawires.display_source.accumulator.percent": "Процент",
+	"ccawires.display_source.accumulator.current": "Запасенная энергия в FE",
+	"ccawires.display_source.accumulator.max": "Общая емкость",
+	"ccawires.display_source.accumulator.remaining": "Оставшиеся FE",
+	"ccawires.display_source.accumulator.display": "Выберите опцию:",
+
+	"ccawires.ponder.pei_transfer.header": "Хитроумный энергетический обмен",
+	"ccawires.ponder.pei_transfer.text_1": "Аккумуляторы на движущихся штуковинах не могут подключаться к стационарным разъемам.",
+	"ccawires.ponder.pei_transfer.text_2": "Этот компонент может взаимодействовать с аккумуляторами без необходимости останавливать это приспособление.",
+	"ccawires.ponder.pei_transfer.text_3": "Поместите второй с промежутком в 1 или 2 блока между ними.",
+	"ccawires.ponder.pei_transfer.text_4": "Всякий раз, когда они проходят мимо друг друга, они соединяются.",
+	"ccawires.ponder.pei_transfer.text_5": "При включении стационарный интерфейс будет отображать ВСЕ аккумуляторы на устройстве.",
+	"ccawires.ponder.pei_transfer.text_6": "Энергией теперь можно обмениваться в соответствии с конфигурацией разъема Брать/Отдавать...",
+	"ccawires.ponder.pei_transfer.text_7": "После того, как какое-то время обмен энергией не осуществлялся, штуковина продолжит свой путь.",
+
+	"ccawires.ponder.pei_redstone.header": "Контроль редстоуном",
+	"ccawires.ponder.pei_redstone.text_1": "Активация редстоуном предотвратит включение стационарного интерфейса.",
+
+	"ccawires.schedule.condition.energy_threshold": "Состояние энергетического груза",
+	"ccawires.schedule.condition.threshold.unit": "Kfe",
+	"ccawires.schedule.condition.threshold.energy": "Энергия",
+
+	"death.attack.barbed_wire": "%1$s попытался пересечь колючую проволоку",
+	"death.attack.barbed_wire.player": "%1$s попытался пересечь колючую проволоку во время боя %2$s",
+
+	"effect.ccawires.shocking": "в шоке",
+	"death.attack.tesla_coil": "%1$s получил смертельный удар током",
+	"death.attack.tesla_coil.player": "%1$s получил смертельный удар током во время боя %2$s",
+	"effect.ccawires.shocking.description": "Вызывает серьезное снижение скорости передвижения."
+}

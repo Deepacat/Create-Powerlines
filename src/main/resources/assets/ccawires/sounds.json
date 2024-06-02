@@ -1,0 +1,33 @@
+{
+  "electric_motor_buzz": {
+    "sounds": [
+      "ccawires:electric_motor_buzz"
+    ]
+  },
+  "tesla_coil": {
+    "sounds": [
+      "ccawires:tesla_coil"
+    ]
+  },
+  "electric_charge": {
+    "sounds": [
+      "ccawires:electric_charge"
+    ]
+  },
+  "loud_zap": {
+    "subtitle": "ccawires.subtitle.loud_zap",
+    "sounds": [
+      "ccawires:loud_zap_1",
+      "ccawires:loud_zap_2",
+      "ccawires:loud_zap_3"
+    ]
+  },
+  "little_zap": {
+    "subtitle": "ccawires.subtitle.little_zap",
+    "sounds": [
+      "ccawires:little_zap_1",
+      "ccawires:little_zap_2",
+      "ccawires:little_zap_3"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "ccawires:block/copper_wire_casing/block"
+    }
+  }
+}

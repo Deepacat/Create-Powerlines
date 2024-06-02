@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[" W ",
+	 "WSW",
+	 " W "],
+	"key":
+	{
+		"W":
+		{
+			"tag": "forge:wires/gold"
+		},
+		"S":
+		{
+			"item": "ccawires:spool"
+		}
+	},
+	"result":{
+		"item": "ccawires:gold_spool",
+		"count": 1
+	}
+}

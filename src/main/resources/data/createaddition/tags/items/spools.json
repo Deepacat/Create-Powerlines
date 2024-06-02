@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "ccawires:copper_spool",
+    "ccawires:gold_spool",
+    "ccawires:electrum_spool"
+  ]
+}

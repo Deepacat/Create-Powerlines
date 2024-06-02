@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "ccawires:iron_rod",
+    "ccawires:copper_rod",
+    "ccawires:gold_rod",
+    "ccawires:brass_rod",
+    "ccawires:electrum_rod"
+  ]
+}

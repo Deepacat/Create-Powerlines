@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[" W ",
+	 "WSW",
+	 " W "],
+	"key":
+	{
+		"W":
+		{
+			"tag": "forge:wires/electrum"
+		},
+		"S":
+		{
+			"item": "ccawires:spool"
+		}
+	},
+	"result":{
+		"item": "ccawires:electrum_spool",
+		"count": 1
+	}
+}
