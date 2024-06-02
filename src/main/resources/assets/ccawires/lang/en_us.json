@@ -86,45 +86,6 @@
 	"item.ccawires.electrum_wire": "Electrum Wire",
 	"item.ccawires.electrum_rod": "Electrum Rod",
 
-	"item.ccawires.brass_rod": "Brass Rod",
-	"item.ccawires.bronze_rod": "Bronze Rod",
-
-	"item.ccawires.cake_base": "Cake Base",
-	"item.ccawires.cake_base_baked": "Baked Cake Base",
-
-	"item.ccawires.straw": "Straw",
-
-	"item.ccawires.electrum_amulet": "Pale Gold Amulet",
-	"item.ccawires.electrum_amulet.tooltip": "ELECTRUM_AMULET",
-	"item.ccawires.electrum_amulet.tooltip.summary": "When _life_ has got you down, clutching this _amulet_ in your pocket makes you feel like your _luck_ is about to change.",
-
-	"item.ccawires.brass_figurine": "Brass Figurine",
-	"item.ccawires.brass_figurine.tooltip": "BRASS_FIGURINE",
-	"item.ccawires.brass_figurine.tooltip.summary": ".",
-
-	"item.ccawires.copper_goblet": "Copper Goblet",
-	"item.ccawires.copper_goblet.tooltip": "COPPER_GOBLET",
-	"item.ccawires.copper_goblet.tooltip.summary": "The extraordinary heat transfer ability of this _goblet_ will keep you cool when you need it the most.",
-
-	"item.ccawires.gold_goblet": "Ornate Goblet",
-	"item.ccawires.gold_goblet.tooltip": "GOLD_GOBLET",
-	"item.ccawires.gold_goblet.tooltip.summary": "Drinking from this _goblet_ will satisfy more than any regular bottle.",
-
-	"item.ccawires.seed_oil_bucket": "Bucket of Seed Oil",
-	"item.ccawires.seed_oil_bucket.tooltip": "SEED_OIL_BUCKET",
-	"item.ccawires.seed_oil_bucket.tooltip.summary": "A simple _flammable liquid_.",
-	"fluid.ccawires.seed_oil": "Seed Oil",
-
-	"item.ccawires.bioethanol_bucket": "Bucket of Biofuel",
-	"item.ccawires.bioethanol_bucket.tooltip": "BIOETHANOL_BUCKET",
-	"item.ccawires.bioethanol_bucket.tooltip.summary": "An efficient _flammable liquid_.",
-	"fluid.ccawires.bioethanol": "Biofuel",
-
-	"item.ccawires.biomass": "Biomass",
-	"item.ccawires.biomass_pellet": "Biomass Pellet",
-	"item.ccawires.biomass_pellet.tooltip": "BIOMASS_PELLET",
-	"item.ccawires.biomass_pellet.tooltip.summary": "A powerful _solid fuel_.",
-
 	"item.ccawires.spool": "Empty Spool",
 	"item.ccawires.spool.nbt": "Stores connection location.",
 	"item.ccawires.spool.tooltip.summary": "Used to store wires.",
@@ -147,33 +108,15 @@
 	"statusbar.ccawires.wire.invalid": "Invalid connection",
 	"statusbar.ccawires.wire.requires_high_current": "This connection requires a high current wire",
 
-	"block.ccawires.electric_motor": "Electric Motor",
-
-	"block.ccawires.alternator": "Alternator",
-
-	"block.ccawires.creative_energy": "Creative Generator",
-	"block.ccawires.creative_energy.tooltip": "CREATIVE_GENERATOR",
-	"block.ccawires.creative_energy.tooltip.summary": "Generates an infinite supply of _⚡_.",
-
-	"block.ccawires.rolling_mill": "Rolling Mill",
-
-	"block.ccawires.accumulator": "Accumulator",
-	"block.ccawires.accumulator.tooltip": "ACCUMULATOR",
-	"block.ccawires.accumulator.tooltip.summary": "Accumulates electric charge. _Deprecated and subject to removal from future releases_.",
-	"block.ccawires.accumulator.tooltip.condition1": "Pull",
-	"block.ccawires.accumulator.tooltip.behaviour1": "Provides _⚡_ to _wires_ connected to the _connector_ marked with an upwards arrow.",
-	"block.ccawires.accumulator.tooltip.condition2": "Push",
-	"block.ccawires.accumulator.tooltip.behaviour2": "Accepts _⚡_ from _wires_ connected to the _connector_ marked with a downwards arrow.",
-
-	"block.ccawires.connector": "Small Connector",
-	"block.ccawires.connector.tooltip": "CONNECTOR",
-	"block.ccawires.connector.tooltip.summary": "Connects _Forge Energy_ compatible blocks with _wires_ to transfer _⚡_.",
-	"block.ccawires.connector.tooltip.condition1": "Low Current",
-	"block.ccawires.connector.tooltip.behaviour1": "Connected with _low current wires_.",
-	"block.ccawires.connector.tooltip.condition2": "R-click",
-	"block.ccawires.connector.tooltip.behaviour2": "While holding a _Copper Spool_, _Gold Spool_, or _Electrum Spool_ to create a _wire link_ with up to 4 other connectors.",
-	"block.ccawires.connector.tooltip.condition3": "R-click with Wrench",
-	"block.ccawires.connector.tooltip.behaviour3": "To cycle between _Push_, _Pull_, and _None_ modes.",
+	"block.ccawires.huge_connector": "Huge Connector",
+	"block.ccawires.huge_connector.tooltip": "CONNECTOR",
+	"block.ccawires.huge_connector.tooltip.summary": "Connects _Forge Energy_ compatible blocks with _wires_ to transfer _⚡_.",
+	"block.ccawires.huge_connector.tooltip.condition1": "Low Current",
+	"block.ccawires.huge_connector.tooltip.behaviour1": "Connected with _low current wires_.",
+	"block.ccawires.huge_connector.tooltip.condition2": "R-click",
+	"block.ccawires.huge_connector.tooltip.behaviour2": "While holding a _Copper Spool_, _Gold Spool_, or _Electrum Spool_ to create a _wire link_ with up to 4 other connectors.",
+	"block.ccawires.huge_connector.tooltip.condition3": "R-click with Wrench",
+	"block.ccawires.huge_connector.tooltip.behaviour3": "To cycle between _Push_, _Pull_, and _None_ modes.",
 
 	"block.ccawires.giant_connector": "Giant Connector",
 	"block.ccawires.giant_connector.tooltip": "CONNECTOR",
@@ -185,6 +128,15 @@
 	"block.ccawires.giant_connector.tooltip.condition3": "R-click with Wrench",
 	"block.ccawires.giant_connector.tooltip.behaviour3": "To cycle between _Push_, _Pull_, and _None_ modes.",
 
+	"block.ccawires.massive_connector": "Massive Connector",
+	"block.ccawires.massive_connector.tooltip": "CONNECTOR",
+	"block.ccawires.massive_connector.tooltip.summary": "Connects _Forge Energy_ compatible blocks with _wires_ to transfer _⚡_.",
+	"block.ccawires.massive_connector.tooltip.condition1": "High Current",
+	"block.ccawires.massive_connector.tooltip.behaviour1": "Connected with _high current wires_.",
+	"block.ccawires.massive_connector.tooltip.condition2": "R-click",
+	"block.ccawires.massive_connector.tooltip.behaviour2": "While holding a _Gold Spool_ or _Electrum Spool_ to create a _wire link_ with up to 6 other connectors.",
+	"block.ccawires.massive_connector.tooltip.condition3": "R-click with Wrench",
+	"block.ccawires.massive_connector.tooltip.behaviour3": "To cycle between _Push_, _Pull_, and _None_ modes.",
 
 	"block.ccawires.digital_adapter": "Digital Adapter",
 	"block.ccawires.digital_adapter.tooltip": "DIGITAL_ADAPTER",

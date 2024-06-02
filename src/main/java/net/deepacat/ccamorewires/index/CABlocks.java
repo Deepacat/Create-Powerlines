@@ -5,7 +5,7 @@ import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import net.deepacat.ccamorewires.CCAMoreWires;
 import net.deepacat.ccamorewires.blocks.connector.HugeConnectorBlock;
 import net.deepacat.ccamorewires.blocks.connector.GiantConnectorBlock;
-;
+import net.deepacat.ccamorewires.blocks.connector.MassiveConnectorBlock;
 import net.deepacat.ccamorewires.energy.NodeMovementBehaviour;
 import com.simibubi.create.AllMovementBehaviours;
 import com.simibubi.create.foundation.data.SharedProperties;
@@ -25,6 +25,13 @@ public class CABlocks {
 			.register();
 
 	public static final BlockEntry<GiantConnectorBlock> GIANT_CONNECTOR = CCAMoreWires.REGISTRATE.block("giant_connector",  GiantConnectorBlock::new)
+			.initialProperties(SharedProperties::stone)
+			.onRegister(AllMovementBehaviours.movementBehaviour(new NodeMovementBehaviour()))
+			.item()
+			.transform(customItemModel())
+			.register();
+
+	public static final BlockEntry<MassiveConnectorBlock> MASSIVE_CONNECTOR = CCAMoreWires.REGISTRATE.block("massive_connector",  MassiveConnectorBlock::new)
 			.initialProperties(SharedProperties::stone)
 			.onRegister(AllMovementBehaviours.movementBehaviour(new NodeMovementBehaviour()))
 			.item()
