@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "createaddition:block/connector/copper_none",
+		"0": "ccawires:block/connector/copper_none",
 		"particle": "create:block/andesite_casing"
 	},
 	"elements": [

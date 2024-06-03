@@ -46,28 +46,28 @@ public class Config {
 
 		// Huge
 		HUGE_CONNECTOR_MAX_INPUT = COMMON_BUILDER.comment("Huge Connector max input in FE/t (Energy transfer).")
-				.defineInRange("huge_connector_max_input", 1000, 0, Integer.MAX_VALUE);
+				.defineInRange("huge_connector_max_input", 2147483647, 0, Integer.MAX_VALUE);
 
 		HUGE_CONNECTOR_MAX_OUTPUT = COMMON_BUILDER.comment("Huge Connector max output in FE/t (Energy transfer).")
-				.defineInRange("huge_connector_max_output", 1000, 0, Integer.MAX_VALUE);
+				.defineInRange("huge_connector_max_output", 2147483647, 0, Integer.MAX_VALUE);
 
 		HUGE_CONNECTOR_MAX_LENGTH = COMMON_BUILDER.comment("Huge Connector max wire length in blocks.")
 				.defineInRange("huge_connector_wire_length", 64, 0, 256);
 		// Giant
 		GIANT_CONNECTOR_MAX_INPUT = COMMON_BUILDER.comment("Giant Connector max input in FE/t (Energy transfer).")
-				.defineInRange("giant_connector_max_input", 5000, 0, Integer.MAX_VALUE);
+				.defineInRange("giant_connector_max_input", 2147483647, 0, Integer.MAX_VALUE);
 
 		GIANT_CONNECTOR_MAX_OUTPUT = COMMON_BUILDER.comment("Giant Connector max output in FE/t (Energy transfer).")
-				.defineInRange("giant_connector_max_output", 5000, 0, Integer.MAX_VALUE);
+				.defineInRange("giant_connector_max_output", 2147483647, 0, Integer.MAX_VALUE);
 
 		GIANT_CONNECTOR_MAX_LENGTH = COMMON_BUILDER.comment("Giant Connector max wire length in blocks.")
 				.defineInRange("giant_connector_wire_length", 128, 0, 256);
 		// Massive
 		MASSIVE_CONNECTOR_MAX_INPUT = COMMON_BUILDER.comment("Massive Connector max input in FE/t (Energy transfer).")
-				.defineInRange("massive_connector_max_input", 5000, 0, Integer.MAX_VALUE);
+				.defineInRange("massive_connector_max_input", 2147483647, 0, Integer.MAX_VALUE);
 
 		MASSIVE_CONNECTOR_MAX_OUTPUT = COMMON_BUILDER.comment("Massive Connector max output in FE/t (Energy transfer).")
-				.defineInRange("massive_connector_max_output", 5000, 0, Integer.MAX_VALUE);
+				.defineInRange("massive_connector_max_output", 2147483647, 0, Integer.MAX_VALUE);
 
 		MASSIVE_CONNECTOR_MAX_LENGTH = COMMON_BUILDER.comment("Massive Connector max wire length in blocks.")
 				.defineInRange("massive_connector_wire_length", 256, 0, 256);

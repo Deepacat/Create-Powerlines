@@ -13,7 +13,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class HugeConnectorBlock extends AbstractConnectorBlock<HugeConnectorBlockEntity> {
-    public static final VoxelShaper CONNECTOR_SHAPE = CAShapes.shape(5, 0, 5, 11, 7, 11).forDirectional();
+    public static final VoxelShaper CONNECTOR_SHAPE = CAShapes.shape(6, 0, 6, 10, 5, 10).forDirectional();
     public HugeConnectorBlock(Properties properties) {
         super(properties);
     }
