@@ -165,44 +165,6 @@ public class WireNodeRenderer<T extends BlockEntity> implements BlockEntityRende
 			wireVert(vertBuilder, matrix, light, x, y, z, a, b, 24, j + 1, true, o1, o2, type, dis, state, stack, lightOffset+1, hangFactor);
 
 		}
-
-		if (type.isFestive()) {
-			stack.pushPose();
-			boolean main = x + y + z > 0;
-			for (int j = 0; j < 24; ++j) {
-				lights(vertBuilder, x, y, z, a, b, 24, j + 1, o1, o2, type, dis, state, stack, lightOffset, main);
-			}
-			stack.popPose();
-		}
-	}
-
-	static Color[] colors = {Color.RED, Color.GREEN, new Color(0f, 0f, 1f, 1f)};
-	static float LIGHT_Y_OFFSET = -0.03f;
-
-	public static void lights(VertexConsumer vertBuilder,float x, float y, float z,
-			float a, float b, int count, int index, float o1, float o2, WireType type, float dis, BlockState state, PoseStack stack, int lightOffset, boolean main) {
-		float part = (float) index / (float) count;
-		float fx = x * part;
-		float fy = (y > 0.0F ? y * part * part : y - y * (1.0F - part) * (1.0F - part)) + hang(divf(index, count), dis) + LIGHT_Y_OFFSET;
-		float fz = z * part;
-
-		if (index % 3 == 0 && index != 1 && index != count && lightOffset == 0) {
-			CachedBufferer.partial(CAPartials.SMALL_LIGHT, state).color(colors[(main ? 2-(index/3)%3 : (index/3)%3)]).light(255).translate(fx, fy, fz).renderInto(stack, vertBuilder);
-		}
-	}
-
-	public static void supports(VertexConsumer vertBuilder,float x, float y, float z,
-			float a, float b, int count, int index, float o1, float o2, WireType type, float dis, BlockState state, PoseStack stack, int lightOffset, boolean main) {
-		float part = (float) index / (float) count;
-		float fx = x * part;
-		float fyh = (y > 0.0F ? y * part * part : y - y * (1.0F - part) * (1.0F - part)) + 2*hang(divf(index, count), dis);
-		float fy = (y > 0.0F ? y * part * part : y - y * (1.0F - part) * (1.0F - part));
-		float fz = z * part;
-
-		if (index % 3 == 0 && index != 1 && index != count && lightOffset == 0) {
-			float l = 1.7f*16f-fyh*16f;
-			CachedBufferer.partial(CAPartials.SMALL_LIGHT, state).light(255).translate(fx, fy + hang(divf(index, count), dis), fz).scale(.5f, l, .5f).renderInto(stack, vertBuilder);//.scale(.25f, (1.7f*16f)-fy, .25f)
-		}
 	}
 
 	public static void wireVert(VertexConsumer vertBuilder, Matrix4f matrix, int light, float x, float y, float z,

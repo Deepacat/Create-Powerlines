@@ -26,7 +26,7 @@ public class CACreativeModeTabs {
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.ccawires.main"))
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-                    .icon(CABlocks.HUGE_CONNECTOR::asStack)
+                    .icon(CABlocks.MASSIVE_CONNECTOR::asStack)
                     .displayItems(new RegistrateDisplayItemsGenerator())
                     .build());
 

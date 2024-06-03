@@ -15,8 +15,6 @@ public class CAItems {
 
 	public static final ItemEntry<Item> COPPER_WIRE =
 			CCAMoreWires.REGISTRATE.item("copper_wire", Item::new).register();
-	public static final ItemEntry<Item> IRON_WIRE =
-			CCAMoreWires.REGISTRATE.item("iron_wire", Item::new).register();
 	public static final ItemEntry<Item> GOLD_WIRE =
 			CCAMoreWires.REGISTRATE.item("gold_wire", Item::new).register();
 	public static final ItemEntry<Item> ELECTRUM_WIRE =
@@ -26,14 +24,11 @@ public class CAItems {
 			CCAMoreWires.REGISTRATE.item("spool", WireSpool::new).register();
 	public static final ItemEntry<WireSpool> COPPER_SPOOL =
 			CCAMoreWires.REGISTRATE.item("copper_spool", WireSpool::new).register();
-	//public static final ItemEntry<WireSpool> IRON_SPOOL =
-	//		ccawires.REGISTRATE.item("iron_spool", WireSpool::new).register();
+
 	public static final ItemEntry<WireSpool> GOLD_SPOOL =
 			CCAMoreWires.REGISTRATE.item("gold_spool", WireSpool::new).register();
 	public static final ItemEntry<WireSpool> ELECTRUM_SPOOL =
 			CCAMoreWires.REGISTRATE.item("electrum_spool", WireSpool::new).register();
-	public static final ItemEntry<WireSpool> FESTIVE_SPOOL =
-			CCAMoreWires.REGISTRATE.item("festive_spool", WireSpool::new).register();
 
 	public static void register() {
 

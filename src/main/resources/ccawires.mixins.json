@@ -1,7 +1,7 @@
 {
 	"required": true,
 	"priority": 1000,
-	"package": "net.deepacat.ccawires.mixin",
+	"package": "",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 	],
