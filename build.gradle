@@ -64,6 +64,9 @@ minecraft {
         client {
             workingDirectory project.file('run')
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            
             //arg '-mixin.config=ccawires.mixins.json'
 
             // Recommended logging data for a userdev environment

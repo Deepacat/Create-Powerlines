@@ -1,4 +1,4 @@
-package net.deepacat.ccamorewires.blocks.connector;
+package net.deepacat.ccamorewires.blocks.connector.Manual;
 
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlock;
 import net.deepacat.ccamorewires.index.CABlockEntities;
@@ -12,25 +12,25 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class HugeConnectorBlock extends AbstractConnectorBlock<HugeConnectorBlockEntity> {
+public class GiantConnectorBlock extends AbstractConnectorBlock<GiantConnectorBlockEntity> {
     public static final VoxelShaper CONNECTOR_SHAPE = CAShapes.shape(6, 0, 6, 10, 5, 10).forDirectional();
-    public HugeConnectorBlock(Properties properties) {
+    public GiantConnectorBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    public Class<HugeConnectorBlockEntity> getBlockEntityClass() {
-        return HugeConnectorBlockEntity.class;
+    public Class<GiantConnectorBlockEntity> getBlockEntityClass() {
+        return GiantConnectorBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends HugeConnectorBlockEntity> getBlockEntityType() {
-        return CABlockEntities.HUGE_CONNECTOR.get();
+    public BlockEntityType<? extends GiantConnectorBlockEntity> getBlockEntityType() {
+        return CABlockEntities.GIANT_CONNECTOR.get();
     }
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return CABlockEntities.HUGE_CONNECTOR.create(pos, state);
+        return CABlockEntities.GIANT_CONNECTOR.create(pos, state);
     }
 
     @Override

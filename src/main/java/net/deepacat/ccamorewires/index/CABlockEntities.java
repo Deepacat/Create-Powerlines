@@ -1,9 +1,9 @@
 package net.deepacat.ccamorewires.index;
 
 import net.deepacat.ccamorewires.CCAMoreWires;
-import net.deepacat.ccamorewires.blocks.connector.GiantConnectorBlockEntity;
-import net.deepacat.ccamorewires.blocks.connector.HugeConnectorBlockEntity;
-import net.deepacat.ccamorewires.blocks.connector.MassiveConnectorBlockEntity;
+import net.deepacat.ccamorewires.blocks.connector.Manual.GiantConnectorBlockEntity;
+import net.deepacat.ccamorewires.blocks.connector.Manual.HugeConnectorBlockEntity;
+import net.deepacat.ccamorewires.blocks.connector.Manual.MassiveConnectorBlockEntity;
 import net.deepacat.ccamorewires.blocks.connector.base.ConnectorRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 

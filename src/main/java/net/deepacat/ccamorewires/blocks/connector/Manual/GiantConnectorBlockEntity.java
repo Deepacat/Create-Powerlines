@@ -1,5 +1,6 @@
-package net.deepacat.ccamorewires.blocks.connector;
+package net.deepacat.ccamorewires.blocks.connector.Manual;
 
+import net.deepacat.ccamorewires.blocks.connector.ConnectorType;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlock;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlockEntity;
 import net.deepacat.ccamorewires.config.Config;
@@ -11,9 +12,9 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-public class MassiveConnectorBlockEntity extends AbstractConnectorBlockEntity {
+public class GiantConnectorBlockEntity extends AbstractConnectorBlockEntity {
 
-    private final static float OFFSET_HEIGHT = 1f;
+    private final static float OFFSET_HEIGHT = 3f;
     public final static Vec3 OFFSET_DOWN = new Vec3(0f, -OFFSET_HEIGHT/16f, 0f);
     public final static Vec3 OFFSET_UP = new Vec3(0f, OFFSET_HEIGHT/16f, 0f);
     public final static Vec3 OFFSET_NORTH = new Vec3(0f, 0f, -OFFSET_HEIGHT/16f);
@@ -21,7 +22,7 @@ public class MassiveConnectorBlockEntity extends AbstractConnectorBlockEntity {
     public final static Vec3 OFFSET_SOUTH = new Vec3(0f, 0f, OFFSET_HEIGHT/16f);
     public final static Vec3 OFFSET_EAST = new Vec3(OFFSET_HEIGHT/16f, 0f, 0f);
 
-    public MassiveConnectorBlockEntity(BlockEntityType<?> blockEntityTypeIn, BlockPos pos, BlockState state) {
+    public GiantConnectorBlockEntity(BlockEntityType<?> blockEntityTypeIn, BlockPos pos, BlockState state) {
         super(blockEntityTypeIn, pos, state);
     }
 
@@ -30,17 +31,17 @@ public class MassiveConnectorBlockEntity extends AbstractConnectorBlockEntity {
 
     @Override
     public int getMaxIn() {
-        return Config.MASSIVE_CONNECTOR_MAX_INPUT.get();
+        return Config.GIANT_CONNECTOR_MAX_INPUT.get();
     }
 
     @Override
     public int getMaxOut() {
-        return Config.MASSIVE_CONNECTOR_MAX_OUTPUT.get();
+        return Config.GIANT_CONNECTOR_MAX_OUTPUT.get();
     }
 
     @Override
     public int getNodeCount() {
-        return 6;
+        return 4;
     }
 
     @Override
@@ -57,10 +58,10 @@ public class MassiveConnectorBlockEntity extends AbstractConnectorBlockEntity {
 
     @Override
     public ConnectorType getConnectorType() {
-        return ConnectorType.Massive;
+        return ConnectorType.Giant;
     }
 
     public int getMaxWireLength() {
-        return Config.MASSIVE_CONNECTOR_MAX_LENGTH.get();
+        return Config.GIANT_CONNECTOR_MAX_LENGTH.get();
     }
 }
