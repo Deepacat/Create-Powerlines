@@ -1,5 +1,6 @@
 package net.deepacat.ccamorewires;
 
+import net.deepacat.ccamorewires.blocks.connector.builder.ConnectorBuilder;
 import net.deepacat.ccamorewires.index.*;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
@@ -73,9 +74,8 @@ public class CCAMoreWires {
         CAItems.register();
         CARecipes.register(eventBus);
         CASounds.register(eventBus);
-        CAArmInteractions.register();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> CAPartials::init);
-
+        ConnectorBuilder.register();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
