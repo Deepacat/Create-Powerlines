@@ -62,6 +62,14 @@ public abstract class AbstractConnectorBlockEntity extends SmartBlockEntity impl
 		this.nodeCache = new IWireNode[getNodeCount()];
 	}
 
+	// TODO: this is just temporary
+	public AbstractConnectorBlockEntity(BlockEntityType<?> blockEntityTypeIn, BlockPos pos, BlockState state, ConnectorProperties props) {
+		super(blockEntityTypeIn, pos, state);
+
+		this.localNodes = new LocalNode[props.connections];
+		this.nodeCache = new IWireNode[props.connections];
+	}
+
 	private LazyOptional<IEnergyStorage> createEmptyHandler() {
 		return LazyOptional.of(InterfaceEnergyHandler::new);
 	}
