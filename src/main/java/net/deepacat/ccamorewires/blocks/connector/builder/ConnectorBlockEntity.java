@@ -1,7 +1,10 @@
-package net.deepacat.ccamorewires.blocks.connector.base;
+package net.deepacat.ccamorewires.blocks.connector.builder;
 
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.deepacat.ccamorewires.blocks.connector.ConnectorType;
+import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlock;
+import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlockEntity;
+import net.deepacat.ccamorewires.blocks.connector.base.ConnectorProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -43,6 +46,7 @@ public class ConnectorBlockEntity extends AbstractConnectorBlockEntity {
         return props.connections;
     }
 
+
     @Override
     public Vec3 getNodeOffset(int node) {
         return switch (getBlockState().getValue(AbstractConnectorBlock.FACING)) {
@@ -57,7 +61,7 @@ public class ConnectorBlockEntity extends AbstractConnectorBlockEntity {
 
     @Override
     public ConnectorType getConnectorType() {
-        return ConnectorType.Giant;
+        return props.sizeType;
     }
 
     public int getMaxWireLength() {
