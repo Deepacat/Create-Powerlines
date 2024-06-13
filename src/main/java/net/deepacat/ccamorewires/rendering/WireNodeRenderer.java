@@ -6,12 +6,8 @@ import net.deepacat.ccamorewires.config.Config;
 import net.deepacat.ccamorewires.energy.IWireNode;
 import net.deepacat.ccamorewires.energy.WireType;
 import net.deepacat.ccamorewires.event.ClientEventHandler;
-import net.deepacat.ccamorewires.index.CAPartials;
 import net.deepacat.ccamorewires.util.ClientMinecraftWrapper;
 import net.deepacat.ccamorewires.util.Util;
-import com.simibubi.create.foundation.render.CachedBufferer;
-import com.simibubi.create.foundation.utility.Color;
-
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -106,7 +106,7 @@
 	"statusbar.ccawires.wire.exists": "Wire connection already exists",
 	"statusbar.ccawires.wire.no_connection": "Wire not connected here",
 	"statusbar.ccawires.wire.invalid": "Invalid connection",
-	"statusbar.ccawires.wire.requires_high_current": "This connection requires a high current wire",
+	"statusbar.ccawires.wire.mismatched_wire": "This connector requires a different wire tier",
 
 	"block.ccawires.huge_connector": "Huge Connector",
 	"block.ccawires.huge_connector.tooltip": "CONNECTOR",

@@ -3,6 +3,7 @@ package net.deepacat.ccamorewires.energy;
 import java.util.HashMap;
 import java.util.Set;
 
+import net.deepacat.ccamorewires.blocks.connector.base.SpoolType;
 import net.deepacat.ccamorewires.energy.network.EnergyNetwork;
 import net.deepacat.ccamorewires.index.CAItems;
 import net.deepacat.ccamorewires.util.Util;
@@ -460,6 +461,8 @@ public interface IWireNode {
 		}
 	}
 
+	SpoolType getSpoolType();
+
 	// Static Helpers
 
 	/**
@@ -543,7 +546,7 @@ public interface IWireNode {
 	}
 
 	int getMaxWireLength();
-	
+
 	static WireConnectResult connect(Level world, BlockPos pos1, int node1, BlockPos pos2, int node2, WireType type) {
 		BlockEntity te1 = world.getBlockEntity(pos1);
 		BlockEntity te2 = world.getBlockEntity(pos2);
@@ -562,7 +565,16 @@ public interface IWireNode {
 //		if(wn1.getConnectorType() == ConnectorType.Large && wn2.getConnectorType() == ConnectorType.Large) {
 //			if(type == WireType.COPPER) return WireConnectResult.REQUIRES_HIGH_CURRENT;
 //		}
-
+		// TODO: Stop using 2 different spool type enums that do the same thing with .toString()
+//		CCAMoreWires.LOGGER.info("used: " + type);
+//		CCAMoreWires.LOGGER.info("node 1: " + wn1.getSpoolType());
+//		CCAMoreWires.LOGGER.info("node 2: " + wn2.getSpoolType());
+//
+		if(wn1.getSpoolType() == wn2.getSpoolType()) {
+			if(wn1.getSpoolType().toString() != type.toString()){
+				return WireConnectResult.MISMATCHED_WIRE;
+			}
+		} else { return WireConnectResult.MISMATCHED_WIRE; }
 
 		wn1.setNode(node1, node2, wn2.getPos(), type);
 		wn2.setNode(node2, node1, wn1.getPos(), type);

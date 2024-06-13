@@ -29,7 +29,6 @@ public enum WireType {
 			case 0 -> COPPER;
 			case 1 -> GOLD;
 			case 2 -> ELECTRUM;
-			//case 4 -> IRON;
 			default -> null;
 		};
 	}

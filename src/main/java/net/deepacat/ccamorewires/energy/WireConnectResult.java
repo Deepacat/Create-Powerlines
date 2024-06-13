@@ -20,7 +20,7 @@ public enum WireConnectResult {
 	EXISTS(Component.translatable("statusbar.ccawires.wire.exists").withStyle(ChatFormatting.RED)),
 	NO_CONNECTION(Component.translatable("statusbar.ccawires.wire.no_connection").withStyle(ChatFormatting.RED)),
 	INVALID(Component.translatable("statusbar.ccawires.wire.invalid").withStyle(ChatFormatting.RED)),
-	REQUIRES_HIGH_CURRENT(Component.translatable("statusbar.ccawires.wire.requires_high_current").withStyle(ChatFormatting.RED));
+	MISMATCHED_WIRE(Component.translatable("statusbar.ccawires.wire.mismatched_wire").withStyle(ChatFormatting.RED));
 
 	private final Component message;
 
