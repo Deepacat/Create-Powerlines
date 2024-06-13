@@ -1,6 +1,5 @@
 package net.deepacat.ccamorewires.blocks.connector.Manual;
 
-import net.deepacat.ccamorewires.blocks.connector.ConnectorType;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlock;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlockEntity;
 import net.deepacat.ccamorewires.config.Config;
@@ -53,11 +52,6 @@ public class GiantConnectorBlockEntity extends AbstractConnectorBlockEntity {
             case SOUTH -> OFFSET_SOUTH;
             case EAST -> OFFSET_EAST;
         };
-    }
-
-    @Override
-    public ConnectorType getConnectorType() {
-        return ConnectorType.Giant;
     }
 
     public int getMaxWireLength() {

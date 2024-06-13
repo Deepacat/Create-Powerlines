@@ -3,7 +3,6 @@ package net.deepacat.ccamorewires.blocks.connector.builder;
 import com.simibubi.create.foundation.utility.VoxelShaper;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlock;
-import net.deepacat.ccamorewires.blocks.connector.base.ConnectorProperties;
 import net.deepacat.ccamorewires.shapes.CAShapes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;

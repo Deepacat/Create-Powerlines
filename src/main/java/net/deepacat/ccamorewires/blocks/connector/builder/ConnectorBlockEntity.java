@@ -1,10 +1,8 @@
 package net.deepacat.ccamorewires.blocks.connector.builder;
 
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
-import net.deepacat.ccamorewires.blocks.connector.ConnectorType;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlock;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlockEntity;
-import net.deepacat.ccamorewires.blocks.connector.base.ConnectorProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -57,11 +55,6 @@ public class ConnectorBlockEntity extends AbstractConnectorBlockEntity {
             case SOUTH -> OFFSET_SOUTH;
             case EAST -> OFFSET_EAST;
         };
-    }
-
-    @Override
-    public ConnectorType getConnectorType() {
-        return props.sizeType;
     }
 
     public int getMaxWireLength() {

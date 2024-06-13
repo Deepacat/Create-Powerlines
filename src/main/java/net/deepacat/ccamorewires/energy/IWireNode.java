@@ -3,7 +3,6 @@ package net.deepacat.ccamorewires.energy;
 import java.util.HashMap;
 import java.util.Set;
 
-import net.deepacat.ccamorewires.blocks.connector.ConnectorType;
 import net.deepacat.ccamorewires.energy.network.EnergyNetwork;
 import net.deepacat.ccamorewires.index.CAItems;
 import net.deepacat.ccamorewires.util.Util;
@@ -461,8 +460,6 @@ public interface IWireNode {
 		}
 	}
 
-	ConnectorType getConnectorType();
-
 	// Static Helpers
 
 	/**
@@ -561,9 +558,11 @@ public interface IWireNode {
 
 		if (pos1.distSqr(pos2) > maxLength * maxLength) return WireConnectResult.LONG;
 		if (wn1.hasConnectionTo(pos2)) return WireConnectResult.EXISTS;
+		// TODO: Rework this to use different wires per tier rather than different sizes, maybe even remove sizes
 //		if(wn1.getConnectorType() == ConnectorType.Large && wn2.getConnectorType() == ConnectorType.Large) {
 //			if(type == WireType.COPPER) return WireConnectResult.REQUIRES_HIGH_CURRENT;
 //		}
+
 
 		wn1.setNode(node1, node2, wn2.getPos(), type);
 		wn2.setNode(node2, node1, wn1.getPos(), type);

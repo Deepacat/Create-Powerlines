@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.deepacat.ccamorewires.CCAMoreWires;
+import net.deepacat.ccamorewires.blocks.connector.builder.ConnectorProperties;
 import net.deepacat.ccamorewires.config.Config;
 import net.deepacat.ccamorewires.debug.IDebugDrawer;
 import net.deepacat.ccamorewires.energy.IWireNode;
