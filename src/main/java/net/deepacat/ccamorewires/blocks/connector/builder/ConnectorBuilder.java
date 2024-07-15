@@ -8,7 +8,6 @@ import net.deepacat.ccamorewires.CCAMoreWires;
 import net.deepacat.ccamorewires.blocks.connector.base.SpoolType;
 import net.deepacat.ccamorewires.energy.NodeMovementBehaviour;
 import net.deepacat.ccamorewires.blocks.connector.base.ConnectorRenderer;
-import net.deepacat.ccamorewires.energy.WireType;
 
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 

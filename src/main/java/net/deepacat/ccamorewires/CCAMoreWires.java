@@ -70,11 +70,8 @@ public class CCAMoreWires {
         CACreativeModeTabs.register(eventBus);
         REGISTRATE.registerEventListeners(eventBus);
         CABlocks.register();
-        CABlockEntities.register();
         CAItems.register();
         CARecipes.register(eventBus);
-        CASounds.register(eventBus);
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> CAPartials::init);
         ConnectorBuilder.register();
     }
 

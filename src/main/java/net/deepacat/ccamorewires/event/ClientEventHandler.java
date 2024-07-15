@@ -3,7 +3,6 @@ package net.deepacat.ccamorewires.event;
 import net.deepacat.ccamorewires.CCAMoreWires;
 
 import net.deepacat.ccamorewires.item.WireSpool;
-import net.deepacat.ccamorewires.sound.CASoundScapes;
 import net.deepacat.ccamorewires.util.ClientMinecraftWrapper;
 import net.deepacat.ccamorewires.util.Util;
 import net.minecraft.world.item.ItemStack;
@@ -25,11 +24,6 @@ public class ClientEventHandler {
         if(stack.isEmpty()) return;
         if(WireSpool.isRemover(stack.getItem())) return;
         clientRenderHeldWire = Util.getWireNodeOfSpools(stack) != null;
-    }
-
-    @SubscribeEvent
-    public static void tickSoundscapes(TickEvent.ClientTickEvent event) {
-        CASoundScapes.tick();
     }
 
     @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
