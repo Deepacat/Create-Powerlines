@@ -1,9 +1,6 @@
-package net.deepacat.ccamorewires.blocks.connector.builder;
+package net.deepacat.ccamorewires.blocks.connector.types;
 
-import com.simibubi.create.foundation.utility.VoxelShaper;
-import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlock;
-import net.deepacat.ccamorewires.shapes.CAShapes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -13,15 +10,11 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ConnectorBlock extends AbstractConnectorBlock<ConnectorBlockEntity> {
-    public static final VoxelShaper CONNECTOR_SHAPE = CAShapes.shape(6, 0, 6, 10, 5, 10).forDirectional();
+    public final ConnectorType type;
 
-    public final ConnectorProperties connProps;
-    public final BlockEntityEntry<ConnectorBlockEntity>[] beEntry;
-
-    public ConnectorBlock(Properties blockProps, ConnectorProperties connProps, BlockEntityEntry<ConnectorBlockEntity>[] beEntry) {
+    public ConnectorBlock(Properties blockProps, ConnectorType connProps) {
         super(blockProps);
-        this.connProps = connProps;
-        this.beEntry = beEntry;
+        this.type = connProps;
     }
 
     @Override
@@ -31,16 +24,16 @@ public class ConnectorBlock extends AbstractConnectorBlock<ConnectorBlockEntity>
 
     @Override
     public BlockEntityType<? extends ConnectorBlockEntity> getBlockEntityType() {
-        return beEntry[0].get();
+        return type.beEntry.get();
     }
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new ConnectorBlockEntity(beEntry[0].get(), pos, state, connProps);
+        return new ConnectorBlockEntity(type.beEntry.get(), pos, state, type);
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return CONNECTOR_SHAPE.get(state.getValue(FACING).getOpposite());
+        return type.shape.get(state.getValue(FACING).getOpposite());
     }
 }

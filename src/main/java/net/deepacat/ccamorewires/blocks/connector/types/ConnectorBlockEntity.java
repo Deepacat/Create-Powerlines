@@ -1,4 +1,4 @@
-package net.deepacat.ccamorewires.blocks.connector.builder;
+package net.deepacat.ccamorewires.blocks.connector.types;
 
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.deepacat.ccamorewires.blocks.connector.base.AbstractConnectorBlock;
@@ -20,11 +20,11 @@ public class ConnectorBlockEntity extends AbstractConnectorBlockEntity {
     public final static Vec3 OFFSET_SOUTH = new Vec3(0f, 0f, OFFSET_HEIGHT/16f);
     public final static Vec3 OFFSET_EAST = new Vec3(OFFSET_HEIGHT/16f, 0f, 0f);
 
-    public final ConnectorProperties props;
+    public final ConnectorType type;
 
-    public ConnectorBlockEntity(BlockEntityType<?> beType, BlockPos pos, BlockState state, ConnectorProperties props) {
-        super(beType, pos, state, props);
-        this.props = props;
+    public ConnectorBlockEntity(BlockEntityType<?> beType, BlockPos pos, BlockState state, ConnectorType type) {
+        super(beType, pos, state, type);
+        this.type = type;
     }
 
     @Override
@@ -32,17 +32,17 @@ public class ConnectorBlockEntity extends AbstractConnectorBlockEntity {
 
     @Override
     public int getMaxIn() {
-        return props.energyIn;
+        return type.energyIn;
     }
 
     @Override
     public int getMaxOut() {
-        return props.energyOut;
+        return type.energyOut;
     }
 
     @Override
     public int getNodeCount() {
-        return props.connections;
+        return type.connections;
     }
 
     @Override
@@ -59,10 +59,10 @@ public class ConnectorBlockEntity extends AbstractConnectorBlockEntity {
 
     @Override
     public SpoolType getSpoolType() {
-        return props.SpoolType;
+        return type.spoolType;
     }
 
     public int getMaxWireLength() {
-        return props.wireLength;
+        return type.wireLength;
     }
 }

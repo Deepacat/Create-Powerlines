@@ -571,7 +571,7 @@ public interface IWireNode {
 //		CCAMoreWires.LOGGER.info("node 2: " + wn2.getSpoolType());
 //
 		if(wn1.getSpoolType() == wn2.getSpoolType()) {
-			if(wn1.getSpoolType().toString() != type.toString()){
+			if(!wn1.getSpoolType().toString().equals(type.toString())) {
 				return WireConnectResult.MISMATCHED_WIRE;
 			}
 		} else { return WireConnectResult.MISMATCHED_WIRE; }

@@ -13,7 +13,7 @@ public enum ConnectorVariant implements StringRepresentable {
     Default("default"),
     Girder("girder");
 
-    private String name;
+    private final String name;
     ConnectorVariant(String name) {
         this.name = name;
     }

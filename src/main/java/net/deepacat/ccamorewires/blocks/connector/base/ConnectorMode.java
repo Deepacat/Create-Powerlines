@@ -17,7 +17,7 @@ public enum ConnectorMode implements StringRepresentable {
 	None("none"),
 	Passive("passive");
 
-	private String name;
+	private final String name;
 
 	ConnectorMode(String name) {
 		this.name = name;

@@ -1,6 +1,6 @@
 package net.deepacat.ccamorewires;
 
-import net.deepacat.ccamorewires.blocks.connector.builder.ConnectorBuilder;
+import net.deepacat.ccamorewires.blocks.connector.types.ConnectorTypes;
 import net.deepacat.ccamorewires.index.*;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
@@ -9,12 +9,10 @@ import net.deepacat.ccamorewires.config.Config;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -72,7 +70,7 @@ public class CCAMoreWires {
         CABlocks.register();
         CAItems.register();
         CARecipes.register(eventBus);
-        ConnectorBuilder.register();
+        ConnectorTypes.register();
     }
 
     private void setup(final FMLCommonSetupEvent event) {

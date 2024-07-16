@@ -1,9 +1,8 @@
 {
 	"required": true,
 	"priority": 1000,
-	"package": "",
+	"package": "net.deepacat.ccamorewires.mixins",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-	],
+	"client": ["ModelManagerMixin"],
 	"minVersion": "0.8.5"
 }

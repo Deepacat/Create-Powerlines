@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import net.deepacat.ccamorewires.CCAMoreWires;
-import net.deepacat.ccamorewires.blocks.connector.builder.ConnectorProperties;
+import net.deepacat.ccamorewires.blocks.connector.types.ConnectorType;
 import net.deepacat.ccamorewires.config.Config;
 import net.deepacat.ccamorewires.debug.IDebugDrawer;
 import net.deepacat.ccamorewires.energy.IWireNode;
@@ -64,7 +64,7 @@ public abstract class AbstractConnectorBlockEntity extends SmartBlockEntity impl
 	}
 
 	// TODO: this is just temporary
-	public AbstractConnectorBlockEntity(BlockEntityType<?> blockEntityTypeIn, BlockPos pos, BlockState state, ConnectorProperties props) {
+	public AbstractConnectorBlockEntity(BlockEntityType<?> blockEntityTypeIn, BlockPos pos, BlockState state, ConnectorType props) {
 		super(blockEntityTypeIn, pos, state);
 
 		this.localNodes = new LocalNode[props.connections];
