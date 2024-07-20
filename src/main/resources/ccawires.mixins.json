@@ -3,6 +3,6 @@
 	"priority": 1000,
 	"package": "net.deepacat.ccamorewires.mixins",
 	"compatibilityLevel": "JAVA_17",
-	"client": ["ModelManagerMixin"],
+	"client": ["ModelManagerMixin", "SpriteResourceLoaderMixin"],
 	"minVersion": "0.8.5"
 }

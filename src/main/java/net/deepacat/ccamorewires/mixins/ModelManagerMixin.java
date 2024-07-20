@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-// Don't worry, this is only slightly cursed
+// Slightly cursed
 
 @Mixin(ModelManager.class)
 public class ModelManagerMixin {
