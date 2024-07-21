@@ -20,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Mixin(ModelManager.class)
 public class ModelManagerMixin {
-    @ModifyArg(method = "lambda$loadBlockStates$14",
+    @ModifyArg(method = "/lambda\\$loadBlockStates\\$14|m_246572_/", require = 1,
             at = @At(value = "INVOKE", target = "Lnet/minecraft/Util;sequence(Ljava/util/List;)Ljava/util/concurrent/CompletableFuture;"))
     private static List<CompletableFuture<Pair<ResourceLocation, List<ModelBakery.LoadedJson>>>>
     ccawires$loadBlockStates(List<CompletableFuture<Pair<ResourceLocation, List<ModelBakery.LoadedJson>>>> list) {
@@ -34,7 +34,7 @@ public class ModelManagerMixin {
         return list;
     }
 
-    @ModifyArg(method = "lambda$loadBlockModels$10",
+    @ModifyArg(method = "/lambda\\$loadBlockModels\\$10|m_245318_/", require = 1,
             at = @At(value = "INVOKE", target = "Lnet/minecraft/Util;sequence(Ljava/util/List;)Ljava/util/concurrent/CompletableFuture;"))
     private static List<CompletableFuture<Pair<ResourceLocation, BlockModel>>>
     ccawires$loadBlockModels(List<CompletableFuture<Pair<ResourceLocation, BlockModel>>> list) {

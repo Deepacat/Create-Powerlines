@@ -4,5 +4,6 @@
 	"package": "net.deepacat.ccamorewires.mixins",
 	"compatibilityLevel": "JAVA_17",
 	"client": ["ModelManagerMixin", "SpriteResourceLoaderMixin"],
-	"minVersion": "0.8.5"
+	"minVersion": "0.8.5",
+	"refmap": "ccawires.refmap.json"
 }

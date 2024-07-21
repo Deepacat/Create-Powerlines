@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(SpriteResourceLoader.class)
 public class SpriteResourceLoaderMixin {
-    @ModifyVariable(method = "list", at = @At(value = "STORE", ordinal = 0))
+    @ModifyVariable(method = "list", require = 1, at = @At(value = "STORE", ordinal = 0))
     private SpriteSource.Output ccawires$load(SpriteSource.Output out) {
         for (ConnectorType type : ConnectorTypes.TYPES) {
             for (ConnectorMode mode : ConnectorMode.values()) {

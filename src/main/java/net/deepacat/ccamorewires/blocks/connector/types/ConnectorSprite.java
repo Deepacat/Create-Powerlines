@@ -31,7 +31,7 @@ public class ConnectorSprite implements SpriteSource.SpriteSupplier {
     }
 
     static int makeColor(float r, float g, float b) {
-        return (int) (r * 255) | ((int) (g * 255) << 8) | ((int) (b * 255) << 16);
+        return (int) (r * 255) | ((int) (g * 255) << 8) | ((int) (b * 255) << 16) | 0xFF000000;
     }
 
     @Override
