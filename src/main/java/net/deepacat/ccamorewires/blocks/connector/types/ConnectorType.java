@@ -24,13 +24,13 @@ public class ConnectorType {
     public final int energyOut;
     public final SpoolType spoolType;
     public final int width, height;
-    public final float color;
+    public final int color;
 
     public final VoxelShaper shape;
     public BlockEntityEntry<ConnectorBlockEntity> beEntry;
 
     public ConnectorType(String id, int connections, int wireLength, int energyIn, int energyOut,
-                         SpoolType spoolType, int width, int height, float color) {
+                         SpoolType spoolType, int width, int height, int color) {
         this.id = id;
         this.connections = connections;
         this.wireLength = wireLength;

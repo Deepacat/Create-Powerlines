@@ -30,8 +30,17 @@ public class ConnectorSprite implements SpriteSource.SpriteSupplier {
         this.loc = type.getBlockModelLocation(mode);
     }
 
-    static int makeColor(float r, float g, float b) {
-        return (int) (r * 255) | ((int) (g * 255) << 8) | ((int) (b * 255) << 16) | 0xFF000000;
+    static int intLerp(int from, int to, int factor) {
+        return (from * (255 - factor) + to * factor) / 255;
+    }
+
+    static int mapPixel(int src, int color) {
+        int dark = ((src >> 8) & 255) / 3;
+        int bright = src & 255;
+        int r = intLerp(dark, bright, color >> 16);
+        int g = intLerp(dark, bright, (color >> 8) & 255);
+        int b = intLerp(dark, bright, color & 255);
+        return r | (g << 8) | (b << 16) | 0xFF000000;
     }
 
     @Override
@@ -46,33 +55,7 @@ public class ConnectorSprite implements SpriteSource.SpriteSupplier {
         }
         IntBuffer buffer = MemoryUtil.memIntBuffer(img.pixels, 256);
         for (int idx : INDICES) {
-            int raw = buffer.get(idx);
-            float r = (raw & 255) / 255F;
-            float g = ((raw >> 8) & 255) / 255F;
-            float b = ((raw >> 16) & 255) / 255F;
-            float min = Math.min(Math.min(r, g), b);
-            float max = Math.max(Math.max(r, g), b);
-            float sat = 1 - min / max;
-            float color;
-            if (max == r) color = (g - b) / (6 * (max - min));
-            else if (max == g) color = (b - r) / (6 * (max - min));
-            else color = (r - g) / (6 * (max - min));
-            color += 1 + type.color;
-            color = (color - (int) color) * 6;
-            int region = (int) color;
-            color -= region;
-            float p = max * (1 - sat);
-            float q = max * (1 - color * sat);
-            float t = max * (1 - (1 - color) * sat);
-            raw = switch (region) {
-                case 0 -> makeColor(max, t, p);
-                case 1 -> makeColor(q, max, p);
-                case 2 -> makeColor(p, max, t);
-                case 3 -> makeColor(p, q, max);
-                case 4 -> makeColor(t, p, max);
-                default -> makeColor(max, p, q);
-            };
-            buffer.put(idx, raw);
+            buffer.put(idx, mapPixel(buffer.get(idx), type.color));
         }
         return new SpriteContents(loc, new FrameSize(16, 16), img, AnimationMetadataSection.EMPTY);
     }

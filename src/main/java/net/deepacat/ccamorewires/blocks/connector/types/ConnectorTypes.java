@@ -17,16 +17,16 @@ public class ConnectorTypes {
     public static final List<ConnectorType> TYPES = new ArrayList<>();
 
     public static void register() {
-        TYPES.add(new ConnectorType("lv_connector_small", 4, 16, 2048, 2048, SpoolType.COPPER, 1, 0, 0.0F));
-        TYPES.add(new ConnectorType("lv_connector_large", 6, 32, 2048, 2048, SpoolType.COPPER, 2, 1, 0.0F));
-        TYPES.add(new ConnectorType("lv_connector_huge", 4, 64, 2048, 2048, SpoolType.COPPER, 3, 1, 0.0F));
-        TYPES.add(new ConnectorType("lv_connector_giant", 3, 128, 2048, 2048, SpoolType.COPPER, 3, 2, 0.0F));
-        TYPES.add(new ConnectorType("lv_connector_massive", 3, 256, 2048, 2048, SpoolType.COPPER, 3, 4, 0.0F));
-        TYPES.add(new ConnectorType("mv_connector_small", 4, 16, 8192, 8192, SpoolType.GOLD, 1, 0, 0.2F));
-        TYPES.add(new ConnectorType("mv_connector_large", 6, 32, 8192, 8192, SpoolType.GOLD, 2, 1, 0.2F));
-        TYPES.add(new ConnectorType("mv_connector_huge", 4, 64, 8192, 8192, SpoolType.GOLD, 3, 1, 0.2F));
-        TYPES.add(new ConnectorType("mv_connector_giant", 3, 128, 8192, 8192, SpoolType.GOLD, 3, 2, 0.2F));
-        TYPES.add(new ConnectorType("mv_connector_massive", 3, 256, 8192, 8192, SpoolType.GOLD, 3, 4, 0.2F));
+        TYPES.add(new ConnectorType("lv_connector_small", 4, 16, 2048, 2048, SpoolType.COPPER, 1, 0, 0xFFB947));
+        TYPES.add(new ConnectorType("lv_connector_large", 6, 32, 2048, 2048, SpoolType.COPPER, 2, 1, 0xFFB947));
+        TYPES.add(new ConnectorType("lv_connector_huge", 4, 64, 2048, 2048, SpoolType.COPPER, 3, 1, 0xFFB947));
+        TYPES.add(new ConnectorType("lv_connector_giant", 3, 128, 2048, 2048, SpoolType.COPPER, 3, 2, 0xFFB947));
+        TYPES.add(new ConnectorType("lv_connector_massive", 3, 256, 2048, 2048, SpoolType.COPPER, 3, 4, 0xFFB947));
+        TYPES.add(new ConnectorType("mv_connector_small", 4, 16, 8192, 8192, SpoolType.GOLD, 1, 0, 0x4AC3FF));
+        TYPES.add(new ConnectorType("mv_connector_large", 6, 32, 8192, 8192, SpoolType.GOLD, 2, 1, 0x4AC3FF));
+        TYPES.add(new ConnectorType("mv_connector_huge", 4, 64, 8192, 8192, SpoolType.GOLD, 3, 1, 0x4AC3FF));
+        TYPES.add(new ConnectorType("mv_connector_giant", 3, 128, 8192, 8192, SpoolType.GOLD, 3, 2, 0x4AC3FF));
+        TYPES.add(new ConnectorType("mv_connector_massive", 3, 256, 8192, 8192, SpoolType.GOLD, 3, 4, 0x4AC3FF));
 
         for (ConnectorType type : TYPES) {
             BlockEntry<ConnectorBlock> block = CCAMoreWires.REGISTRATE.block(type.id, (props) -> new ConnectorBlock(props, type))
