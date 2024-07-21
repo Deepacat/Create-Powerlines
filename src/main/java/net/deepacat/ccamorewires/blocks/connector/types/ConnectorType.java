@@ -70,29 +70,29 @@ public class ConnectorType {
         JsonObject root = new JsonObject();
         JsonArray parts = new JsonArray();
         for (Direction dir : Direction.values()) {
+            JsonObject apply = new JsonObject();
+            IntIntPair rot = ROTS[dir.get3DDataValue()];
+            apply.addProperty("x", rot.firstInt());
+            apply.addProperty("y", rot.secondInt());
+            for (ConnectorMode mode : ConnectorMode.values()) {
+                JsonObject part = new JsonObject();
+                JsonObject when = new JsonObject();
+                when.addProperty("facing", dir.getSerializedName());
+                when.addProperty("mode", mode.getSerializedName());
+                part.add("when", when);
+                apply.addProperty("model", getBlockModelLocation(mode).toString());
+                part.add("apply", apply);
+                apply = apply.deepCopy();
+                parts.add(part);
+            }
             JsonObject part = new JsonObject();
             JsonObject when = new JsonObject();
             when.addProperty("facing", dir.getSerializedName());
             when.addProperty("variant", ConnectorVariant.Girder.getSerializedName());
             part.add("when", when);
-            JsonObject apply = new JsonObject();
-            IntIntPair rot = ROTS[dir.get3DDataValue()];
-            apply.addProperty("x", rot.firstInt());
-            apply.addProperty("y", rot.secondInt());
             apply.addProperty("model", new ResourceLocation(CCAMoreWires.MODID, "block/girder_base").toString());
             part.add("apply", apply);
             parts.add(part);
-            for (ConnectorMode mode : ConnectorMode.values()) {
-                part = new JsonObject();
-                when = new JsonObject();
-                when.addProperty("facing", dir.getSerializedName());
-                when.addProperty("mode", mode.getSerializedName());
-                part.add("when", when);
-                apply = apply.deepCopy();
-                apply.addProperty("model", getBlockModelLocation(mode).toString());
-                part.add("apply", apply);
-                parts.add(part);
-            }
         }
         root.add("multipart", parts);
         return root;
