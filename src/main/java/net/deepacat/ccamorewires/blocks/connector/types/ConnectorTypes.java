@@ -16,17 +16,18 @@ import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 public class ConnectorTypes {
     public static final List<ConnectorType> TYPES = new ArrayList<>();
 
+    static void groupAdd(String prefix, int energy, SpoolType spool, int color) {
+        TYPES.add(new ConnectorType(prefix + "_connector_small", 4, 16, energy, energy, spool, 1, 0, color));
+        TYPES.add(new ConnectorType(prefix + "_connector_large", 6, 32, (int) Math.round(energy * 1.5), (int) Math.round(energy * 1.5), spool, 2, 1, color));
+        TYPES.add(new ConnectorType(prefix + "_connector_huge", 4, 64, energy * 2, energy * 2, spool, 3, 1, color));
+        TYPES.add(new ConnectorType(prefix + "_connector_giant", 3, 128, (int) Math.round(energy * 2.5), (int) Math.round(energy * 2.5), spool, 3, 2, color));
+        TYPES.add(new ConnectorType(prefix + "_connector_massive", 3, 256, energy * 3, energy * 3, spool, 3, 4, color));
+    }
+
     public static void register() {
-        TYPES.add(new ConnectorType("lv_connector_small", 4, 16, 2048, 2048, SpoolType.COPPER, 1, 0, 0xFFB947));
-        TYPES.add(new ConnectorType("lv_connector_large", 6, 32, 2048, 2048, SpoolType.COPPER, 2, 1, 0xFFB947));
-        TYPES.add(new ConnectorType("lv_connector_huge", 4, 64, 2048, 2048, SpoolType.COPPER, 3, 1, 0xFFB947));
-        TYPES.add(new ConnectorType("lv_connector_giant", 3, 128, 2048, 2048, SpoolType.COPPER, 3, 2, 0xFFB947));
-        TYPES.add(new ConnectorType("lv_connector_massive", 3, 256, 2048, 2048, SpoolType.COPPER, 3, 4, 0xFFB947));
-        TYPES.add(new ConnectorType("mv_connector_small", 4, 16, 8192, 8192, SpoolType.GOLD, 1, 0, 0x4AC3FF));
-        TYPES.add(new ConnectorType("mv_connector_large", 6, 32, 8192, 8192, SpoolType.GOLD, 2, 1, 0x4AC3FF));
-        TYPES.add(new ConnectorType("mv_connector_huge", 4, 64, 8192, 8192, SpoolType.GOLD, 3, 1, 0x4AC3FF));
-        TYPES.add(new ConnectorType("mv_connector_giant", 3, 128, 8192, 8192, SpoolType.GOLD, 3, 2, 0x4AC3FF));
-        TYPES.add(new ConnectorType("mv_connector_massive", 3, 256, 8192, 8192, SpoolType.GOLD, 3, 4, 0x4AC3FF));
+        groupAdd("lv", 2048, SpoolType.COPPER, 0x6F6F6F);
+        groupAdd("mv", 8192, SpoolType.GOLD, 0x33CCFF);
+        groupAdd("hv", 32768, SpoolType.ELECTRUM, 0xE1E1E1);
 
         for (ConnectorType type : TYPES) {
             BlockEntry<ConnectorBlock> block = CCAMoreWires.REGISTRATE.block(type.id, (props) -> new ConnectorBlock(props, type))
@@ -34,6 +35,7 @@ public class ConnectorTypes {
                     .onRegister(AllMovementBehaviours.movementBehaviour(new NodeMovementBehaviour()))
                     .item()
                     .transform(customItemModel())
+                    .defaultLang()
                     .register();
             type.beEntry = CCAMoreWires.REGISTRATE
                     .<ConnectorBlockEntity>blockEntity(type.id, (beType, pos, state) -> new ConnectorBlockEntity(beType, pos, state, type))
