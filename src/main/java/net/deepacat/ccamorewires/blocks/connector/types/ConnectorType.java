@@ -188,7 +188,7 @@ public class ConnectorType {
                     addModelFace(faces, Direction.SOUTH, 4, 9, 10, 10, false);
                     addModelFace(faces, Direction.WEST, 4, 4, 10, 5, false);
                     addModelFace(faces, Direction.UP, 4, 4, 10, 10, false);
-                    addModelFace(faces, Direction.DOWN, 4, 10, 10, 16, true);
+                    addModelFace(faces, Direction.DOWN, 4, 10, 10, 16, false);
                 });
                 addModelElement(elements, 5 + height / 2, 6 + height, 1, (faces) -> {
                     addModelFace(faces, Direction.NORTH, 4, 9, 10, 10, false);
@@ -196,7 +196,7 @@ public class ConnectorType {
                     addModelFace(faces, Direction.SOUTH, 4, 9, 10, 10, false);
                     addModelFace(faces, Direction.WEST, 4, 4, 10, 5, false);
                     addModelFace(faces, Direction.UP, 4, 4, 10, 10, false);
-                    addModelFace(faces, Direction.DOWN, 4, 10, 10, 16, true);
+                    addModelFace(faces, Direction.DOWN, 4, 10, 10, 16, false);
                 });
             }
         }
