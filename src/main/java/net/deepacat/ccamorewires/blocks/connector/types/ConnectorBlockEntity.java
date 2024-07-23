@@ -41,7 +41,7 @@ public class ConnectorBlockEntity extends AbstractConnectorBlockEntity {
     @Override
     public Vec3 getNodeOffset(int node) {
         return new Vec3(getBlockState().getValue(AbstractConnectorBlock.FACING)
-                .step().mul((3 - type.height) / 16F));
+                .step().mul((8 - (type.height + type.style.baseHeight)) / 16F));
     }
 
     @Override

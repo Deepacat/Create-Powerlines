@@ -17,11 +17,16 @@ public class ConnectorTypes {
     public static final List<ConnectorType> TYPES = new ArrayList<>();
 
     static void groupAdd(String prefix, int energy, SpoolType spool, int color) {
-        TYPES.add(new ConnectorType(prefix + "_connector_small", 4, 16, energy, energy, spool, 1, 0, color));
-        TYPES.add(new ConnectorType(prefix + "_connector_large", 6, 32, (int) Math.round(energy * 1.5), (int) Math.round(energy * 1.5), spool, 2, 1, color));
-        TYPES.add(new ConnectorType(prefix + "_connector_huge", 4, 64, energy * 2, energy * 2, spool, 3, 1, color));
-        TYPES.add(new ConnectorType(prefix + "_connector_giant", 3, 128, (int) Math.round(energy * 2.5), (int) Math.round(energy * 2.5), spool, 3, 2, color));
-        TYPES.add(new ConnectorType(prefix + "_connector_massive", 3, 256, energy * 3, energy * 3, spool, 3, 4, color));
+        TYPES.add(new ConnectorType(prefix + "_connector_small", 4, 16, energy, energy,
+                spool, 1, 0, color, ConnectorStyle.SMALL));
+        TYPES.add(new ConnectorType(prefix + "_connector_large", 6, 32, (int) Math.round(energy * 1.5), (int) Math.round(energy * 1.5),
+                spool, 2, 1, color, ConnectorStyle.SMALL));
+        TYPES.add(new ConnectorType(prefix + "_connector_huge", 4, 64, energy * 2, energy * 2,
+                spool, 3, 1, color, ConnectorStyle.LARGE));
+        TYPES.add(new ConnectorType(prefix + "_connector_giant", 3, 128, (int) Math.round(energy * 2.5), (int) Math.round(energy * 2.5),
+                spool, 3, 2, color, ConnectorStyle.LARGE));
+        TYPES.add(new ConnectorType(prefix + "_connector_massive", 3, 256, energy * 3, energy * 3,
+                spool, 3, 4, color, ConnectorStyle.LARGE));
     }
 
     public static void register() {

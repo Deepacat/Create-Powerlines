@@ -25,12 +25,13 @@ public class ConnectorType {
     public final SpoolType spoolType;
     public final int width, height;
     public final int color;
+    public final ConnectorStyle style;
 
     public final VoxelShaper shape;
     public BlockEntityEntry<ConnectorBlockEntity> beEntry;
 
     public ConnectorType(String id, int connections, int wireLength, int energyIn, int energyOut,
-                         SpoolType spoolType, int width, int height, int color) {
+                         SpoolType spoolType, int width, int height, int color, ConnectorStyle style) {
         this.id = id;
         this.connections = connections;
         this.wireLength = wireLength;
@@ -40,9 +41,10 @@ public class ConnectorType {
         this.width = width;
         this.height = height;
         this.color = color;
+        this.style = style;
         int min = 8 - width - 1;
         int max = 8 + width + 1;
-        shape = CAShapes.shape(min, 0, min, max, 5 + height, max).forDirectional();
+        shape = CAShapes.shape(min, 0, min, max, style.baseHeight + height, max).forDirectional();
     }
 
     static final IntIntPair[] ROTS = new IntIntPair[]{
@@ -56,6 +58,10 @@ public class ConnectorType {
 
     public ResourceLocation getBlockModelLocation(ConnectorMode mode) {
         return new ResourceLocation(CCAMoreWires.MODID, "block/" + id + "/" + mode.getSerializedName());
+    }
+
+    public ResourceLocation getBlockTextureLocation(ConnectorMode mode) {
+        return new ResourceLocation(CCAMoreWires.MODID, "block/" + id + "/" + style.name + "_" + mode.getSerializedName());
     }
 
     public ResourceLocation getItemModelLocation() {
@@ -130,33 +136,70 @@ public class ConnectorType {
         JsonObject root = new JsonObject();
         root.addProperty("parent", "minecraft:block/block");
         JsonObject textures = new JsonObject();
-        textures.addProperty("0", getBlockModelLocation(mode).toString());
+        textures.addProperty("0", getBlockTextureLocation(mode).toString());
         textures.addProperty("particle", "create:block/andesite_casing");
         root.add("textures", textures);
         JsonArray elements = new JsonArray();
-        addModelElement(elements, 1, 5 + height, 0, (faces) -> {
-            addModelFace(faces, Direction.NORTH, 2, 0, 4, 4, false);
-            addModelFace(faces, Direction.EAST, 0, 0, 2, 4, false);
-            addModelFace(faces, Direction.SOUTH, 2, 0, 4, 4, false);
-            addModelFace(faces, Direction.WEST, 0, 0, 2, 4, false);
-            addModelFace(faces, Direction.UP, 5, 9, 7, 11, false);
-        });
-        addModelElement(elements, 0, 2 + height / 3, 1, (faces) -> {
-            addModelFace(faces, Direction.NORTH, 4, 6, 8, 8, false);
-            addModelFace(faces, Direction.EAST, 0, 6, 4, 8, false);
-            addModelFace(faces, Direction.SOUTH, 4, 6, 8, 8, false);
-            addModelFace(faces, Direction.WEST, 0, 6, 4, 8, false);
-            addModelFace(faces, Direction.UP, 0, 8, 4, 12, false);
-            addModelFace(faces, Direction.DOWN, 0, 12, 4, 16, true);
-        });
-        addModelElement(elements, 3 + height / 2, 4 + height, 1, (faces) -> {
-            addModelFace(faces, Direction.NORTH, 4, 4, 8, 5, false);
-            addModelFace(faces, Direction.EAST, 0, 4, 4, 5, false);
-            addModelFace(faces, Direction.SOUTH, 4, 4, 8, 5, false);
-            addModelFace(faces, Direction.WEST, 0, 4, 4, 5, false);
-            addModelFace(faces, Direction.UP, 4, 8, 8, 12, false);
-            addModelFace(faces, Direction.DOWN, 4, 12, 8, 16, false);
-        });
+        switch (style) {
+            case SMALL -> {
+                addModelElement(elements, 1, style.baseHeight + height, 0, (faces) -> {
+                    addModelFace(faces, Direction.NORTH, 2, 0, 4, 4, false);
+                    addModelFace(faces, Direction.EAST, 0, 0, 2, 4, false);
+                    addModelFace(faces, Direction.SOUTH, 2, 0, 4, 4, false);
+                    addModelFace(faces, Direction.WEST, 0, 0, 2, 4, false);
+                    addModelFace(faces, Direction.UP, 5, 9, 7, 11, false);
+                });
+                addModelElement(elements, 0, 2 + height / 3, 1, (faces) -> {
+                    addModelFace(faces, Direction.NORTH, 4, 6, 8, 8, false);
+                    addModelFace(faces, Direction.EAST, 0, 6, 4, 8, false);
+                    addModelFace(faces, Direction.SOUTH, 4, 6, 8, 8, false);
+                    addModelFace(faces, Direction.WEST, 0, 6, 4, 8, false);
+                    addModelFace(faces, Direction.UP, 0, 8, 4, 12, false);
+                    addModelFace(faces, Direction.DOWN, 0, 12, 4, 16, true);
+                });
+                addModelElement(elements, 3 + height / 2, 4 + height, 1, (faces) -> {
+                    addModelFace(faces, Direction.NORTH, 4, 4, 8, 5, false);
+                    addModelFace(faces, Direction.EAST, 0, 4, 4, 5, false);
+                    addModelFace(faces, Direction.SOUTH, 4, 4, 8, 5, false);
+                    addModelFace(faces, Direction.WEST, 0, 4, 4, 5, false);
+                    addModelFace(faces, Direction.UP, 4, 8, 8, 12, false);
+                    addModelFace(faces, Direction.DOWN, 4, 12, 8, 16, false);
+                });
+            }
+            case LARGE -> {
+                addModelElement(elements, 2, style.baseHeight + height, 0, (faces) -> {
+                    addModelFace(faces, Direction.NORTH, 0, 0, 4, 5, false);
+                    addModelFace(faces, Direction.EAST, 0, 0, 4, 5, false);
+                    addModelFace(faces, Direction.SOUTH, 0, 0, 4, 5, false);
+                    addModelFace(faces, Direction.WEST, 0, 0, 4, 5, false);
+                    addModelFace(faces, Direction.UP, 5, 5, 9, 9, false);
+                });
+                addModelElement(elements, 0, 2 + height / 4, 1, (faces) -> {
+                    addModelFace(faces, Direction.NORTH, 10, 2, 16, 4, false);
+                    addModelFace(faces, Direction.EAST, 4, 2, 10, 4, false);
+                    addModelFace(faces, Direction.SOUTH, 10, 2, 16, 4, false);
+                    addModelFace(faces, Direction.WEST, 4, 2, 10, 4, false);
+                    addModelFace(faces, Direction.UP, 10, 4, 16, 10, false);
+                    addModelFace(faces, Direction.DOWN, 10, 10, 16, 16, true);
+                });
+                addModelElement(elements, 3 + height / 3, 4 + height / 2, 1, (faces) -> {
+                    addModelFace(faces, Direction.NORTH, 4, 9, 10, 10, false);
+                    addModelFace(faces, Direction.EAST, 4, 4, 10, 5, false);
+                    addModelFace(faces, Direction.SOUTH, 4, 9, 10, 10, false);
+                    addModelFace(faces, Direction.WEST, 4, 4, 10, 5, false);
+                    addModelFace(faces, Direction.UP, 4, 4, 10, 10, false);
+                    addModelFace(faces, Direction.DOWN, 4, 10, 10, 16, true);
+                });
+                addModelElement(elements, 5 + height / 2, 6 + height, 1, (faces) -> {
+                    addModelFace(faces, Direction.NORTH, 4, 9, 10, 10, false);
+                    addModelFace(faces, Direction.EAST, 4, 4, 10, 5, false);
+                    addModelFace(faces, Direction.SOUTH, 4, 9, 10, 10, false);
+                    addModelFace(faces, Direction.WEST, 4, 4, 10, 5, false);
+                    addModelFace(faces, Direction.UP, 4, 4, 10, 10, false);
+                    addModelFace(faces, Direction.DOWN, 4, 10, 10, 16, true);
+                });
+            }
+        }
         root.add("elements", elements);
         return root;
     }
