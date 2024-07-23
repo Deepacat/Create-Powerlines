@@ -22,9 +22,7 @@ public class EnergyNetwork {
 	private int pushed = 0;
 
 	private int nodeCount = 0;
-	
-	private static final int MAX_BUFF = 80000;
-	
+
 	public EnergyNetwork(Level world) {
 		this.inBuff = 0;
 		this.outBuff = 0;
@@ -36,10 +34,6 @@ public class EnergyNetwork {
 		EnergyNetworkManager.instances.get(world).add(this);
 	}
 
-	public int getMaxBuff() {
-		return Math.min(nodeCount * (outDemand + inDemand * 2 + 10), MAX_BUFF);
-	}
-	
 	public void tick(int index) {
 		this.id = index;
 		int t = outBuff;
@@ -59,7 +53,6 @@ public class EnergyNetwork {
 
 	// Returns the amount of energy pushed to network
 	public int push(int energy, boolean simulate) {
-		energy = Math.min(getMaxBuff() - inBuff, energy);
 		energy = Math.max(energy, 0);
 		if (!simulate) {
 			inBuff += energy;
