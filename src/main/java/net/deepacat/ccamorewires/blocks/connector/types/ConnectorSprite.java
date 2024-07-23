@@ -15,11 +15,6 @@ import java.io.InputStream;
 import java.nio.IntBuffer;
 
 public class ConnectorSprite implements SpriteSource.SpriteSupplier {
-    private final static int[] INDICES = new int[]{
-            0, 1, 2, 3, 16, 17, 18, 19, 32, 33, 34, 35, 48, 49, 50, 51,
-            149, 150, 165, 166, 209, 210, 213, 214, 225, 226, 229, 230
-    };
-
     private final ConnectorType type;
     private final ConnectorMode mode;
     public final ResourceLocation loc;
@@ -27,7 +22,7 @@ public class ConnectorSprite implements SpriteSource.SpriteSupplier {
     public ConnectorSprite(ConnectorType type, ConnectorMode mode) {
         this.type = type;
         this.mode = mode;
-        this.loc = type.getBlockModelLocation(mode);
+        this.loc = type.getBlockTextureLocation(mode);
     }
 
     static int intLerp(int from, int to, int factor) {
@@ -47,16 +42,18 @@ public class ConnectorSprite implements SpriteSource.SpriteSupplier {
     public SpriteContents get() {
         NativeImage img;
         try {
-            try (InputStream is = CCAMoreWires.class.getResourceAsStream("/assets/ccawires/textures/connector/" + mode.getSerializedName() + ".png")) {
+            try (InputStream is = CCAMoreWires.class.getResourceAsStream(
+                    "/assets/ccawires/textures/connector/" + type.style.name
+                            + "_" + mode.getSerializedName() + ".png")) {
                 img = NativeImage.read(is);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         IntBuffer buffer = MemoryUtil.memIntBuffer(img.pixels, 256);
-        for (int idx : INDICES) {
+        for (int idx : type.style.indices) {
             buffer.put(idx, mapPixel(buffer.get(idx), type.color));
         }
-        return new SpriteContents(loc, new FrameSize(16, 16), img, AnimationMetadataSection.EMPTY);
+        return new SpriteContents(loc, new FrameSize(16, 16), img, AnimationMetadataSection.EMPTY, null);
     }
 }

@@ -14,8 +14,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 public enum ConnectorMode implements StringRepresentable {
 	Push("push"),
 	Pull("pull"),
-	None("none"),
-	Passive("passive");
+	None("none");
 
 	private final String name;
 
@@ -30,8 +29,6 @@ public enum ConnectorMode implements StringRepresentable {
 
 	public ConnectorMode getNext() {
 		switch (this) {
-			//case Passive:
-			//	return None;
 			case None:
 				return Pull;
 			case Pull:
@@ -44,8 +41,6 @@ public enum ConnectorMode implements StringRepresentable {
 
 	public MutableComponent getTooltip() {
 		switch (this) {
-			case Passive:
-				return Component.translatable("ccawires.tooltip.energy.passive");
 			case None:
 				return Component.translatable("ccawires.tooltip.energy.none");
 			case Pull:
@@ -70,7 +65,6 @@ public enum ConnectorMode implements StringRepresentable {
 
 		IEnergyStorage e = optional.orElse(null);
 
-		// if(e.canExtract() && e.canReceive()) return Passive;
 		if(e.canExtract()) return Pull;
 		if(e.canReceive()) return Push;
 
