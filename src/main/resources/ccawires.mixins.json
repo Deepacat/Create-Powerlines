@@ -1,9 +1,9 @@
 {
 	"required": true,
-	"priority": 1000,
 	"package": "net.deepacat.ccamorewires.mixins",
 	"compatibilityLevel": "JAVA_17",
-	"client": ["ModelManagerMixin", "SpriteResourceLoaderMixin"],
+	"mixins": ["LanguageMixin"],
+	"client": ["ModelManagerMixin", "SpriteResourceLoaderMixin", "ClientLanguageMixin"],
 	"minVersion": "0.8.5",
 	"refmap": "ccawires.refmap.json"
 }

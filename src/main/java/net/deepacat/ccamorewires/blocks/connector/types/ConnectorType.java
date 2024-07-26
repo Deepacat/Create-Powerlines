@@ -26,12 +26,13 @@ public class ConnectorType {
     public final int width, height;
     public final int color;
     public final ConnectorStyle style;
+    public final String defaultDisplayName;
 
     public final VoxelShaper shape;
     public BlockEntityEntry<ConnectorBlockEntity> beEntry;
 
-    public ConnectorType(String id, int connections, int wireLength, int energyIn, int energyOut,
-                         SpoolType spoolType, int width, int height, int color, ConnectorStyle style) {
+    public ConnectorType(String id, int connections, int wireLength, int energyIn, int energyOut, SpoolType spoolType,
+                         int width, int height, int color, ConnectorStyle style, String defaultDisplayName) {
         this.id = id;
         this.connections = connections;
         this.wireLength = wireLength;
@@ -42,6 +43,7 @@ public class ConnectorType {
         this.height = height;
         this.color = color;
         this.style = style;
+        this.defaultDisplayName = defaultDisplayName;
         int min = 8 - width - 1;
         int max = 8 + width + 1;
         shape = CAShapes.shape(min, 0, min, max, style.baseHeight + height, max).forDirectional();
