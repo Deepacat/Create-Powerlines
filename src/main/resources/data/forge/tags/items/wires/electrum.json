@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "ccawires:electrum_wire"
+    "createpowerlines:electrum_wire"
   ]
 }

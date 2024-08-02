@@ -15,30 +15,29 @@ license="MIT License, Copyright 2022 MRH0"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="ccawires" #mandatory
+modId="createpowerlines" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
 version="${file.jarVersion}" #mandatory
  # A display name for the mod
-displayName="C:C&A More Wires" #mandatory
+displayName="Create: Powerlines" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="https://github.com/mrh0/ccawires" #optional
+#displayURL="https://github.com/mrh0/createpowerlines" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-# logoFile="ccawires.png" #optional
+# logoFile="createpowerlines.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks to MRH0 for the base mod" #optional
+credits="Thanks to MRH0 for the base mod and the connectors" #optional
 # A text field displayed in the mod UI
-authors="Deepacat + MRH0" #optional
+authors="Deepacat, Cyb0124, MRH0" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-C:C&A More Wires adds more connector and spool types to Create: Crafts & Additions
-for greater distance power transport and more energy to fit in with the gregtorio pack
+A fork of C:C&A for improving it's wire connectors and making custom ones for mod pack developers
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.ccawires]] #optional
+[[dependencies.createpowerlines]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -49,32 +48,32 @@ for greater distance power transport and more energy to fit in with the gregtori
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-[[dependencies.ccawires]]
+[[dependencies.createpowerlines]]
     modId="create"
     mandatory=true
     versionRange="[0.5.1.e,0.5.2)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.ccawires]]
+[[dependencies.createpowerlines]]
     modId="flywheel"
     mandatory=true
     versionRange="[0.6.9.a,0.7)"
     ordering="AFTER"
     side="CLIENT"
-[[dependencies.ccawires]]
+[[dependencies.createpowerlines]]
     modId="jei"
     mandatory=false
     versionRange="[15.0.0.0,)"
     ordering="NONE"
     side="BOTH"
-#[[dependencies.ccawires]]
+#[[dependencies.createpowerlines]]
 #    modId="createaddition"
 #    mandatory=true
 #    #versionRange="${minecraft_version_range}-1.2.3"
 #    versionRange="1.20.1-1.2.3"
 #    ordering="BEFORE"
 #    side="BOTH"
-[[dependencies.ccawires]]
+[[dependencies.createpowerlines]]
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version

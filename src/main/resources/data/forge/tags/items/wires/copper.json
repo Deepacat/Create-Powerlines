@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "ccawires:copper_wire"
+    "createpowerlines:copper_wire"
   ]
 }

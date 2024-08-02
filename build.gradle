@@ -25,16 +25,16 @@ apply plugin: 'org.spongepowered.mixin'
 jarJar.enable()
 
 mixin {
-    add sourceSets.main, "ccawires.refmap.json"
-    config "ccawires.mixins.json"
+    add sourceSets.main, "createpowerlines.refmap.json"
+    config "createpowerlines.mixins.json"
 
     debug.export = true
 }
 
 version = "${minecraft_version}-1.2.3"
 
-group = 'net.deepacat.ccawires' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'ccawires'
+group = 'net.deepacat.createpowerlines' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'createpowerlines'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -67,7 +67,7 @@ minecraft {
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             
-            //arg '-mixin.config=ccawires.mixins.json'
+            //arg '-mixin.config=createpowerlines.mixins.json'
 
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
@@ -82,10 +82,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'ccawires'
+            property 'forge.enabledGameTestNamespaces', 'createpowerlines'
 
             mods {
-                ccawires {
+                createpowerlines {
                     source sourceSets.main
                 }
             }
@@ -94,16 +94,16 @@ minecraft {
         server {
             workingDirectory project.file('run')
 
-            //arg '-mixin.config=ccawires.mixins.json'
+            //arg '-mixin.config=createpowerlines.mixins.json'
 
             property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'ccawires'
+            property 'forge.enabledGameTestNamespaces', 'createpowerlines'
 
             mods {
-                ccawires {
+                createpowerlines {
                     source sourceSets.main
                 }
             }
@@ -119,10 +119,10 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'ccawires'
+            property 'forge.enabledGameTestNamespaces', 'createpowerlines'
 
             mods {
-                ccawires {
+                createpowerlines {
                     source sourceSets.main
                 }
             }
@@ -136,10 +136,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'ccawires', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'createpowerlines', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                ccawires {
+                createpowerlines {
                     source sourceSets.main
                 }
             }
@@ -214,8 +214,8 @@ dependencies {
 }
 
 mixin {
-    // add sourceSets.main, 'ccawires.refmap.json'
-    config 'ccawires.mixins.json'
+    // add sourceSets.main, 'createpowerlines.refmap.json'
+    config 'createpowerlines.mixins.json'
 
     debug.verbose = true
     debug.export = true
@@ -225,14 +225,14 @@ mixin {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "ccawires",
-                "Specification-Vendor"    : "ccawiressareus",
+                "Specification-Title"     : "createpowerlines",
+                "Specification-Vendor"    : "createpowerlinessareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "ccawires",
+                "Implementation-Vendor"   : "createpowerlines",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs"            : "ccawires.mixins.json"
+                "MixinConfigs"            : "createpowerlines.mixins.json"
         ])
     }
 }

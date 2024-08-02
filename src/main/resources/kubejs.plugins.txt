@@ -1,1 +1,1 @@
-net.deepacat.ccawires.kube.ConnectorRegistryEvent
+net.deepacat.createpowerlines.kube.ConnectorRegistryEvent

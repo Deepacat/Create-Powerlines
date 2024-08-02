@@ -1,0 +1,9 @@
+{
+	"required": true,
+	"package": "net.deepacat.createpowerlines.mixins",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": ["LanguageMixin"],
+	"client": ["ModelManagerMixin", "SpriteResourceLoaderMixin", "ClientLanguageMixin"],
+	"minVersion": "0.8.5",
+	"refmap": "createpowerlines.refmap.json"
+}

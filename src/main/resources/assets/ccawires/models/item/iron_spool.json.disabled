@@ -1,6 +1,0 @@
-{
-	"parent": "item/generated",
-	"textures": {
-		"layer0" : "ccawires:item/iron_spool"
-	}
-}

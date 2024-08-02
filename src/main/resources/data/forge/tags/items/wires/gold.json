@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "ccawires:gold_wire"
+    "createpowerlines:gold_wire"
   ]
 }
