@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.blocks.connector.base.SpoolType;
+import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.energy.NodeMovementBehaviour;
 import net.deepacat.createpowerlines.blocks.connector.base.ConnectorRenderer;
 
@@ -34,8 +35,15 @@ public class ConnectorTypes {
     }
 
     public static void register() {
-        addTier("Copper", 2048, SpoolType.COPPER, 0xC55E4B);
-        addTier("Gold", 8192, SpoolType.GOLD, 0xE6AF15);
+        if(Config.USE_BASE_CONNECTORS.get()){
+            addTier("Copper", 2048, SpoolType.COPPER, 0xC55E4B);
+            addTier("Gold", 8192, SpoolType.GOLD, 0xE6AF15);
+        }
+        if(Config.USE_GT_CONNECTORS.get()){
+            addTier("LV", 160, SpoolType.COPPER, 0x6F6F6F);
+            addTier("MV", 640, SpoolType.GOLD, 0x33CCFF);
+            addTier("HV", 2560, SpoolType.ELECTRUM, 0xE1E1E1);
+        }
 
         for (ConnectorType type : TYPES) {
             BlockEntry<ConnectorBlock> block = CreatePowerlines.REGISTRATE.block(type.id, (props) -> new ConnectorBlock(props, type))
