@@ -8,6 +8,7 @@ import net.deepacat.createpowerlines.blocks.connector.base.SpoolType;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.energy.NodeMovementBehaviour;
 import net.deepacat.createpowerlines.blocks.connector.base.ConnectorRenderer;
+import net.minecraftforge.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +40,19 @@ public class ConnectorTypes {
             addTier("Copper", 2048, SpoolType.COPPER, 0xC55E4B);
             addTier("Gold", 8192, SpoolType.GOLD, 0xE6AF15);
         }
-        if(Config.USE_GT_CONNECTORS.get()){
+        if(Config.USE_CCA_CONNECTORS.get() && ModList.get().isLoaded("createaddition")){
+            addTier("Electrum", 32768, SpoolType.ELECTRUM, 0xF8D86F);
+        }
+        if(Config.USE_GT_CONNECTORS.get() && ModList.get().isLoaded("gtceu")){
             addTier("LV", 160, SpoolType.COPPER, 0x6F6F6F);
             addTier("MV", 640, SpoolType.GOLD, 0x33CCFF);
-            addTier("HV", 2560, SpoolType.ELECTRUM, 0xE1E1E1);
+            addTier("HV", 2560, SpoolType.ELECTRUM, 0xFFFFFF);
+            addTier("EV", 10240, SpoolType.ELECTRUM, 0xFFFFFF);
+            addTier("IV", 40960, SpoolType.ELECTRUM, 0xFFFFFF);
+            addTier("LuV", 163840, SpoolType.ELECTRUM, 0xFFFFFF);
+            addTier("ZPM", 655360, SpoolType.ELECTRUM, 0xFFFFFF);
+            addTier("UV", 2621440, SpoolType.ELECTRUM, 0xFFFFFF);
+            addTier("UHV", 10485760, SpoolType.ELECTRUM, 0xFFFFFF);
         }
 
         for (ConnectorType type : TYPES) {
