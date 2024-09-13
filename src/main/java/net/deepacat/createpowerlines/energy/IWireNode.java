@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Set;
 
 import net.deepacat.createpowerlines.blocks.connector.base.SpoolType;
+import net.deepacat.createpowerlines.blocks.connector.types.WireMaterials;
 import net.deepacat.createpowerlines.energy.network.EnergyNetwork;
-import net.deepacat.createpowerlines.index.CAItems;
 import net.deepacat.createpowerlines.util.Util;
 
 import net.minecraft.core.BlockPos;
@@ -439,7 +439,7 @@ public interface IWireNode {
 
 			WireType type = node.getType();
 			int index = type.getIndex();
-			ItemStack spools = Util.findStack(CAItems.SPOOL.get().asItem(), player.getInventory());
+			ItemStack spools = Util.findStack(WireMaterials.EMPTY_SPOOL.get().asItem(), player.getInventory());
 
 			if (spools.getCount() > 0) {
 				if (wireSpools.get(index).isEmpty()) wireSpools.set(index, type.getSourceDrop());

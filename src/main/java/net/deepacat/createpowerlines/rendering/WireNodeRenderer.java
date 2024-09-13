@@ -6,7 +6,7 @@ import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.energy.IWireNode;
 import net.deepacat.createpowerlines.energy.WireType;
 import net.deepacat.createpowerlines.event.ClientEventHandler;
-import net.deepacat.createpowerlines.util.ClientMinecraftWrapper;
+import net.deepacat.createpowerlines.util.ClientUtil;
 import net.deepacat.createpowerlines.util.Util;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.LightTexture;
@@ -76,7 +76,7 @@ public class WireNodeRenderer<T extends BlockEntity> implements BlockEntityRende
         }
 
         if (ClientEventHandler.clientRenderHeldWire) {
-            LocalPlayer player = ClientMinecraftWrapper.getPlayer();
+            LocalPlayer player = ClientUtil.getPlayer();
             Util.Triple<BlockPos, Integer, WireType> wireNode = Util.getWireNodeOfSpools(player.getInventory().getSelected());
             if (wireNode == null) return;
 

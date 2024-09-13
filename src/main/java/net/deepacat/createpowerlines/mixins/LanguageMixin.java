@@ -1,6 +1,7 @@
 package net.deepacat.createpowerlines.mixins;
 
 import net.deepacat.createpowerlines.blocks.connector.types.ConnectorTypes;
+import net.deepacat.createpowerlines.blocks.connector.types.WireMaterials;
 import net.minecraft.locale.Language;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,6 +13,7 @@ import java.util.Map;
 public class LanguageMixin {
     @ModifyArg(method = "loadDefault", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/server/LanguageHook;captureLanguageMap(Ljava/util/Map;)V"))
     private static Map<String, String> createpowerlines$load(Map<String, String> table) {
+        WireMaterials.getDefaultTranslations(table);
         ConnectorTypes.getDefaultTranslations(table);
         return table;
     }

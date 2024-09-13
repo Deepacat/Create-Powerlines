@@ -3,10 +3,10 @@ package net.deepacat.createpowerlines.item;
 import java.util.List;
 
 import net.deepacat.createpowerlines.CreatePowerlines;
+import net.deepacat.createpowerlines.blocks.connector.types.WireMaterials;
 import net.deepacat.createpowerlines.energy.IWireNode;
 import net.deepacat.createpowerlines.energy.WireConnectResult;
 import net.deepacat.createpowerlines.energy.WireType;
-import net.deepacat.createpowerlines.index.CAItems;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -80,7 +80,7 @@ public class WireSpool extends Item {
 				}
 				else if(result.isLinked()) {
 					c.getItemInHand().shrink(1);
-					ItemStack stack = new ItemStack(CAItems.SPOOL.get(), 1);
+					ItemStack stack = new ItemStack(WireMaterials.EMPTY_SPOOL.get(), 1);
 					boolean shouldDrop = !c.getPlayer().addItem(stack);
 					if(shouldDrop)
 						c.getPlayer().drop(stack, false);
@@ -147,6 +147,6 @@ public class WireSpool extends Item {
     }
 
 	public static boolean isRemover(Item item) {
-		return item == CAItems.SPOOL.get();
+		return item == WireMaterials.EMPTY_SPOOL.get();
 	}
 }
