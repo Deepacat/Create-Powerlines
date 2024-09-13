@@ -8,11 +8,6 @@ import net.minecraft.world.item.Item;
 
 
 public class CAItems {
-
-    static {
-        CreatePowerlines.REGISTRATE.setCreativeTab(CACreativeModeTabs.MAIN_TAB);
-    }
-
     public static final ItemEntry<Item> COPPER_WIRE =
             CreatePowerlines.REGISTRATE.item("copper_wire", Item::new).register();
     public static final ItemEntry<Item> GOLD_WIRE =

@@ -35,14 +35,12 @@ import com.simibubi.create.foundation.item.TooltipModifier;
 
 @Mod(CreatePowerlines.MODID)
 public class CreatePowerlines {
-    public static final Logger LOGGER = LogManager.getLogger();
-
     public static final String MODID = "createpowerlines";
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(CreatePowerlines.MODID);
 
     private static final String PROTOCOL = "1";
-	public static final SimpleChannel Network = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MODID, "main"))
+    public static final SimpleChannel Network = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MODID, "main"))
             .clientAcceptedVersions(PROTOCOL::equals)
             .serverAcceptedVersions(PROTOCOL::equals)
             .networkProtocolVersion(() -> PROTOCOL)
@@ -54,49 +52,22 @@ public class CreatePowerlines {
     }
 
     public CreatePowerlines() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::postInit);
-        //FMLJavaModLoadingContext.get().getModEventBus().addGenericListener(RecipeSerializer.class, CARecipes::register);
-
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        MinecraftForge.EVENT_BUS.register(this);
-
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
-        Config.loadConfig(Config.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve("createpowerlines-common.toml"));
+        Config.loadConfig(Config.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve(MODID + "-common.toml"));
 
-        CACreativeModeTabs.register(eventBus);
-        REGISTRATE.registerEventListeners(eventBus);
-        CABlocks.register();
+        IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modBus.addListener(this::postInit);
+        CACreativeModeTabs.register(modBus);
+        REGISTRATE.registerEventListeners(modBus);
         CAItems.register();
-        CARecipes.register(eventBus);
+        CARecipes.register(modBus);
         ConnectorTypes.register();
-    }
-
-    private void setup(final FMLCommonSetupEvent event) {
-
-    }
-
-    private void doClientStuff(final FMLClientSetupEvent event) {
-
-        RenderType cutout = RenderType.cutoutMipped();
-
-        //ItemBlockRenderTypes.setRenderLayer(CABlocks.SMALL_LIGHT_CONNECTOR.get(), cutout);
     }
 
     public void postInit(FMLLoadCompleteEvent evt) {
         Network.registerMessage(0, ObservePacket.class, ObservePacket::encode, ObservePacket::decode, ObservePacket::handle);
         Network.registerMessage(1, EnergyNetworkPacket.class, EnergyNetworkPacket::encode, EnergyNetworkPacket::decode, EnergyNetworkPacket::handle);
 
-    	System.out.println("C&A More Wires Initialized!");
-    }
-
-    @SubscribeEvent
-    public void onRegisterCommandEvent(RegisterCommandsEvent event) {
-    	CommandDispatcher<CommandSourceStack> dispather = event.getDispatcher();
-    }
-
-    public static ResourceLocation asResource(String path) {
-        return new ResourceLocation(MODID, path);
+        System.out.println("Create Powerlines Initialized!");
     }
 }

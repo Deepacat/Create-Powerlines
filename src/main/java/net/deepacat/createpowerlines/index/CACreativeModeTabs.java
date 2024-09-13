@@ -1,5 +1,6 @@
 package net.deepacat.createpowerlines.index;
 
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
@@ -15,7 +16,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Predicate;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CACreativeModeTabs {
@@ -32,38 +32,37 @@ public class CACreativeModeTabs {
 
     public static void register(IEventBus modEventBus) {
         TAB_REGISTER.register(modEventBus);
+        CreatePowerlines.REGISTRATE.setCreativeTab(MAIN_TAB);
     }
 
     public static class RegistrateDisplayItemsGenerator implements CreativeModeTab.DisplayItemsGenerator {
 
-        private List<Item> collectBlocks(RegistryObject<CreativeModeTab> tab, Predicate<Item> exclusionPredicate) {
+        private List<Item> collectBlocks(RegistryObject<CreativeModeTab> tab) {
             List<Item> items = new ReferenceArrayList<>();
             for (RegistryEntry<Block> entry : CreatePowerlines.REGISTRATE.getAll(Registries.BLOCK)) {
-                if (!CreatePowerlines.REGISTRATE.isInCreativeTab(entry, tab))
+                if (!CreateRegistrate.isInCreativeTab(entry, tab))
                     continue;
                 Item item = entry.get()
                         .asItem();
                 if (item == Items.AIR)
                     continue;
-                if (!exclusionPredicate.test(item))
-                    items.add(item);
+                items.add(item);
             }
             items = new ReferenceArrayList<>(new ReferenceLinkedOpenHashSet<>(items));
             return items;
         }
 
-        private List<Item> collectItems(RegistryObject<CreativeModeTab> tab, Predicate<Item> exclusionPredicate) {
+        private List<Item> collectItems(RegistryObject<CreativeModeTab> tab) {
             List<Item> items = new ReferenceArrayList<>();
 
 
             for (RegistryEntry<Item> entry : CreatePowerlines.REGISTRATE.getAll(Registries.ITEM)) {
-                if (!CreatePowerlines.REGISTRATE.isInCreativeTab(entry, tab))
+                if (!CreateRegistrate.isInCreativeTab(entry, tab))
                     continue;
                 Item item = entry.get();
                 if (item instanceof BlockItem)
                     continue;
-                if (!exclusionPredicate.test(item))
-                    items.add(item);
+                items.add(item);
             }
             return items;
         }
@@ -74,16 +73,11 @@ public class CACreativeModeTabs {
             }
         }
 
-        List<Item> exclude = List.of();
-
         @Override
         public void accept(CreativeModeTab.ItemDisplayParameters params, CreativeModeTab.Output output) {
             List<Item> items = new LinkedList<>();
-            items.addAll(collectBlocks(MAIN_TAB, (item) -> {
-                return false;
-            }));
-            items.addAll(collectItems(MAIN_TAB, (item) -> exclude.contains(item)));
-
+            items.addAll(collectBlocks(MAIN_TAB));
+            items.addAll(collectItems(MAIN_TAB));
             outputAll(output, items);
         }
     }

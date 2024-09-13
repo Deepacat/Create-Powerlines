@@ -3,21 +3,29 @@ package net.deepacat.createpowerlines.blocks.connector.types;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.simibubi.create.AllMovementBehaviours;
+import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.utility.VoxelShaper;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import com.tterrag.registrate.util.entry.BlockEntry;
 import it.unimi.dsi.fastutil.ints.IntIntPair;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.blocks.connector.base.ConnectorMode;
+import net.deepacat.createpowerlines.blocks.connector.base.ConnectorRenderer;
 import net.deepacat.createpowerlines.blocks.connector.base.ConnectorVariant;
 import net.deepacat.createpowerlines.blocks.connector.base.SpoolType;
+import net.deepacat.createpowerlines.energy.NodeMovementBehaviour;
 import net.deepacat.createpowerlines.shapes.CAShapes;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;
 
+import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+
 public class ConnectorType {
     public final String id;
+    public final String display;
     public final int connections;
     public final int wireLength;
     public final int energyIn;
@@ -26,14 +34,14 @@ public class ConnectorType {
     public final int width, height;
     public final int color;
     public final ConnectorStyle style;
-    public final String defaultDisplayName;
 
     public final VoxelShaper shape;
-    public BlockEntityEntry<ConnectorBlockEntity> beEntry;
+    public final BlockEntityEntry<ConnectorBlockEntity> beEntry;
 
-    public ConnectorType(String id, int connections, int wireLength, int energyIn, int energyOut, SpoolType spoolType,
-                         int width, int height, int color, ConnectorStyle style, String defaultDisplayName) {
+    public ConnectorType(String id, String display, int connections, int wireLength, int energyIn, int energyOut,
+                         SpoolType spoolType, int width, int height, int color, ConnectorStyle style) {
         this.id = id;
+        this.display = display;
         this.connections = connections;
         this.wireLength = wireLength;
         this.energyIn = energyIn;
@@ -43,10 +51,21 @@ public class ConnectorType {
         this.height = height;
         this.color = color;
         this.style = style;
-        this.defaultDisplayName = defaultDisplayName;
         int min = 8 - width - 1;
         int max = 8 + width + 1;
         shape = CAShapes.shape(min, 0, min, max, style.baseHeight + height, max).forDirectional();
+        BlockEntry<ConnectorBlock> block = CreatePowerlines.REGISTRATE.block(id, (props) -> new ConnectorBlock(props, this))
+                .initialProperties(SharedProperties::stone)
+                .onRegister(AllMovementBehaviours.movementBehaviour(new NodeMovementBehaviour()))
+                .item()
+                .transform(customItemModel())
+                .defaultLang()
+                .register();
+        beEntry = CreatePowerlines.REGISTRATE
+                .<ConnectorBlockEntity>blockEntity(id, (beType, pos, state) -> new ConnectorBlockEntity(beType, pos, state, this))
+                .validBlocks(block)
+                .renderer(() -> ConnectorRenderer::new)
+                .register();
     }
 
     static final IntIntPair[] ROTS = new IntIntPair[]{
