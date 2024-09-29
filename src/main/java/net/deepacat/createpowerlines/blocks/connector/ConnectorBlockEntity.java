@@ -140,11 +140,9 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
     }
 
     @Override
-    public void setNode(int index, int other, BlockPos pos, WireType type) {
-        this.localNodes[index] = new LocalNode(this, index, other, type, pos);
-
+    public void setNode(int index, int other, BlockPos pos, WireMaterial wireMaterial) {
+        this.localNodes[index] = new LocalNode(this, index, other, wireMaterial, pos);
         notifyUpdate();
-
         // Invalidate
         if (network != null) network.invalidate();
     }
@@ -171,8 +169,8 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
     }
 
     @Override
-    public SpoolType getSpoolType() {
-        return type.spoolType;
+    public boolean acceptsWireMaterial(WireMaterial material) {
+        return type.wireMaterials.contains(material);
     }
 
     public int getMaxWireLength() {
@@ -205,11 +203,6 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
     @Override
     public void read(CompoundTag nbt, boolean clientPacket) {
         super.read(nbt, clientPacket);
-        // Convert old nbt data. x0, y0, z0, node0 & type0 etc.
-        if (!clientPacket && nbt.contains("node0")) {
-            convertOldNbt(nbt);
-            setChanged();
-        }
 
         // Read the nodes.
         invalidateLocalNodes();

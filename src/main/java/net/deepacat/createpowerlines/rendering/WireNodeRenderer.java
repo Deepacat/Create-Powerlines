@@ -69,7 +69,7 @@ public class WireNodeRenderer<T extends BlockEntity> implements BlockEntityRende
                     -tx - ox2 + ox1,
                     -ty - oy2 + oy1,
                     -tz - oz2 + oz1,
-                    te.getNodeType(i),
+                    te.getNodeWireMaterial(i),
                     dis
             );
             matrixStackIn.popPose();
