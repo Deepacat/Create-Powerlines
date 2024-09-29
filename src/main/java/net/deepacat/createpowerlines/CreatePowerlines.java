@@ -1,6 +1,7 @@
 package net.deepacat.createpowerlines;
 
 import net.deepacat.createpowerlines.blocks.connector.ConnectorTypes;
+import net.deepacat.createpowerlines.blocks.connector.WireMaterials;
 import net.deepacat.createpowerlines.index.*;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
@@ -52,6 +53,7 @@ public class CreatePowerlines {
         modBus.addListener(this::postInit);
         CACreativeModeTabs.register(modBus);
         REGISTRATE.registerEventListeners(modBus);
+        WireMaterials.init();
         ConnectorTypes.registerAll();
     }
 
