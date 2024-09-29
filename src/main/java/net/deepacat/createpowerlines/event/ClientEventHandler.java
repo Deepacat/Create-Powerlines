@@ -20,7 +20,6 @@ public class ClientEventHandler {
         if (ClientUtil.getPlayer() == null) return;
         ItemStack stack = ClientUtil.getPlayer().getInventory().getSelected();
         if (stack.isEmpty()) return;
-        if (WireSpool.isRemover(stack.getItem())) return;
         clientRenderHeldWire = Util.getWireNodeOfSpools(stack) != null;
     }
 }

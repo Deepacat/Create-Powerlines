@@ -354,34 +354,28 @@ public interface IWireNode {
             disconnectWires();
             return;
         }
-
-        NonNullList<ItemStack> wireSpools = NonNullList.withSize(WireType.values().length, ItemStack.EMPTY);
-        NonNullList<ItemStack> wires = NonNullList.withSize(WireType.values().length, ItemStack.EMPTY);
+        Reference2IntOpenHashMap<WireMaterial> spools = new Reference2IntOpenHashMap<>();
+        Reference2IntOpenHashMap<WireMaterial> wires = new Reference2IntOpenHashMap<>();
         for (int i = 0; i < getNodeCount(); i++) {
             LocalNode node = getLocalNode(i);
             if (node == null) continue;
-
-            WireType type = node.getWireMaterial();
-            int index = type.getIndex();
-            ItemStack spools = Util.findStack(WireMaterials.EMPTY_SPOOL.get().asItem(), player.getInventory());
-
-            if (spools.getCount() > 0) {
-                if (wireSpools.get(index).isEmpty()) wireSpools.set(index, type.getSourceDrop());
-                else wireSpools.get(index).grow(type.getSourceDrop().getCount());
-                spools.shrink(1);
+            WireMaterial material = node.getWireMaterial();
+            ItemStack emptySpool = Util.findStack(WireMaterials.EMPTY_SPOOL.get().asItem(), player.getInventory());
+            if (emptySpool.getCount() > 0) {
+                spools.put(material, spools.getInt(material) + 1);
+                emptySpool.shrink(1);
             } else {
-                if (wires.get(index).isEmpty()) wires.set(index, type.getDrop());
-                else wires.get(index).grow(type.getDrop().getCount());
+                wires.put(material, wires.getInt(material) + 1);
             }
             node.invalid();
         }
-        for (ItemStack stack : wireSpools) {
-            if (!stack.isEmpty())
-                dropWire(world, getPos(), player.getInventory().add(stack) ? ItemStack.EMPTY : stack);
+        for (Reference2IntMap.Entry<WireMaterial> entry : spools.reference2IntEntrySet()) {
+            ItemStack stack = entry.getKey().spool.asStack(entry.getIntValue());
+            dropWire(world, getPos(), player.getInventory().add(stack) ? ItemStack.EMPTY : stack);
         }
-        for (ItemStack stack : wires) {
-            if (!stack.isEmpty())
-                dropWire(world, getPos(), player.getInventory().add(stack) ? ItemStack.EMPTY : stack);
+        for (Reference2IntMap.Entry<WireMaterial> entry : wires.reference2IntEntrySet()) {
+            ItemStack stack = entry.getKey().wire.asStack(entry.getIntValue());
+            dropWire(world, getPos(), player.getInventory().add(stack) ? ItemStack.EMPTY : stack);
         }
     }
 

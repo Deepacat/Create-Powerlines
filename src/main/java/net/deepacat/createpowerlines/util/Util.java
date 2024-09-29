@@ -1,5 +1,6 @@
 package net.deepacat.createpowerlines.util;
 
+import net.deepacat.createpowerlines.blocks.connector.WireMaterial;
 import net.deepacat.createpowerlines.energy.WireType;
 import net.deepacat.createpowerlines.item.WireSpool;
 import net.minecraft.core.BlockPos;
@@ -43,13 +44,13 @@ public class Util {
         }
     }
 
-    public static Util.Triple<BlockPos, Integer, WireType> getWireNodeOfSpools(ItemStack... stacks) {
+    public static Util.Triple<BlockPos, Integer, WireMaterial> getWireNodeOfSpools(ItemStack... stacks) {
         for (ItemStack stack : stacks) {
             if (stack.isEmpty()) continue;
-            if (stack.getTag() == null) continue;
-            if (WireSpool.hasPos(stack.getTag())) {
-                return Util.Triple.of(WireSpool.getPos(stack.getTag()), WireSpool.getNode(stack.getTag()), WireType.of(stack.getItem()));
-            }
+            if (!(stack.getItem() instanceof WireSpool spool)) continue;
+            if (spool.material == null) continue;
+            if (!WireSpool.hasPos(stack.getTag())) continue;
+            return Util.Triple.of(WireSpool.getPos(stack.getTag()), WireSpool.getNode(stack.getTag()), spool.material);
         }
         return null;
     }

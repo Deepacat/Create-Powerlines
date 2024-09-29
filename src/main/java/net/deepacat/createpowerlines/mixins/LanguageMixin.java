@@ -13,7 +13,6 @@ import java.util.Map;
 public class LanguageMixin {
     @ModifyArg(method = "loadDefault", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/server/LanguageHook;captureLanguageMap(Ljava/util/Map;)V"))
     private static Map<String, String> createpowerlines$load(Map<String, String> table) {
-        WireMaterials.getDefaultTranslations(table);
         ConnectorTypes.getDefaultTranslations(table);
         return table;
     }

@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.energy.IWireNode;
-import net.deepacat.createpowerlines.energy.WireType;
 import net.deepacat.createpowerlines.event.ClientEventHandler;
 import net.deepacat.createpowerlines.util.ClientUtil;
 import net.deepacat.createpowerlines.util.Util;

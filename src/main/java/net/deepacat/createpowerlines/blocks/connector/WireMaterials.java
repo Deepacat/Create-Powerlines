@@ -11,7 +11,7 @@ import java.util.Map;
 public class WireMaterials {
     public static final Map<String, WireMaterial> MATERIALS = new Object2ObjectOpenHashMap<>();
     public static final ItemEntry<WireSpool> EMPTY_SPOOL =
-            CreatePowerlines.REGISTRATE.item("spool", WireSpool::new).register();
+            CreatePowerlines.REGISTRATE.item("spool", (props) -> new WireSpool(props, null)).register();
 
     public static WireMaterial getOrRegister(String display, int color) {
         String id = Util.displayToId(display);

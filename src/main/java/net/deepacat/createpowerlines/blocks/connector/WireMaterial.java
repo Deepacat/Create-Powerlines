@@ -17,7 +17,7 @@ public class WireMaterial {
         this.display = display;
         this.color = color;
         wire = CreatePowerlines.REGISTRATE.item(wireId(), Item::new).register();
-        spool = CreatePowerlines.REGISTRATE.item(spoolId(), WireSpool::new).register();
+        spool = CreatePowerlines.REGISTRATE.item(spoolId(), (props) -> new WireSpool(props, this)).register();
     }
 
     public String wireId() {
