@@ -1,5 +1,6 @@
 package net.deepacat.createpowerlines.energy;
 
+import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.blocks.connector.WireMaterial;
 import net.deepacat.createpowerlines.blocks.connector.WireMaterials;
 import net.minecraft.core.BlockPos;
@@ -44,7 +45,7 @@ public class LocalNode {
      */
     private boolean invalid = false;
 
-    public LocalNode(BlockEntity entity, int index, int other, WireMaterial wireMaterial, BlockPos position) {
+    public LocalNode(BlockEntity entity, int index, int other, WireMaterial wireMaterial, Vec3i position) {
         this.entity = entity;
         this.index = index;
         this.otherIndex = other;
@@ -52,14 +53,14 @@ public class LocalNode {
         this.relativePos = position.subtract(entity.getBlockPos());
     }
 
-    public LocalNode(BlockEntity entity, CompoundTag tag) {
-        this.entity = entity;
-        this.index = tag.getInt(ID);
-        this.otherIndex = tag.getInt(OTHER);
-        this.wireMaterial = WireMaterials.MATERIALS.get(tag.getString(MATERIAL));
-        if (this.wireMaterial == null)
-            throw new NullPointerException();
-        this.relativePos = new Vec3i(tag.getInt(X), tag.getInt(Y), tag.getInt(Z));
+    public static LocalNode read(BlockEntity entity, CompoundTag tag) {
+        String materialId = tag.getString(MATERIAL);
+        WireMaterial material = WireMaterials.MATERIALS.get(materialId);
+        if (material == null) {
+            CreatePowerlines.LOGGER.error("Unknown wire material '{}': connection will be deleted.", materialId);
+            return null;
+        }
+        return new LocalNode(entity, tag.getInt(ID), tag.getInt(OTHER), material, new Vec3i(tag.getInt(X), tag.getInt(Y), tag.getInt(Z)));
     }
 
     public void write(CompoundTag tag) {

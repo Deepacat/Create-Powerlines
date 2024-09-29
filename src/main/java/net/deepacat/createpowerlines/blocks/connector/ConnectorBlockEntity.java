@@ -208,8 +208,10 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         invalidateNodeCache();
         ListTag nodes = nbt.getList(LocalNode.NODES, Tag.TAG_COMPOUND);
         nodes.forEach(tag -> {
-            LocalNode localNode = new LocalNode(this, (CompoundTag) tag);
-            this.localNodes[localNode.getIndex()] = localNode;
+            LocalNode localNode = LocalNode.read(this, (CompoundTag) tag);
+            if (localNode != null) {
+                this.localNodes[localNode.getIndex()] = localNode;
+            }
         });
 
         // Check if this was a contraption.
