@@ -1,4 +1,4 @@
-package net.deepacat.createpowerlines.blocks.connector.types;
+package net.deepacat.createpowerlines.blocks.connector;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;

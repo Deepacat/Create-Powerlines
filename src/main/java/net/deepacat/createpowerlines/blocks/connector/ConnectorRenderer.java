@@ -1,4 +1,4 @@
-package net.deepacat.createpowerlines.blocks.connector.base;
+package net.deepacat.createpowerlines.blocks.connector;
 
 import net.deepacat.createpowerlines.rendering.WireNodeRenderer;
 

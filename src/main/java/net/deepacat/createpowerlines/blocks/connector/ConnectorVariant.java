@@ -1,4 +1,4 @@
-package net.deepacat.createpowerlines.blocks.connector.base;
+package net.deepacat.createpowerlines.blocks.connector;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.decoration.girder.GirderBlock;

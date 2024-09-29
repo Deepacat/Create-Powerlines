@@ -1,8 +1,6 @@
-package net.deepacat.createpowerlines.blocks.connector.types;
+package net.deepacat.createpowerlines.blocks.connector;
 
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
-import net.deepacat.createpowerlines.blocks.connector.base.AbstractConnectorBlock;
-import net.deepacat.createpowerlines.blocks.connector.base.AbstractConnectorBlockEntity;
 import net.deepacat.createpowerlines.blocks.connector.base.SpoolType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;

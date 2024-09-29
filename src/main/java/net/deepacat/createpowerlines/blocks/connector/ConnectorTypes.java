@@ -1,4 +1,4 @@
-package net.deepacat.createpowerlines.blocks.connector.types;
+package net.deepacat.createpowerlines.blocks.connector;
 
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.config.Config;

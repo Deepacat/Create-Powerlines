@@ -2,9 +2,9 @@ package net.deepacat.createpowerlines.mixins;
 
 import com.mojang.datafixers.util.Pair;
 import net.deepacat.createpowerlines.CreatePowerlines;
-import net.deepacat.createpowerlines.blocks.connector.base.ConnectorMode;
-import net.deepacat.createpowerlines.blocks.connector.types.ConnectorType;
-import net.deepacat.createpowerlines.blocks.connector.types.ConnectorTypes;
+import net.deepacat.createpowerlines.blocks.connector.ConnectorMode;
+import net.deepacat.createpowerlines.blocks.connector.ConnectorType;
+import net.deepacat.createpowerlines.blocks.connector.ConnectorTypes;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelManager;

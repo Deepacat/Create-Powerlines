@@ -1,11 +1,10 @@
-package net.deepacat.createpowerlines.blocks.connector.base;
+package net.deepacat.createpowerlines.blocks.connector;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import net.deepacat.createpowerlines.CreatePowerlines;
-import net.deepacat.createpowerlines.blocks.connector.types.ConnectorType;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.debug.IDebugDrawer;
 import net.deepacat.createpowerlines.energy.IWireNode;

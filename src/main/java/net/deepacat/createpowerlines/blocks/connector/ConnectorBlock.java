@@ -1,6 +1,5 @@
-package net.deepacat.createpowerlines.blocks.connector.types;
+package net.deepacat.createpowerlines.blocks.connector;
 
-import net.deepacat.createpowerlines.blocks.connector.base.AbstractConnectorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntity;

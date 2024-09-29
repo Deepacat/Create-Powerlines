@@ -1,7 +1,6 @@
-package net.deepacat.createpowerlines.blocks.connector.types;
+package net.deepacat.createpowerlines.blocks.connector;
 
 import com.mojang.blaze3d.platform.NativeImage;
-import net.deepacat.createpowerlines.blocks.connector.base.ConnectorMode;
 import net.deepacat.createpowerlines.util.ClientUtil;
 import net.deepacat.createpowerlines.util.Util;
 import net.minecraft.client.renderer.texture.SpriteContents;

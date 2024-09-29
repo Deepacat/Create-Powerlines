@@ -1,4 +1,4 @@
-package net.deepacat.createpowerlines.blocks.connector.types;
+package net.deepacat.createpowerlines.blocks.connector;
 
 public enum ConnectorStyle {
     SMALL("small", 5, flatten(rect(0, 0, 4, 4), rect(5, 9, 2, 2), rect(1, 13, 2, 2), rect(5, 13, 2, 2))),

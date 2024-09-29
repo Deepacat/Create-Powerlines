@@ -1,4 +1,4 @@
-package net.deepacat.createpowerlines.blocks.connector.types;
+package net.deepacat.createpowerlines.blocks.connector;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -11,10 +11,6 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import it.unimi.dsi.fastutil.ints.IntIntPair;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import net.deepacat.createpowerlines.CreatePowerlines;
-import net.deepacat.createpowerlines.blocks.connector.base.ConnectorMode;
-import net.deepacat.createpowerlines.blocks.connector.base.ConnectorRenderer;
-import net.deepacat.createpowerlines.blocks.connector.base.ConnectorVariant;
-import net.deepacat.createpowerlines.blocks.connector.base.SpoolType;
 import net.deepacat.createpowerlines.energy.NodeMovementBehaviour;
 import net.deepacat.createpowerlines.shapes.CAShapes;
 import net.minecraft.core.Direction;

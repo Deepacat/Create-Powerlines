@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import net.deepacat.createpowerlines.blocks.connector.base.SpoolType;
-import net.deepacat.createpowerlines.blocks.connector.types.WireMaterials;
+import net.deepacat.createpowerlines.blocks.connector.WireMaterials;
 import net.deepacat.createpowerlines.energy.network.EnergyNetwork;
 import net.deepacat.createpowerlines.util.Util;
 
