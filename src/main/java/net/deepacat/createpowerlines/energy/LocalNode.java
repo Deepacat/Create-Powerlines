@@ -57,6 +57,8 @@ public class LocalNode {
         this.index = tag.getInt(ID);
         this.otherIndex = tag.getInt(OTHER);
         this.wireMaterial = WireMaterials.MATERIALS.get(tag.getString(MATERIAL));
+        if (this.wireMaterial == null)
+            throw new NullPointerException();
         this.relativePos = new Vec3i(tag.getInt(X), tag.getInt(Y), tag.getInt(Z));
     }
 
@@ -83,10 +85,6 @@ public class LocalNode {
 
     public WireMaterial getWireMaterial() {
         return wireMaterial;
-    }
-
-    public Vec3i getRelativePos() {
-        return this.relativePos;
     }
 
     public BlockPos getPos() {

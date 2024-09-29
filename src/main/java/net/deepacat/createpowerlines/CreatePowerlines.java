@@ -22,11 +22,13 @@ import net.deepacat.createpowerlines.network.EnergyNetworkPacket;
 import net.deepacat.createpowerlines.network.ObservePacket;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Mod(CreatePowerlines.MODID)
 public class CreatePowerlines {
     public static final String MODID = "createpowerlines";
-
+    public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(CreatePowerlines.MODID);
 
     private static final String PROTOCOL = "1";

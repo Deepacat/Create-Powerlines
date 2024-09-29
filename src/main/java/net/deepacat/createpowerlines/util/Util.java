@@ -1,7 +1,6 @@
 package net.deepacat.createpowerlines.util;
 
 import net.deepacat.createpowerlines.blocks.connector.WireMaterial;
-import net.deepacat.createpowerlines.energy.WireType;
 import net.deepacat.createpowerlines.item.WireSpool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;

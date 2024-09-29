@@ -49,7 +49,6 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
     private final LocalNode[] localNodes;
     private final IWireNode[] nodeCache;
     private EnergyNetwork network;
-    private int demand = 0;
 
     private boolean wasContraption = false;
     private boolean firstTick = true;
@@ -384,7 +383,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         tooltip.add(Component.literal(spacing)
                 .append(Component.translatable(CreatePowerlines.MODID + ".tooltip.energy.usage").withStyle(ChatFormatting.GRAY)));
         tooltip.add(Component.literal(spacing).append(" ")
-                .append(Util.format((int) EnergyNetworkPacket.clientBuff)).append("fe/t").withStyle(ChatFormatting.AQUA));
+                .append(Util.format(EnergyNetworkPacket.clientBuff)).append("fe/t").withStyle(ChatFormatting.AQUA));
 
         return IHaveGoggleInformation.super.addToGoggleTooltip(tooltip, isPlayerSneaking);
     }
@@ -412,9 +411,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         // Make sure the side isn't already cached.
         if (le.equals(external)) return;
         external = le;
-        le.addListener((es) -> {
-            externalStorageInvalid = true;
-        });
+        le.addListener((es) -> externalStorageInvalid = true);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package net.deepacat.createpowerlines.blocks.connector;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.item.WireSpool;
 import net.deepacat.createpowerlines.util.Util;
@@ -9,7 +9,7 @@ import net.deepacat.createpowerlines.util.Util;
 import java.util.Map;
 
 public class WireMaterials {
-    public static final Map<String, WireMaterial> MATERIALS = new Object2ObjectOpenHashMap<>();
+    public static final Map<String, WireMaterial> MATERIALS = new Object2ObjectLinkedOpenHashMap<>();
     public static final ItemEntry<WireSpool> EMPTY_SPOOL =
             CreatePowerlines.REGISTRATE.item("spool", (props) -> new WireSpool(props, null)).register();
 
