@@ -1,10 +1,14 @@
 package net.deepacat.createpowerlines.mixins;
 
+import com.google.gson.JsonElement;
 import com.mojang.datafixers.util.Pair;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorMode;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorType;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorTypes;
+import net.deepacat.createpowerlines.item.WireMaterial;
+import net.deepacat.createpowerlines.item.WireMaterials;
+import net.deepacat.createpowerlines.util.ClientUtil;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelManager;
@@ -51,6 +55,10 @@ public class ModelManagerMixin {
                     return Pair.of(loc, model);
                 }));
             }
+        }
+        for (WireMaterial material : WireMaterials.MATERIALS.values()) {
+            list.add(CompletableFuture.supplyAsync(() -> ClientUtil.genFlatItemModel(material.wireId())));
+            list.add(CompletableFuture.supplyAsync(() -> ClientUtil.genFlatItemModel(material.spoolId())));
         }
         return list;
     }

@@ -140,6 +140,11 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
     }
 
     @Override
+    public int getNodeCount() {
+        return type.connections;
+    }
+
+    @Override
     public void setNode(int index, int other, BlockPos pos, WireMaterial wireMaterial) {
         this.localNodes[index] = new LocalNode(this, index, other, wireMaterial, pos);
         notifyUpdate();

@@ -110,9 +110,7 @@ public interface IWireNode {
      *
      * @return The number of supported nodes.
      */
-    default int getNodeCount() {
-        return 1;
-    }
+    int getNodeCount();
 
     /**
      * Get an available node index from this {@link IWireNode}, based on the
