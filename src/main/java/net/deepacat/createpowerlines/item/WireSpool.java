@@ -42,18 +42,15 @@ public class WireSpool extends Item {
         BlockEntity te = c.getLevel().getBlockEntity(clickedPos);
         if (!(te instanceof IWireNode node))
             return InteractionResult.PASS;
-
         if (hasPos(nbt)) {
-            WireConnectResult result;
             WireMaterial existingMaterial = IWireNode.getWireMaterialOfConnection(c.getLevel(), clickedPos, getPos(nbt));
-
+            WireConnectResult result;
             if (material == null) {
                 result = IWireNode.disconnect(c.getLevel(), clickedPos, getPos(nbt));
             } else {
                 result = IWireNode.connect(c.getLevel(), getPos(nbt), getNode(nbt), clickedPos,
                         node.getAvailableNode(c.getClickLocation()), material);
             }
-
             // Play sound
             if (result.isLinked()) {
                 c.getLevel().playLocalSound(clickedPos.getX(), clickedPos.getY(), clickedPos.getZ(), SoundEvents.NOTE_BLOCK_XYLOPHONE.get(), SoundSource.BLOCKS, .7f, 1f, false);
@@ -64,12 +61,9 @@ public class WireSpool extends Item {
             } else {
                 c.getLevel().playLocalSound(clickedPos.getX(), clickedPos.getY(), clickedPos.getZ(), SoundEvents.NOTE_BLOCK_DIDGERIDOO.get(), SoundSource.BLOCKS, .7f, 1f, false);
             }
-
             te.setChanged();
-
             if (c.getPlayer() != null && !c.getPlayer().isCreative()) {
                 if (result == WireConnectResult.REMOVED) {
-                    assert existingMaterial != null;
                     c.getItemInHand().shrink(1);
                     ItemStack stack = existingMaterial.spool.asStack();
                     boolean shouldDrop = !c.getPlayer().addItem(stack);
@@ -85,19 +79,22 @@ public class WireSpool extends Item {
             }
             c.getItemInHand().setTag(null);
             c.getPlayer().displayClientMessage(result.getMessage(), true);
-
         } else {
             if (c.getPlayer() == null) return InteractionResult.PASS;
-            if (material == null && !node.hasAnyConnection()) {
-                c.getPlayer().displayClientMessage(WireConnectResult.NO_CONNECTION.getMessage(), true);
-                c.getLevel().playLocalSound(clickedPos.getX(), clickedPos.getY(), clickedPos.getZ(), SoundEvents.NOTE_BLOCK_DIDGERIDOO.get(), SoundSource.BLOCKS, .7f, 1f, false);
-                return InteractionResult.CONSUME;
-            }
-            int index = node.getAvailableNode(c.getClickLocation());
-            if (index < 0)
-                return InteractionResult.PASS;
-            if (material != null)
+            int index = -1;
+            if (material == null) {
+                if (!node.hasAnyConnection()) {
+                    c.getPlayer().displayClientMessage(WireConnectResult.NO_CONNECTION.getMessage(), true);
+                    c.getLevel().playLocalSound(clickedPos.getX(), clickedPos.getY(), clickedPos.getZ(),
+                            SoundEvents.NOTE_BLOCK_DIDGERIDOO.get(), SoundSource.BLOCKS, .7f, 1f, false);
+                    return InteractionResult.CONSUME;
+                }
+            } else {
+                index = node.getAvailableNode(c.getClickLocation());
+                if (index < 0)
+                    return InteractionResult.PASS;
                 c.getPlayer().displayClientMessage(WireConnectResult.getConnect(node.isNodeInput(index), node.isNodeOutput(index)).getMessage(), true);
+            }
             c.getItemInHand().setTag(null);
             c.getItemInHand().setTag(setContent(nbt, node.getPos(), index));
         }

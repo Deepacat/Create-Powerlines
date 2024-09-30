@@ -405,19 +405,14 @@ public interface IWireNode {
     static WireConnectResult disconnect(Level world, BlockPos pos1, BlockPos pos2) {
         BlockEntity te1 = world.getBlockEntity(pos1);
         BlockEntity te2 = world.getBlockEntity(pos2);
-        if (te1 == null || te2 == null || te1 == te2)
+        if (te1 == te2 || !(te1 instanceof IWireNode wn1) || !(te2 instanceof IWireNode wn2))
             return WireConnectResult.INVALID;
-        if (!(te1 instanceof IWireNode wn1) || !(te2 instanceof IWireNode wn2))
-            return WireConnectResult.INVALID;
-
         if (!wn1.hasConnectionTo(pos2))
             return WireConnectResult.NO_CONNECTION;
-
         LocalNode ln1 = wn1.getConnectionTo(pos2);
         LocalNode ln2 = wn2.getConnectionTo(pos1);
         if (ln1 == null || ln2 == null)
             return WireConnectResult.NO_CONNECTION;
-
         wn1.removeNode(ln1);
         wn2.removeNode(ln2);
         return WireConnectResult.REMOVED;
