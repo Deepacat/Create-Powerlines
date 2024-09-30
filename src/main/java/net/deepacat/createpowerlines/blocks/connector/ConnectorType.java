@@ -17,6 +17,7 @@ import net.deepacat.createpowerlines.shapes.CAShapes;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -38,7 +39,7 @@ public class ConnectorType {
     public final BlockEntityEntry<ConnectorBlockEntity> beEntry;
 
     public ConnectorType(String id, String display, int connections, int wireLength, int energyIn, int energyOut,
-                         WireMaterial[] wireMaterials, int width, int height, int color, ConnectorStyle style) {
+                         ArrayList<WireMaterial> wireMaterials, int width, int height, int color, ConnectorStyle style) {
         this.id = id;
         this.display = display;
         this.connections = connections;
