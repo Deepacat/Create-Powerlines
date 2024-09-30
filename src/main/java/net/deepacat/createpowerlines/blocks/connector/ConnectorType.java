@@ -12,6 +12,7 @@ import it.unimi.dsi.fastutil.ints.IntIntPair;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.energy.NodeMovementBehaviour;
+import net.deepacat.createpowerlines.item.WireMaterial;
 import net.deepacat.createpowerlines.shapes.CAShapes;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;

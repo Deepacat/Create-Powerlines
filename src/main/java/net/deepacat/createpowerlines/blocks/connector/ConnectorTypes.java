@@ -2,6 +2,8 @@ package net.deepacat.createpowerlines.blocks.connector;
 
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.config.Config;
+import net.deepacat.createpowerlines.item.WireMaterial;
+import net.deepacat.createpowerlines.item.WireMaterials;
 import net.deepacat.createpowerlines.util.Util;
 import net.minecraftforge.fml.ModList;
 

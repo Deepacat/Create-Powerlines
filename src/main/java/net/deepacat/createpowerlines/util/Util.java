@@ -1,6 +1,6 @@
 package net.deepacat.createpowerlines.util;
 
-import net.deepacat.createpowerlines.blocks.connector.WireMaterial;
+import net.deepacat.createpowerlines.item.WireMaterial;
 import net.deepacat.createpowerlines.item.WireSpool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -56,6 +56,26 @@ public class Util {
 
     public static int byteLerp(int from, int to, int factor) {
         return (from * (255 - factor) + to * factor) / 255;
+    }
+
+    public static int byteScale(int x, int y) {
+        return x * y / 255;
+    }
+
+    public static int tintColor(int base, int tint) {
+        int r = byteScale(base & 0xFF, tint >> 16);
+        int g = byteScale((base >> 8) & 0xFF, (tint >> 8) & 0xFF);
+        int b = byteScale((base >> 16) & 0xFF, tint & 0xFF);
+        return r | (g << 8) | (b << 16) | (base & 0xFF000000);
+    }
+
+    public static int blendColor(int dst, int src) {
+        int factor = (src >> 24) & 0xFF;
+        int r = byteLerp(dst & 0xFF, src & 0xFF, factor);
+        int g = byteLerp((dst >> 8) & 0xFF, (src >> 8) & 0xFF, factor);
+        int b = byteLerp((dst >> 16) & 0xFF, (src >> 16) & 0xFF, factor);
+        int a = byteLerp((dst >> 24) & 0xFF, factor, factor);
+        return r | (g << 8) | (b << 16) | (a << 24);
     }
 
     public static String displayToId(String id) {

@@ -34,7 +34,7 @@ public class ConnectorSprite implements SpriteSource.SpriteSupplier {
 
     @Override
     public SpriteContents get() {
-        NativeImage img = ClientUtil.loadTextureTemplate(type.style.name + "_" + mode.getSerializedName());
+        NativeImage img = ClientUtil.loadNativeImage("template/" + type.style.name + "_" + mode.getSerializedName());
         IntBuffer buffer = MemoryUtil.memIntBuffer(img.pixels, 256);
         for (int idx : type.style.indices) {
             buffer.put(idx, mapPixel(buffer.get(idx), type.color));

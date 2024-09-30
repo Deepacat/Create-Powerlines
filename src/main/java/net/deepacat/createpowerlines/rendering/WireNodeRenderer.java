@@ -2,7 +2,7 @@ package net.deepacat.createpowerlines.rendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.deepacat.createpowerlines.blocks.connector.WireMaterial;
+import net.deepacat.createpowerlines.item.WireMaterial;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.energy.IWireNode;
 import net.deepacat.createpowerlines.event.ClientEventHandler;

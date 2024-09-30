@@ -13,8 +13,8 @@ public class ClientUtil {
         return Minecraft.getInstance().player;
     }
 
-    public static NativeImage loadTextureTemplate(String name) {
-        name = "/assets/" + CreatePowerlines.MODID + "/textures/template/" + name + ".png";
+    public static NativeImage loadNativeImage(String name) {
+        name = "/assets/" + CreatePowerlines.MODID + "/textures/" + name + ".png";
         try (InputStream is = CreatePowerlines.class.getResourceAsStream(name)) {
             return NativeImage.read(is);
         } catch (IOException e) {

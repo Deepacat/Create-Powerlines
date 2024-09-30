@@ -5,8 +5,8 @@ import java.util.Set;
 
 import it.unimi.dsi.fastutil.objects.Reference2IntMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import net.deepacat.createpowerlines.blocks.connector.WireMaterial;
-import net.deepacat.createpowerlines.blocks.connector.WireMaterials;
+import net.deepacat.createpowerlines.item.WireMaterial;
+import net.deepacat.createpowerlines.item.WireMaterials;
 import net.deepacat.createpowerlines.energy.network.EnergyNetwork;
 import net.deepacat.createpowerlines.util.Util;
 

@@ -3,8 +3,6 @@ package net.deepacat.createpowerlines.item;
 import java.util.List;
 
 import net.deepacat.createpowerlines.CreatePowerlines;
-import net.deepacat.createpowerlines.blocks.connector.WireMaterial;
-import net.deepacat.createpowerlines.blocks.connector.WireMaterials;
 import net.deepacat.createpowerlines.energy.IWireNode;
 import net.deepacat.createpowerlines.energy.WireConnectResult;
 

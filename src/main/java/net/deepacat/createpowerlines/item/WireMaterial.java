@@ -1,8 +1,9 @@
-package net.deepacat.createpowerlines.blocks.connector;
+package net.deepacat.createpowerlines.item;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.deepacat.createpowerlines.CreatePowerlines;
-import net.deepacat.createpowerlines.item.WireSpool;
+import net.deepacat.createpowerlines.blocks.connector.ConnectorMode;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 public class WireMaterial {

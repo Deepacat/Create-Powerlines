@@ -12,6 +12,7 @@ import net.deepacat.createpowerlines.energy.IWireNode;
 import net.deepacat.createpowerlines.energy.LocalNode;
 import net.deepacat.createpowerlines.energy.NodeRotation;
 import net.deepacat.createpowerlines.energy.network.EnergyNetwork;
+import net.deepacat.createpowerlines.item.WireMaterial;
 import net.deepacat.createpowerlines.util.Util;
 import net.deepacat.createpowerlines.network.EnergyNetworkPacket;
 import net.deepacat.createpowerlines.network.IObserveTileEntity;

@@ -1,7 +1,7 @@
 package net.deepacat.createpowerlines;
 
 import net.deepacat.createpowerlines.blocks.connector.ConnectorTypes;
-import net.deepacat.createpowerlines.blocks.connector.WireMaterials;
+import net.deepacat.createpowerlines.item.WireMaterials;
 import net.deepacat.createpowerlines.index.*;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;

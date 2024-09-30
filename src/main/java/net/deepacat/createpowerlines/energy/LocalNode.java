@@ -1,7 +1,7 @@
 package net.deepacat.createpowerlines.energy;
 
-import net.deepacat.createpowerlines.blocks.connector.WireMaterial;
-import net.deepacat.createpowerlines.blocks.connector.WireMaterials;
+import net.deepacat.createpowerlines.item.WireMaterial;
+import net.deepacat.createpowerlines.item.WireMaterials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;

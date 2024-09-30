@@ -1,9 +1,8 @@
-package net.deepacat.createpowerlines.blocks.connector;
+package net.deepacat.createpowerlines.item;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.deepacat.createpowerlines.CreatePowerlines;
-import net.deepacat.createpowerlines.item.WireSpool;
 import net.deepacat.createpowerlines.util.Util;
 
 import java.util.Map;

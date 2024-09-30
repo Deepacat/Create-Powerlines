@@ -5,7 +5,7 @@ import net.deepacat.createpowerlines.CreatePowerlines;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
 import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
-import net.deepacat.createpowerlines.blocks.connector.WireMaterials;
+import net.deepacat.createpowerlines.item.WireMaterials;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;

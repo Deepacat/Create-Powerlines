@@ -4,6 +4,10 @@ import net.deepacat.createpowerlines.blocks.connector.ConnectorMode;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorSprite;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorType;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorTypes;
+import net.deepacat.createpowerlines.item.SpoolSprite;
+import net.deepacat.createpowerlines.item.WireMaterial;
+import net.deepacat.createpowerlines.item.WireMaterials;
+import net.deepacat.createpowerlines.item.WireSprite;
 import net.minecraft.client.renderer.texture.atlas.SpriteSource;
 import net.minecraft.client.renderer.texture.atlas.sources.DirectoryLister;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -28,6 +32,12 @@ public class DirectorySpriteSourceMixin {
                     ConnectorSprite sprite = new ConnectorSprite(type, mode);
                     out.add(sprite.loc, sprite);
                 }
+            }
+            for (WireMaterial material : WireMaterials.MATERIALS.values()) {
+                WireSprite wire = new WireSprite(material);
+                out.add(wire.loc, wire);
+                SpoolSprite spool = new SpoolSprite(material);
+                out.add(spool.loc, spool);
             }
         }
     }
