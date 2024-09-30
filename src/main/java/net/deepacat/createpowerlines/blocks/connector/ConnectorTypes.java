@@ -22,39 +22,39 @@ public class ConnectorTypes {
         TYPES.add(new ConnectorType(id, display, connections, wireLength, energy, energy, wireMaterials, width, height, color, style));
     }
 
-    private static void registerTier(String tier, int baseEnergy, int color, WireMaterial... wireMaterials) {
-        registerOne(tier, "Small", 4, 16, baseEnergy, 1, wireMaterials, 1, 0, color, ConnectorStyle.SMALL);
-        registerOne(tier, "Large", 6, 32, baseEnergy, 1.5, wireMaterials, 2, 1, color, ConnectorStyle.SMALL);
-        registerOne(tier, "Huge", 4, 64, baseEnergy, 2, wireMaterials, 3, 1, color, ConnectorStyle.LARGE);
-        registerOne(tier, "Giant", 3, 128, baseEnergy, 2.5, wireMaterials, 3, 2, color, ConnectorStyle.LARGE);
-        registerOne(tier, "Massive", 3, 256, baseEnergy, 3, wireMaterials, 3, 4, color, ConnectorStyle.LARGE);
+    private static void registerTier(String tier, int baseEnergy, int amps, int color, WireMaterial... wireMaterials) {
+        registerOne(tier, "Small", 4, 16, baseEnergy, amps, wireMaterials, 1, 0, color, ConnectorStyle.SMALL);
+        registerOne(tier, "Large", 6, 32, baseEnergy, amps*2, wireMaterials, 2, 1, color, ConnectorStyle.SMALL);
+        registerOne(tier, "Huge", 4, 64, baseEnergy, amps*4, wireMaterials, 3, 1, color, ConnectorStyle.LARGE);
+        registerOne(tier, "Giant", 3, 128, baseEnergy, amps*8, wireMaterials, 3, 2, color, ConnectorStyle.LARGE);
+        registerOne(tier, "Massive", 3, 256, baseEnergy, amps*16, wireMaterials, 3, 4, color, ConnectorStyle.LARGE);
     }
 
     public static void registerAll() {
-        if (Config.USE_BASE_CONNECTORS.get()) {
+        if (Config.USE_BASE_CONNECTORS.get() && !Config.USE_GT_CONNECTORS.get()) {
             WireMaterial copper = WireMaterials.getOrRegister("Copper", 0xE77C56);
             WireMaterial gold = WireMaterials.getOrRegister("Gold", 0xFDF55F);
-            registerTier("Copper", 2048, 0xC55E4B, copper);
-            registerTier("Gold", 8192, 0xE6AF15, gold);
+            registerTier("Copper", 2048, 1, 0xC55E4B, copper, gold);
+            registerTier("Gold", 8192, 1, 0xE6AF15, gold);
         }
-        if (Config.USE_CCA_CONNECTORS.get() && ModList.get().isLoaded("createaddition")) {
+        if (Config.USE_CCA_CONNECTORS.get() && ModList.get().isLoaded("createaddition") && !Config.USE_GT_CONNECTORS.get()) {
             WireMaterial electrum = WireMaterials.getOrRegister("Electrum", 0xFFFF8B);
-            registerTier("Electrum", 32768, 0xF8D86F, electrum);
+            registerTier("Electrum", 32768, 1, 0xF8D86F, electrum);
         }
         if (Config.USE_GT_CONNECTORS.get() && ModList.get().isLoaded("gtceu")) {
             WireMaterial tin = WireMaterials.getOrRegister("Tin", 0xFAFEFF);
             WireMaterial copper = WireMaterials.getOrRegister("Copper", 0xE77C56);
             WireMaterial gold = WireMaterials.getOrRegister("Gold", 0xFDF55F);
             WireMaterial electrum = WireMaterials.getOrRegister("Electrum", 0xFFFF8B);
-            registerTier("LV", 160, 0x6F6F6F, tin, copper);
-            registerTier("MV", 640, 0x33CCFF, tin, copper, gold);
-            registerTier("HV", 2560, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("EV", 10240, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("IV", 40960, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("LuV", 163840, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("ZPM", 655360, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("UV", 2621440, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("UHV", 10485760, 0xFFFFFF, tin, copper, gold, electrum);
+            registerTier("LV", 32, 4, 0x6F6F6F, tin, copper);
+            registerTier("MV", 128, 4, 0x33CCFF, tin, copper, gold);
+            registerTier("HV", 512, 4, 0xFFFFFF, tin, copper, gold, electrum);
+            registerTier("EV", 2048, 6, 0xFFFFFF, tin, copper, gold, electrum);
+            registerTier("IV", 8192, 6, 0xFFFFFF, tin, copper, gold, electrum);
+            registerTier("LuV", 32768, 6, 0xFFFFFF, tin, copper, gold, electrum);
+            registerTier("ZPM", 131072, 8, 0xFFFFFF, tin, copper, gold, electrum);
+            registerTier("UV", 524288, 8, 0xFFFFFF, tin, copper, gold, electrum);
+            registerTier("UHV", 2097152, 8, 0xFFFFFF, tin, copper, gold, electrum);
         }
     }
 
