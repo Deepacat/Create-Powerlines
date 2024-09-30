@@ -435,9 +435,9 @@ public interface IWireNode {
         if (pos == null)
             return null;
         BlockEntity te = world.getBlockEntity(pos);
-        if (!(te instanceof IWireNode))
+        if (!(te instanceof IWireNode node))
             return null;
-        return (IWireNode) te;
+        return node;
     }
 
     static void dropWire(Level world, BlockPos pos, ItemStack stack) {

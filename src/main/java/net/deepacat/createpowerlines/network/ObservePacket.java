@@ -27,8 +27,7 @@ public class ObservePacket {
     }
 	
 	public static ObservePacket decode(FriendlyByteBuf buf) {
-		ObservePacket scp = new ObservePacket(buf.readBlockPos(), buf.readInt());
-        return scp;
+        return new ObservePacket(buf.readBlockPos(), buf.readInt());
     }
 	
 	public static void handle(ObservePacket pkt, Supplier<NetworkEvent.Context> ctx) {
@@ -49,11 +48,10 @@ public class ObservePacket {
 	}
 	
 	private static void sendUpdate(ObservePacket pkt, ServerPlayer player) {
-		BlockEntity te = (BlockEntity) player.level().getBlockEntity(pkt.pos);
+		BlockEntity te = player.level().getBlockEntity(pkt.pos);
         if (te != null) {
-        	if(te instanceof IObserveTileEntity) {
-	        	IObserveTileEntity ote = (IObserveTileEntity) te;
-	        	ote.onObserved(player, pkt);
+        	if(te instanceof IObserveTileEntity ote) {
+                ote.onObserved(player, pkt);
 	            Packet<ClientGamePacketListener> supdatetileentitypacket = te.getUpdatePacket();
 	            if (supdatetileentitypacket != null)
 	                player.connection.send(supdatetileentitypacket);

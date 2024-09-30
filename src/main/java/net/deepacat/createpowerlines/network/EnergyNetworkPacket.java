@@ -33,8 +33,7 @@ public class EnergyNetworkPacket {
     }
 	
 	public static EnergyNetworkPacket decode(FriendlyByteBuf buf) {
-		EnergyNetworkPacket scp = new EnergyNetworkPacket(buf.readBlockPos(), buf.readInt(), buf.readInt());
-        return scp;
+        return new EnergyNetworkPacket(buf.readBlockPos(), buf.readInt(), buf.readInt());
     }
 	
 	public static void handle(EnergyNetworkPacket pkt, Supplier<NetworkEvent.Context> ctx) {

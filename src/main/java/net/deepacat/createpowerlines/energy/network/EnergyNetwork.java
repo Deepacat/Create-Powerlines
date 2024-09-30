@@ -123,8 +123,6 @@ public class EnergyNetwork {
 		return this.valid;
 	}
 	
-	public void removed() {}
-	
 	public int getId() {
 		return id;
 	}

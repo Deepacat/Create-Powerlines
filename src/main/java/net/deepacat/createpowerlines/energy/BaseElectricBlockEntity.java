@@ -17,150 +17,133 @@ import java.util.List;
 
 public abstract class BaseElectricBlockEntity extends SmartBlockEntity {
 
-	protected final InternalEnergyStorage localEnergy;
-	protected LazyOptional<IEnergyStorage> lazyEnergy;
+    protected final InternalEnergyStorage localEnergy;
+    protected LazyOptional<IEnergyStorage> lazyEnergy;
+    private boolean firstTickState = true;
 
-	private boolean firstTickState = true;
-	// protected final int CAPACITY, MAX_IN, MAX_OUT;
+    public BaseElectricBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+        super(tileEntityTypeIn, pos, state);
+        localEnergy = new InternalEnergyStorage(getCapacity(), getMaxIn(), getMaxOut());
+        lazyEnergy = LazyOptional.of(() -> localEnergy);
+        setLazyTickRate(20);
+    }
 
-	public BaseElectricBlockEntity(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
-		super(tileEntityTypeIn, pos, state);
-		localEnergy = new InternalEnergyStorage(getCapacity(), getMaxIn(), getMaxOut());
-		lazyEnergy = LazyOptional.of(() -> localEnergy);
-		setLazyTickRate(20);
-	}
+    public abstract int getCapacity();
 
-	public abstract int getCapacity();
-	public abstract int getMaxIn();
-	public abstract int getMaxOut();
+    public abstract int getMaxIn();
 
-	@Override
-	public void addBehaviours(List<BlockEntityBehaviour> behaviours) {}
+    public abstract int getMaxOut();
 
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		if(cap == ForgeCapabilities.ENERGY && (isEnergyInput(side) || isEnergyOutput(side)))// && !level.isClientSide
-			return lazyEnergy.cast();
-		return super.getCapability(cap, side);
-	}
+    @Override
+    public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
+    }
 
-	public abstract boolean isEnergyInput(Direction side);
-	public abstract boolean isEnergyOutput(Direction side);
+    @Override
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        if (cap == ForgeCapabilities.ENERGY && (isEnergyInput(side) || isEnergyOutput(side)))// && !level.isClientSide
+            return lazyEnergy.cast();
+        return super.getCapability(cap, side);
+    }
 
-	@Override
-	protected void read(CompoundTag compound, boolean arg1) {
-		super.read(compound, arg1);
-		localEnergy.read(compound);
-	}
+    public abstract boolean isEnergyInput(Direction side);
 
-	@Override
-	public void write(CompoundTag compound, boolean clientPacket) {
-		super.write(compound, clientPacket);
-		localEnergy.write(compound);
-	}
+    public abstract boolean isEnergyOutput(Direction side);
 
-	@Override
-	public void remove() {
-		lazyEnergy.invalidate();
-	}
+    @Override
+    protected void read(CompoundTag compound, boolean arg1) {
+        super.read(compound, arg1);
+        localEnergy.read(compound);
+    }
 
-	@Deprecated
-	public void outputTick(int max) {
-		for(Direction side : Direction.values()) {
-			if(!isEnergyOutput(side))
-				continue;
-			localEnergy.outputToSide(level, worldPosition, side, max);
-		}
-	}
+    @Override
+    public void write(CompoundTag compound, boolean clientPacket) {
+        super.write(compound, clientPacket);
+        localEnergy.write(compound);
+    }
 
-	@Override
-	public void tick() {
-		super.tick();
-		if(firstTickState) {
-			firstTickState = false;
-			firstTick();
-		}
-	}
+    @Override
+    public void remove() {
+        lazyEnergy.invalidate();
+    }
 
-	public void firstTick() {
-		updateCache();
-	}
+    @Deprecated
+    public void outputTick(int max) {
+        for (Direction side : Direction.values()) {
+            if (!isEnergyOutput(side))
+                continue;
+            localEnergy.outputToSide(level, worldPosition, side, max);
+        }
+    }
 
-	public boolean ignoreCapSide() {
-		return false;
-	}
+    @Override
+    public void tick() {
+        super.tick();
+        if (firstTickState) {
+            firstTickState = false;
+            firstTick();
+        }
+    }
 
-	public void updateCache() {
-		if(level.isClientSide())
-			return;
-		for(Direction side : Direction.values()) {
-			updateCache(side);
-		}
-	}
+    public void firstTick() {
+        updateCache();
+    }
 
-	public void updateCache(Direction side) {
-		if (!level.isLoaded(worldPosition.relative(side))) {
-			setCache(side, LazyOptional.empty());
-			return;
-		}
-		BlockEntity te = level.getBlockEntity(worldPosition.relative(side));
-		if(te == null) {
-			setCache(side, LazyOptional.empty());
-			return;
-		}
-		LazyOptional<IEnergyStorage> le = te.getCapability(ForgeCapabilities.ENERGY, side.getOpposite());
-		if(ignoreCapSide() && !le.isPresent()) le = te.getCapability(ForgeCapabilities.ENERGY);
-		// Make sure the side isn't already cached.
-		if (le.equals(getCachedEnergy(side))) return;
-		setCache(side, le);
-		le.addListener((es) -> updateCache(side));
-	}
+    public boolean ignoreCapSide() {
+        return false;
+    }
 
-	private LazyOptional<IEnergyStorage> escacheUp = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheDown = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheNorth = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheEast = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheSouth = LazyOptional.empty();
-	private LazyOptional<IEnergyStorage> escacheWest = LazyOptional.empty();
+    public void updateCache() {
+        if (level.isClientSide())
+            return;
+        for (Direction side : Direction.values()) {
+            updateCache(side);
+        }
+    }
 
-	public void setCache(Direction side, LazyOptional<IEnergyStorage> storage) {
-		switch(side) {
-			case DOWN:
-				escacheDown = storage;
-				break;
-			case EAST:
-				escacheEast = storage;
-				break;
-			case NORTH:
-				escacheNorth = storage;
-				break;
-			case SOUTH:
-				escacheSouth = storage;
-				break;
-			case UP:
-				escacheUp = storage;
-				break;
-			case WEST:
-				escacheWest = storage;
-				break;
-		}
-	}
+    public void updateCache(Direction side) {
+        if (!level.isLoaded(worldPosition.relative(side))) {
+            setCache(side, LazyOptional.empty());
+            return;
+        }
+        BlockEntity te = level.getBlockEntity(worldPosition.relative(side));
+        if (te == null) {
+            setCache(side, LazyOptional.empty());
+            return;
+        }
+        LazyOptional<IEnergyStorage> le = te.getCapability(ForgeCapabilities.ENERGY, side.getOpposite());
+        if (ignoreCapSide() && !le.isPresent()) le = te.getCapability(ForgeCapabilities.ENERGY);
+        // Make sure the side isn't already cached.
+        if (le.equals(getCachedEnergy(side))) return;
+        setCache(side, le);
+        le.addListener((es) -> updateCache(side));
+    }
 
-	public LazyOptional<IEnergyStorage> getCachedEnergy(Direction side) {
-		switch(side) {
-			case DOWN:
-				return escacheDown;
-			case EAST:
-				return escacheEast;
-			case NORTH:
-				return escacheNorth;
-			case SOUTH:
-				return escacheSouth;
-			case UP:
-				return escacheUp;
-			case WEST:
-				return escacheWest;
-		}
-		return LazyOptional.empty();
-	}
+    private LazyOptional<IEnergyStorage> escacheUp = LazyOptional.empty();
+    private LazyOptional<IEnergyStorage> escacheDown = LazyOptional.empty();
+    private LazyOptional<IEnergyStorage> escacheNorth = LazyOptional.empty();
+    private LazyOptional<IEnergyStorage> escacheEast = LazyOptional.empty();
+    private LazyOptional<IEnergyStorage> escacheSouth = LazyOptional.empty();
+    private LazyOptional<IEnergyStorage> escacheWest = LazyOptional.empty();
+
+    public void setCache(Direction side, LazyOptional<IEnergyStorage> storage) {
+        switch (side) {
+            case DOWN -> escacheDown = storage;
+            case EAST -> escacheEast = storage;
+            case NORTH -> escacheNorth = storage;
+            case SOUTH -> escacheSouth = storage;
+            case UP -> escacheUp = storage;
+            case WEST -> escacheWest = storage;
+        }
+    }
+
+    public LazyOptional<IEnergyStorage> getCachedEnergy(Direction side) {
+        return switch (side) {
+            case DOWN -> escacheDown;
+            case EAST -> escacheEast;
+            case NORTH -> escacheNorth;
+            case SOUTH -> escacheSouth;
+            case UP -> escacheUp;
+            case WEST -> escacheWest;
+        };
+    }
 }

@@ -208,9 +208,11 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         invalidateNodeCache();
         ListTag nodes = nbt.getList(LocalNode.NODES, Tag.TAG_COMPOUND);
         nodes.forEach(tag -> {
-            LocalNode localNode = LocalNode.read(this, (CompoundTag) tag);
-            if (localNode != null) {
+            try {
+                LocalNode localNode = new LocalNode(this, (CompoundTag) tag);
                 this.localNodes[localNode.getIndex()] = localNode;
+            } catch (Exception e) {
+                CreatePowerlines.LOGGER.error("Failed to load wire connection", e);
             }
         });
 
@@ -277,9 +279,6 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         updateExternalEnergyStorage();
     }
 
-    protected void specialTick() {
-    }
-
     boolean externalStorageInvalid = false;
 
     @Override
@@ -290,8 +289,6 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
 
         // Check if we need to drop any wires due to contraption.
         if (!this.wireCache.isEmpty() && !isRemoved()) handleWireCache(level, this.wireCache);
-
-        specialTick();
 
         if (getMode() == ConnectorMode.None) return;
         super.tick();

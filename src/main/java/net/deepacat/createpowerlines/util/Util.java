@@ -39,7 +39,7 @@ public class Util {
         }
 
         public static <A, B, C> Triple<A, B, C> of(A a, B b, C c) {
-            return new Triple<A, B, C>(a, b, c);
+            return new Triple<>(a, b, c);
         }
     }
 

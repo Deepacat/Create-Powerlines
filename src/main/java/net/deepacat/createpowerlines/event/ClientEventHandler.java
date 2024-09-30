@@ -1,8 +1,6 @@
 package net.deepacat.createpowerlines.event;
 
 import net.deepacat.createpowerlines.CreatePowerlines;
-
-import net.deepacat.createpowerlines.item.WireSpool;
 import net.deepacat.createpowerlines.util.ClientUtil;
 import net.deepacat.createpowerlines.util.Util;
 import net.minecraft.world.item.ItemStack;
