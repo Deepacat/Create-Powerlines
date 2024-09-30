@@ -43,17 +43,17 @@ public class ConnectorTypes {
         }
         if (Config.USE_GT_CONNECTORS.get() && ModList.get().isLoaded("gtceu")) {
             WireMaterial tin = WireMaterials.getOrRegister("Tin", 0xFAFEFF);
-            WireMaterial copper = WireMaterials.getOrRegister("Copper", 0xE77C56);
-            WireMaterial gold = WireMaterials.getOrRegister("Gold", 0xFDF55F);
-            WireMaterial electrum = WireMaterials.getOrRegister("Electrum", 0xFFFF8B);
-            registerTier("LV", 32, 4, 0x6F6F6F, tin, copper);
-            registerTier("MV", 128, 4, 0x33CCFF, tin, copper, gold);
-            registerTier("HV", 512, 4, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("EV", 2048, 6, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("IV", 8192, 6, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("LuV", 32768, 6, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("ZPM", 131072, 8, 0xFFFFFF, tin, copper, gold, electrum);
-            registerTier("UV", 524288, 8, 0xFFFFFF, tin, copper, gold, electrum);
+            WireMaterial copper = WireMaterials.getOrRegister("Copper", 0xff8a3d);
+            WireMaterial gold = WireMaterials.getOrRegister("Gold", 0xffe01c);
+            WireMaterial electrum = WireMaterials.getOrRegister("Electrum", 0xF8D86F);
+            registerTier("LV", 32, 4, 0xa7a7a7, tin, copper);
+            registerTier("MV", 128, 4, 0x7db9d8, tin, copper, gold);
+            registerTier("HV", 512, 4, 0xededfd, tin, copper, gold, electrum);
+            registerTier("EV", 2048, 6, 0xed8eea, tin, copper, gold, electrum);
+            registerTier("IV", 8192, 6, 0x687ece, tin, copper, gold, electrum);
+            registerTier("LuV", 32768, 6, 0xd1d1d1, tin, copper, gold, electrum);
+            registerTier("ZPM", 131072, 8, 0x323232, tin, copper, gold, electrum);
+            registerTier("UV", 524288, 8, 0x578062, tin, copper, gold, electrum);
             registerTier("UHV", 2097152, 8, 0xFFFFFF, tin, copper, gold, electrum);
         }
     }

@@ -31,7 +31,7 @@ mixin {
     debug.export = true
 }
 
-version = "${minecraft_version}-1.2.3"
+version = "${minecraft_version}-1.0"
 
 group = 'net.deepacat.createpowerlines' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'createpowerlines'
@@ -210,6 +210,9 @@ dependencies {
 
 //    implementation fg.deobf("curse.maven:createaddition-439890:5099752")
     implementation fg.deobf("curse.maven:jade-324717:5390389")
+
+    // energy meter mod for testing
+    implementation fg.deobf("curse.maven:energymeter-532169:4813550")
 
     // gregtech deps
     implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.28.d")
