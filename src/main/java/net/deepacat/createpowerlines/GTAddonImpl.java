@@ -16,7 +16,8 @@ import java.util.ArrayList;
 
 @GTAddon
 public class GTAddonImpl implements IGTAddon {
-
+	private static final int[] tierColors;
+	static{ tierColors = new int[]{0x575351, 0xa7a7a7, 0x7db9d8, 0xededfd, 0xed8eea, 0x687ece, 0xd1d1d1, 0x323232, 0x578062, 0xFFFFFF, 0x54fc54, 0xfed947, 0x974451, 0x9f2db2, 0x5d5578}; }
 
 	@Override
 	public String addonModId() {
@@ -50,7 +51,7 @@ public class GTAddonImpl implements IGTAddon {
 					ArrayList<WireMaterial> tierWireMats = new ArrayList<>(tiers[i].stream()
 							.map(mat -> WireMaterials.getOrRegister(mat.getName(), mat.getMaterialRGB()))
 							.toList());
-					ConnectorTypes.registerTier(GTValues.VN[i], wireVoltage, (i + 1) * 2 + 2, firstMat.getMaterialRGB(), tierWireMats);
+					ConnectorTypes.registerTier(GTValues.VN[i], wireVoltage, (i + 1) * 2 + 2, tierColors[i], tierWireMats);
 				}
 			}
 		}
