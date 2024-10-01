@@ -12,6 +12,8 @@ import net.deepacat.createpowerlines.blocks.connector.ConnectorTypes;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.item.WireMaterial;
 import net.deepacat.createpowerlines.item.WireMaterials;
+import org.apache.commons.lang3.text.WordUtils;
+
 import java.util.ArrayList;
 
 @GTAddon
@@ -47,9 +49,9 @@ public class GTAddonImpl implements IGTAddon {
 			for (int i = 0; i < GTValues.TIER_COUNT; ++i) {
 				if (!tiers[i].isEmpty()) {
 					Material firstMat = tiers[i].get(0);
-					int wireVoltage = firstMat.getProperty(PropertyKey.WIRE).getVoltage();
+					long wireVoltage = firstMat.getProperty(PropertyKey.WIRE).getVoltage();
 					ArrayList<WireMaterial> tierWireMats = new ArrayList<>(tiers[i].stream()
-							.map(mat -> WireMaterials.getOrRegister(mat.getName(), mat.getMaterialRGB()))
+							.map(mat -> WireMaterials.getOrRegister(WordUtils.capitalizeFully(mat.getName().replace("_", " ")), mat.getMaterialRGB()))
 							.toList());
 					ConnectorTypes.registerTier(GTValues.VN[i], wireVoltage, (i + 1) * 2 + 2, tierColors[i], tierWireMats);
 				}

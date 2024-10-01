@@ -14,7 +14,7 @@ import java.util.Map;
 public class ConnectorTypes {
     public static final List<ConnectorType> TYPES = new ArrayList<>();
 
-    private static void registerOne(String tier, String size, int connections, int wireLength, int baseEnergy, double energyMult,
+    private static void registerOne(String tier, String size, int connections, int wireLength, long baseEnergy, double energyMult,
                                     ArrayList<WireMaterial> wireMaterials, int width, int height, int color, ConnectorStyle style) {
         String display = size + " " + tier + " Connector";
         String id = Util.displayToId(display);
@@ -22,7 +22,7 @@ public class ConnectorTypes {
         TYPES.add(new ConnectorType(id, display, connections, wireLength, energy, energy, wireMaterials, width, height, color, style));
     }
 
-    public static void registerTier(String tier, int baseEnergy, int amps, int color, ArrayList<WireMaterial> wireMaterials) {
+    public static void registerTier(String tier, long baseEnergy, int amps, int color, ArrayList<WireMaterial> wireMaterials) {
         registerOne(tier, "Small", 4, 16, baseEnergy, amps, wireMaterials, 1, 0, color, ConnectorStyle.SMALL);
         registerOne(tier, "Large", 6, 32, baseEnergy, amps*2, wireMaterials, 2, 1, color, ConnectorStyle.SMALL);
         registerOne(tier, "Huge", 4, 64, baseEnergy, amps*4, wireMaterials, 3, 1, color, ConnectorStyle.LARGE);
@@ -52,7 +52,7 @@ public class ConnectorTypes {
         String prefix = "item." + CreatePowerlines.MODID + ".";
         for (WireMaterial material : WireMaterials.MATERIALS.values()) {
             out.put(prefix + material.wireId(), material.display + " Wire");
-            out.put(prefix + material.spoolId(), material.display + " Spool");
+            out.put(prefix + material.spoolId(), material.display + " Powerlines Spool");
         }
         prefix = "block." + CreatePowerlines.MODID + ".";
         for (ConnectorType type : TYPES) {
