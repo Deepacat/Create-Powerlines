@@ -22,7 +22,7 @@ public class ConnectorTypes {
         TYPES.add(new ConnectorType(id, display, connections, wireLength, energy, energy, wireMaterials, width, height, color, style));
     }
 
-    private static void registerTier(String tier, int baseEnergy, int amps, int color, ArrayList<WireMaterial> wireMaterials) {
+    public static void registerTier(String tier, int baseEnergy, int amps, int color, ArrayList<WireMaterial> wireMaterials) {
         registerOne(tier, "Small", 4, 16, baseEnergy, amps, wireMaterials, 1, 0, color, ConnectorStyle.SMALL);
         registerOne(tier, "Large", 6, 32, baseEnergy, amps*2, wireMaterials, 2, 1, color, ConnectorStyle.SMALL);
         registerOne(tier, "Huge", 4, 64, baseEnergy, amps*4, wireMaterials, 3, 1, color, ConnectorStyle.LARGE);
@@ -45,24 +45,6 @@ public class ConnectorTypes {
             ArrayList<WireMaterial> ccaTier = new ArrayList<WireMaterial>();
             ccaTier.add(electrum);
             registerTier("Electrum", 32768, 1, 0xF8D86F, ccaTier);
-        }
-        if (Config.USE_GT_CONNECTORS.get() && ModList.get().isLoaded("gtceu")) {
-            ArrayList<WireMaterial> tierLv = new ArrayList<WireMaterial>();
-            WireMaterial tin = WireMaterials.getOrRegister("Tin", 0xFAFEFF);
-            WireMaterial copper = WireMaterials.getOrRegister("Copper", 0xff8a3d);
-            WireMaterial gold = WireMaterials.getOrRegister("Gold", 0xffe01c);
-            WireMaterial electrum = WireMaterials.getOrRegister("Electrum", 0xF8D86F);
-            tierLv.add(tin);
-            tierLv.add(copper);
-            registerTier("LV", 32, 4, 0xa7a7a7, tierLv);
-            registerTier("MV", 128, 4, 0x7db9d8, tierLv);
-            registerTier("HV", 512, 4, 0xededfd, tierLv);
-            registerTier("EV", 2048, 6, 0xed8eea, tierLv);
-            registerTier("IV", 8192, 6, 0x687ece, tierLv);
-            registerTier("LuV", 32768, 6, 0xd1d1d1, tierLv);
-            registerTier("ZPM", 131072, 8, 0x323232, tierLv);
-            registerTier("UV", 524288, 8, 0x578062, tierLv);
-            registerTier("UHV", 2097152, 8, 0xFFFFFF, tierLv);
         }
     }
 

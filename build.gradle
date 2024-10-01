@@ -215,10 +215,12 @@ dependencies {
     implementation fg.deobf("curse.maven:energymeter-532169:4813550")
 
     // gregtech deps
-    compileOnly(fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}"))
-    compileOnly(fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim"))
-    compileOnly(fg.deobf("dev.toma.configuration:configuration-forge-1.20.1:2.2.0"))
-
+//    compileOnly(fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}"))
+//    compileOnly(fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim"))
+//    compileOnly(fg.deobf("dev.toma.configuration:configuration-forge-1.20.1:2.2.0"))
+    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}")
+    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim")
+    implementation fg.deobf("dev.toma.configuration:configuration-forge-${minecraft_version}:2.2.0")
 
     //runtimeOnly fg.deobf("curse.maven:cofh-core-69162:4202944")
 
