@@ -38,7 +38,6 @@ public class GTAddonImpl implements IGTAddon {
 //          Converting gt materials with wire property to powerline wires
 			for (Material mat : GTCEuAPI.materialManager.getRegisteredMaterials()) {
 				if (mat.hasProperty(PropertyKey.WIRE)) {
-					WireMaterials.getOrRegister("GT " + mat.getName(), mat.getMaterialRGB());
 					int tier = GTUtil.getTierByVoltage(mat.getProperty(PropertyKey.WIRE).getVoltage());
 					tiers[tier].add(mat);
 				}
@@ -49,9 +48,9 @@ public class GTAddonImpl implements IGTAddon {
 					Material firstMat = tiers[i].get(0);
 					int wireVoltage = firstMat.getProperty(PropertyKey.WIRE).getVoltage();
 					ArrayList<WireMaterial> tierWireMats = new ArrayList<>(tiers[i].stream()
-							.map(mat -> WireMaterials.getOrRegister(mat.getName(), mat.getMaterialARGB()))
+							.map(mat -> WireMaterials.getOrRegister(mat.getName(), mat.getMaterialRGB()))
 							.toList());
-					ConnectorTypes.registerTier(GTValues.VN[i], wireVoltage, (i + 1) * 2 + 2, tiers[i].get(0).getMaterialARGB(), tierWireMats);
+					ConnectorTypes.registerTier(GTValues.VN[i], wireVoltage, (i + 1) * 2 + 2, firstMat.getMaterialRGB(), tierWireMats);
 				}
 			}
 		}
