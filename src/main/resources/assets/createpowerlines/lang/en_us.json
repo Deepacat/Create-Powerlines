@@ -23,7 +23,6 @@
 
 	"createpowerlines.command.cca_api.link": "Click here to open API documentation",
 
-	"item.createpowerlines.copper_spool": "Copper Spool",
 	"item.createpowerlines.copper_spool.tooltip": "SPOOL",
 	"item.createpowerlines.copper_spool.tooltip.summary": "Used to store wires.",
 	"item.createpowerlines.copper_spool.tooltip.condition1": "Low Current",
@@ -33,8 +32,6 @@
 	"item.createpowerlines.copper_wire": "Copper Wire",
 	"item.createpowerlines.copper_rod": "Copper Rod",
 
-	"item.createpowerlines.gold_spool": "Gold Spool",
-	"item.createpowerlines.gold_spool.tooltip": "SPOOL",
 	"item.createpowerlines.gold_spool.tooltip.summary": "Used to store wires.",
 	"item.createpowerlines.gold_spool.tooltip.condition1": "High Current",
 	"item.createpowerlines.gold_spool.tooltip.behaviour1": "Connects to _high current connectors_.",
@@ -43,11 +40,6 @@
 	"item.createpowerlines.gold_wire": "Gold Wire",
 	"item.createpowerlines.gold_rod": "Gold Rod",
 
-	"item.createpowerlines.electrum_ingot": "Electrum Ingot",
-	"item.createpowerlines.electrum_nugget": "Electrum Nugget",
-	"item.createpowerlines.electrum_sheet": "Electrum Sheet",
-	"item.createpowerlines.electrum_spool": "Electrum Spool",
-	"item.createpowerlines.electrum_spool.tooltip": "SPOOL",
 	"item.createpowerlines.electrum_spool.tooltip.summary": "Used to store wires.",
 	"item.createpowerlines.electrum_spool.tooltip.condition1": "High Current",
 	"item.createpowerlines.electrum_spool.tooltip.behaviour1": "Connects to _high current connectors_.",
