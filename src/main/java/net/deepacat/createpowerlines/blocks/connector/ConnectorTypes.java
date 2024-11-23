@@ -35,21 +35,31 @@ public class ConnectorTypes {
     }
 
     public static void registerAll() {
-//        registerOne("uev", "uev", 3, 256, 8388608, ((10 + 1) * 2 + 2) * 16, new ArrayList<>(), 3, 4, 0xFFFFFF, ConnectorStyle.LARGE);
-//        registerOne("uiv", "uiv", 3, 256, 33554432, ((11 + 1) * 2 + 2) * 16, new ArrayList<>(), 3, 4, 0xFFFFFF, ConnectorStyle.LARGE);
+        ArrayList<WireMaterial> baseTier1 = new ArrayList<>();
+        ArrayList<WireMaterial> baseTier2 = new ArrayList<>();
+        ArrayList<WireMaterial> ccaTier = new ArrayList<>();
+
         if (Config.USE_BASE_CONNECTORS.get() && !ModList.get().isLoaded("gtceu")) {
             WireMaterial copper = WireMaterials.getOrRegister("Copper", 0xE77C56);
             WireMaterial gold = WireMaterials.getOrRegister("Gold", 0xFDF55F);
-            ArrayList<WireMaterial> baseTier = new ArrayList<>();
-            baseTier.add(copper);
-            baseTier.add(gold);
-            registerTier("Copper", 2048, 1, 0xC55E4B, baseTier);
-            registerTier("Gold", 8192, 1, 0xE6AF15, baseTier);
+            baseTier1.add(copper);
+            baseTier1.add(gold);
+            baseTier2.add(gold);
         }
+
         if (Config.USE_CCA_CONNECTORS.get() && ModList.get().isLoaded("createaddition") && !ModList.get().isLoaded("gtceu")) {
             WireMaterial electrum = WireMaterials.getOrRegister("Electrum", 0xFFFF8B);
-            ArrayList<WireMaterial> ccaTier = new ArrayList<>();
+            baseTier1.add(electrum);
+            baseTier2.add(electrum);
             ccaTier.add(electrum);
+        }
+
+        if (Config.USE_BASE_CONNECTORS.get() && !ModList.get().isLoaded("gtceu")) {
+            registerTier("Copper", 2048, 1, 0xC55E4B, baseTier1);
+            registerTier("Gold", 8192, 1, 0xf7bf31, baseTier2);
+        }
+
+        if (Config.USE_CCA_CONNECTORS.get() && ModList.get().isLoaded("createaddition") && !ModList.get().isLoaded("gtceu")) {
             registerTier("Electrum", 32768, 1, 0xF8D86F, ccaTier);
         }
     }
