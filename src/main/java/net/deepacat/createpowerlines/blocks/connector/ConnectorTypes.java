@@ -35,8 +35,8 @@ public class ConnectorTypes {
     }
 
     public static void registerAll() {
-        registerOne("uev", "uev", 3, 256, 8388608, ((10 + 1) * 2 + 2) * 16, new ArrayList<>(), 3, 4, 0xFFFFFF, ConnectorStyle.LARGE);
-        registerOne("uiv", "uiv", 3, 256, 33554432, ((11 + 1) * 2 + 2) * 16, new ArrayList<>(), 3, 4, 0xFFFFFF, ConnectorStyle.LARGE);
+//        registerOne("uev", "uev", 3, 256, 8388608, ((10 + 1) * 2 + 2) * 16, new ArrayList<>(), 3, 4, 0xFFFFFF, ConnectorStyle.LARGE);
+//        registerOne("uiv", "uiv", 3, 256, 33554432, ((11 + 1) * 2 + 2) * 16, new ArrayList<>(), 3, 4, 0xFFFFFF, ConnectorStyle.LARGE);
         if (Config.USE_BASE_CONNECTORS.get() && !ModList.get().isLoaded("gtceu")) {
             WireMaterial copper = WireMaterials.getOrRegister("Copper", 0xE77C56);
             WireMaterial gold = WireMaterials.getOrRegister("Gold", 0xFDF55F);
