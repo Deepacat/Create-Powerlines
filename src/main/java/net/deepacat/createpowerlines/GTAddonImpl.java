@@ -10,9 +10,11 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.ItemMaterialInfo;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.common.data.GTMachines;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
@@ -24,10 +26,12 @@ import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.item.WireMaterial;
 import net.deepacat.createpowerlines.item.WireMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.ArrayList;
@@ -88,6 +92,12 @@ public class GTAddonImpl implements IGTAddon {
     @Override
     public void addRecipes(Consumer<FinishedRecipe> out) {
         if (connectors == null) return;
+        VanillaRecipeHelper.addShapedRecipe(out,
+                new ResourceLocation(CreatePowerlines.MODID, "empty_spool"), WireMaterials.EMPTY_SPOOL.asStack(2),
+                "III", " N ", "III",
+                'I', new UnificationEntry(TagPrefix.ingot, GTMaterials.Iron),
+                'N', new UnificationEntry(TagPrefix.nugget, GTMaterials.Iron)
+        );
 
         for (int i = 0; i <= MAX_SUPPORTED_TIER; ++i) {
             ConnectorType[] connectors = this.connectors[i];
