@@ -13,6 +13,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.common.data.GTMachines;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.gregtechceu.gtceu.utils.GTUtil;
@@ -31,6 +32,7 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 @GTAddon
@@ -86,6 +88,7 @@ public class GTAddonImpl implements IGTAddon {
     @Override
     public void addRecipes(Consumer<FinishedRecipe> out) {
         if (connectors == null) return;
+
         for (int i = 0; i <= MAX_SUPPORTED_TIER; ++i) {
             ConnectorType[] connectors = this.connectors[i];
             if (connectors == null) continue;
@@ -112,6 +115,19 @@ public class GTAddonImpl implements IGTAddon {
                         "WWW", "PSP", "PCP", 'W', ChemicalHelper.get(wires[j], gtWireMat),
                         'P', plate, 'S', wireMat.spool.get(), 'C', circuits[j]);
             }
+        }
+
+        for (Map.Entry<Material, WireMaterial> entry : wireMats.entrySet()) {
+            Material gtWireMat = entry.getKey();
+            WireMaterial wireMat = entry.getValue();
+            GTRecipeTypes.WIREMILL_RECIPES.recipeBuilder(new ResourceLocation(CreatePowerlines.MODID, "wires/" + wireMat.wireId()))
+                    .inputItems(TagPrefix.ingot, gtWireMat)
+                    .outputItems(new ItemStack(wireMat.wire.get(), 2))
+                    .circuitMeta(5).duration(200).EUt(7).save(out);
+            VanillaRecipeHelper.addShapedRecipe(out,
+                    new ResourceLocation(CreatePowerlines.MODID, "spools/" + wireMat.spoolId()),
+                    new ItemStack(wireMat.spool.get()),
+                    "WWW", "WSW", "WWW", 'S', WireMaterials.EMPTY_SPOOL.get(), 'W', wireMat.wire.get());
         }
     }
 }
