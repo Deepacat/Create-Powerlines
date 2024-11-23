@@ -48,7 +48,7 @@
 	"item.createpowerlines.electrum_wire": "Electrum Wire",
 	"item.createpowerlines.electrum_rod": "Electrum Rod",
 
-	"item.createpowerlines.spool": "Empty Spool",
+	"item.createpowerlines.spool": "Empty Powerlines Spool",
 	"item.createpowerlines.spool.nbt": "Stores connection location.",
 	"item.createpowerlines.spool.tooltip.summary": "Used to store wires.",
 	"item.createpowerlines.spool.tooltip.condition1": "R-Clicking two linked Connectors",
