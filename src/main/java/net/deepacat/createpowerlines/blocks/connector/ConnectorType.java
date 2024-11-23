@@ -36,6 +36,7 @@ public class ConnectorType {
     public final ConnectorStyle style;
 
     public final VoxelShaper shape;
+    public final BlockEntry<ConnectorBlock> blockEntry;
     public final BlockEntityEntry<ConnectorBlockEntity> beEntry;
 
     public ConnectorType(String id, String display, int connections, int wireLength, int energyIn, int energyOut,
@@ -55,7 +56,7 @@ public class ConnectorType {
         int max = 8 + width + 1;
 
         shape = CAShapes.shape(min, 0, min, max, style.baseHeight + height, max).forDirectional();
-        BlockEntry<ConnectorBlock> block = CreatePowerlines.REGISTRATE.block(id, props -> new ConnectorBlock(props, this))
+        blockEntry = CreatePowerlines.REGISTRATE.block(id, props -> new ConnectorBlock(props, this))
                 .initialProperties(SharedProperties::stone)
                 .onRegister(AllMovementBehaviours.movementBehaviour(new NodeMovementBehaviour()))
                 .item()
@@ -64,7 +65,7 @@ public class ConnectorType {
                 .register();
         beEntry = CreatePowerlines.REGISTRATE
                 .<ConnectorBlockEntity>blockEntity(id, (beType, pos, state) -> new ConnectorBlockEntity(beType, pos, state, this))
-                .validBlocks(block)
+                .validBlocks(blockEntry)
                 .renderer(() -> ConnectorRenderer::new)
                 .register();
     }
