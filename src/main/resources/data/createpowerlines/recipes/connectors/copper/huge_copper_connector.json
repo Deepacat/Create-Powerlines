@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "SRS",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "S": {
+      "tag": "forge:slimeballs"
+    },
+    "R": {
+      "tag": "forge:rods/copper"
+    }
+  },
+  "result": {
+    "item": "createpowerlines:huge_copper_connector",
+    "count": 2
+  }
+}

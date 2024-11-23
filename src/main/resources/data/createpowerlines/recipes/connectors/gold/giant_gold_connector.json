@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    "ASA",
+    "ASA"
+  ],
+  "key": {
+    "A": {
+      "item": "create:andesite_alloy"
+    },
+    "S": {
+      "tag": "forge:slimeballs"
+    },
+    "R": {
+      "tag": "forge:rods/gold"
+    }
+  },
+  "result": {
+    "item": "createpowerlines:giant_gold_connector",
+    "count": 1
+  }
+}

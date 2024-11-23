@@ -1,9 +1,5 @@
 {
-  "result": {
-    "item": "createpowerlines:spool",
-    "count": 2
-  },
-  "type": "crafting_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     "III",
     " N ",
@@ -16,5 +12,9 @@
     "N": {
       "tag": "forge:nuggets/iron"
     }
+  },
+  "result": {
+    "item": "createaddition:spool",
+    "count": 2
   }
 }
