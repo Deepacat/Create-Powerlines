@@ -105,11 +105,14 @@ public class GTAddonImpl implements IGTAddon {
             if (connectors == null) continue;
             ItemMaterialInfo hull = ChemicalHelper.getMaterialInfo(GTMachines.HULL[i].getBlock());
             ImmutableList<MaterialStack> hullMats = hull.getMaterials();
-            Material tierMat = hullMats.get(0).material();
-            TagKey<Item> plate = ChemicalHelper.getTag(TagPrefix.plate, tierMat);
+
             Material gtWireMat = hullMats.get(1).material();
-            TagPrefix[] wires = new TagPrefix[]{
-                    TagPrefix.wireGtSingle, TagPrefix.wireGtDouble, TagPrefix.wireGtQuadruple, TagPrefix.wireGtOctal, TagPrefix.wireGtHex};
+            Material tierMat = hullMats.get(0).material();
+
+            TagKey<Item> hullPlate = ChemicalHelper.getTag(TagPrefix.plate, tierMat);
+            TagKey<Item> wirePlate = ChemicalHelper.getTag(TagPrefix.plate, gtWireMat);
+
+
             WireMaterial wireMat = wireMats.get(gtWireMat);
             Object[] circuits = new Object[]{
                     CustomTags.CIRCUITS_ARRAY[i],
@@ -121,10 +124,11 @@ public class GTAddonImpl implements IGTAddon {
             for (int j = 0; j < connectors.length; ++j) {
                 ConnectorType connector = connectors[j];
                 VanillaRecipeHelper.addShapedRecipe(out,
-                        new ResourceLocation(CreatePowerlines.MODID, connector.id),
-                        new ItemStack(connector.blockEntry.get()),
-                        "WWW", "PSP", "PCP", 'W', ChemicalHelper.get(wires[j], gtWireMat),
-                        'P', plate, 'S', wireMat.spool.get(), 'C', circuits[j]);
+                        new ResourceLocation(CreatePowerlines.MODID, connector.id), connector.blockEntry.asStack(),
+                        "WWW", "PSP", "PCP",
+						'W', wirePlate,
+                        'P', hullPlate,
+						'S', wireMat.spool.get(), 'C', circuits[j]);
             }
         }
 
