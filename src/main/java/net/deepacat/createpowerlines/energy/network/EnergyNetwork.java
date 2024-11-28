@@ -53,6 +53,7 @@ public class EnergyNetwork {
 
 	// Returns the amount of energy pushed to network
 	public int push(int energy, boolean simulate) {
+		energy = Math.min(nodeCount * energy - inBuff, energy);
 		energy = Math.max(energy, 0);
 		if (!simulate) {
 			inBuff += energy;
