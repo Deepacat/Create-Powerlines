@@ -31,7 +31,7 @@ mixin {
     debug.export = true
 }
 
-version = "${minecraft_version}-1.0.1"
+version = "${minecraft_version}-1.0.2"
 
 group = 'net.deepacat.createpowerlines' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'createpowerlines'
@@ -190,7 +190,7 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-//
+
     implementation fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
     implementation fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}")
     implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
@@ -206,7 +206,7 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
     runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
-
+    runtimeOnly(fg.deobf("dev.emi:emi-forge:1.1.18+1.20.1"))
 
     implementation fg.deobf("curse.maven:createaddition-439890:5099752")
     implementation fg.deobf("curse.maven:jade-324717:5390389")
@@ -215,12 +215,12 @@ dependencies {
     implementation fg.deobf("curse.maven:energymeter-532169:4813550")
 
     // gregtech deps
-    compileOnly(fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}"))
-    compileOnly(fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim"))
-    compileOnly(fg.deobf("dev.toma.configuration:configuration-forge-1.20.1:2.2.0"))
-//    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}")
-//    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim")
-//    implementation fg.deobf("dev.toma.configuration:configuration-forge-${minecraft_version}:2.2.0")
+//    compileOnly(fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}"))
+//    compileOnly(fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim"))
+//    compileOnly(fg.deobf("dev.toma.configuration:configuration-forge-1.20.1:2.2.0"))
+    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}")
+    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim")
+    implementation fg.deobf("dev.toma.configuration:configuration-forge-${minecraft_version}:2.2.0")
 
     //runtimeOnly fg.deobf("curse.maven:cofh-core-69162:4202944")
 
