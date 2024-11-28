@@ -1,6 +1,5 @@
 package net.deepacat.createpowerlines.mixins;
 
-import com.google.gson.JsonElement;
 import com.mojang.datafixers.util.Pair;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorMode;

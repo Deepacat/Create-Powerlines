@@ -89,16 +89,6 @@ public interface IWireNode {
     /**
      * Remove the given node.
      *
-     * @param node     The node to remove.
-     * @param dropWire Whether to drop wires or not.
-     */
-    default void removeNode(LocalNode node, boolean dropWire) {
-        removeNode(node.getIndex(), dropWire);
-    }
-
-    /**
-     * Remove the given node.
-     *
      * @param node The node to remove.
      */
     default void removeNode(@NotNull LocalNode node) {
@@ -111,6 +101,8 @@ public interface IWireNode {
      * @return The number of supported nodes.
      */
     int getNodeCount();
+
+    int getCapacity();
 
     /**
      * Get an available node index from this {@link IWireNode}, based on the
@@ -273,7 +265,7 @@ public interface IWireNode {
         boolean b = false;
         for (int i = 0; i < getNodeCount(); i++) {
             if (!isNetworkValid(i)) {
-                setNetwork(i, EnergyNetwork.nextNode(world, new EnergyNetwork(world), new HashMap<>(), this, i));
+                setNetwork(i, EnergyNetwork.nextNode(new EnergyNetwork(world), new HashMap<>(), this, i));
                 b = true;
             }
         }

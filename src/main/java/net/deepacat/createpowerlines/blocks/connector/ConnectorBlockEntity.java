@@ -81,6 +81,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
     public void addBehaviours(List<BlockEntityBehaviour> list) {
     }
 
+    @Override
     public int getCapacity() {
         return Math.min(type.energyIn, type.energyOut);
     }
@@ -110,7 +111,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         @Override
         public int getEnergyStored() {
             if (network == null) return 0;
-            return Math.min(getCapacity(), network.getBuff());
+            return (int) Math.min(getCapacity(), network.getBuff());
         }
 
         @Override
@@ -317,7 +318,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         if (level.isClientSide()) return;
 
         if (mode == ConnectorMode.Push) {
-            int pulled = network.pull(network.demand(external.orElse(NULL_ES).receiveEnergy(type.energyOut, true)));
+            int pulled = network.pull(external.orElse(NULL_ES).receiveEnergy(type.energyOut, true));
             external.orElse(NULL_ES).receiveEnergy(pulled, false);
         }
 
