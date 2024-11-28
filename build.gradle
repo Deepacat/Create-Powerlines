@@ -31,7 +31,7 @@ mixin {
     debug.export = true
 }
 
-version = "${minecraft_version}-1.0"
+version = "${minecraft_version}-1.0.1"
 
 group = 'net.deepacat.createpowerlines' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'createpowerlines'

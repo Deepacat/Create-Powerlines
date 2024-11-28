@@ -92,6 +92,7 @@ public class GTAddonImpl implements IGTAddon {
     @Override
     public void addRecipes(Consumer<FinishedRecipe> out) {
         if (connectors == null) return;
+//        Base spool recipe
         VanillaRecipeHelper.addShapedRecipe(out,
                 new ResourceLocation(CreatePowerlines.MODID, "empty_spool"), WireMaterials.EMPTY_SPOOL.asStack(2),
                 "III", " N ", "III",
