@@ -39,6 +39,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ConnectorBlock extends Block implements IBE<ConnectorBlockEntity>, IWrenchable, ITransformableBlock {
@@ -62,8 +63,9 @@ public class ConnectorBlock extends Block implements IBE<ConnectorBlockEntity>, 
 
     @Override
     public void appendHoverText(ItemStack item, BlockGetter level, List<Component> lines, TooltipFlag flag) {
+        DecimalFormat df = new DecimalFormat("#,###");
         lines.add(Component.translatable(CreatePowerlines.MODID + ".tooltip.transfer_rate").withStyle(ChatFormatting.GRAY));
-        lines.add(Component.literal("  " + type.energyRate + " FE/t").withStyle(ChatFormatting.AQUA));
+        lines.add(Component.literal("  " + df.format(type.energyRate) + " FE/t").withStyle(ChatFormatting.AQUA));
         lines.add(Component.translatable(CreatePowerlines.MODID + ".tooltip.max_connections").withStyle(ChatFormatting.GRAY));
         lines.add(Component.literal("  " + type.connections).withStyle(ChatFormatting.AQUA));
         lines.add(Component.translatable(CreatePowerlines.MODID + ".tooltip.max_wire_length").withStyle(ChatFormatting.GRAY));
