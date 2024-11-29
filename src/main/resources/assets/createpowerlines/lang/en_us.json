@@ -17,9 +17,11 @@
 	"createpowerlines.tooltip.energy.passive": "Passive",
 	"createpowerlines.tooltip.energy.none": "None",
 
-	"createpowerlines.tooltip.accumulator.info": "Accumulator Info:",
 	"createpowerlines.tooltip.relay.info": "Relay Info:",
 	"createpowerlines.tooltip.connector.info": "Connector Info:",
+	"createpowerlines.tooltip.transfer_rate": "Transfer Rate: ",
+	"createpowerlines.tooltip.max_connections":  "Max Connections: ",
+	"createpowerlines.tooltip.max_wire_length":  "Max Wire Length: ",
 
 	"createpowerlines.command.cca_api.link": "Click here to open API documentation",
 

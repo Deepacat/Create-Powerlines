@@ -1,5 +1,6 @@
 package net.deepacat.createpowerlines.blocks.connector;
 
+import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.energy.IWireNode;
 import net.deepacat.createpowerlines.energy.NodeRotation;
@@ -8,12 +9,16 @@ import com.simibubi.create.content.contraptions.StructureTransform;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
@@ -32,6 +37,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ConnectorBlock extends Block implements IBE<ConnectorBlockEntity>, IWrenchable, ITransformableBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
@@ -50,6 +58,16 @@ public class ConnectorBlock extends Block implements IBE<ConnectorBlockEntity>, 
                 .setValue(NodeRotation.ROTATION, NodeRotation.NONE)
                 .setValue(VARIANT, ConnectorVariant.Default));
         this.type = type;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack item, BlockGetter level, List<Component> lines, TooltipFlag flag) {
+        lines.add(Component.translatable(CreatePowerlines.MODID + ".tooltip.transfer_rate").withStyle(ChatFormatting.GRAY));
+        lines.add(Component.literal("  " + type.energyRate + " FE/t").withStyle(ChatFormatting.AQUA));
+        lines.add(Component.translatable(CreatePowerlines.MODID + ".tooltip.max_connections").withStyle(ChatFormatting.GRAY));
+        lines.add(Component.literal("  " + type.connections).withStyle(ChatFormatting.AQUA));
+        lines.add(Component.translatable(CreatePowerlines.MODID + ".tooltip.max_wire_length").withStyle(ChatFormatting.GRAY));
+        lines.add(Component.literal("  " + type.wireLength).withStyle(ChatFormatting.AQUA));
     }
 
     @Override

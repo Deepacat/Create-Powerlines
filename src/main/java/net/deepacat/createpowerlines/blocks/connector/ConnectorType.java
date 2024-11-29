@@ -28,8 +28,7 @@ public class ConnectorType {
     public final String display;
     public final int connections;
     public final int wireLength;
-    public final int energyIn;
-    public final int energyOut;
+    public final int energyRate;
     public final Set<WireMaterial> wireMaterials;
     public final int width, height;
     public final int color;
@@ -39,14 +38,13 @@ public class ConnectorType {
     public final BlockEntry<ConnectorBlock> blockEntry;
     public final BlockEntityEntry<ConnectorBlockEntity> beEntry;
 
-    public ConnectorType(String id, String display, int connections, int wireLength, int energyIn, int energyOut,
+    public ConnectorType(String id, String display, int connections, int wireLength, int energyRate,
                          List<WireMaterial> wireMaterials, int width, int height, int color, ConnectorStyle style) {
         this.id = id;
         this.display = display;
         this.connections = connections;
         this.wireLength = wireLength;
-        this.energyIn = energyIn;
-        this.energyOut = energyOut;
+        this.energyRate = energyRate;
         this.wireMaterials = new ReferenceOpenHashSet<>(wireMaterials);
         this.width = width;
         this.height = height;

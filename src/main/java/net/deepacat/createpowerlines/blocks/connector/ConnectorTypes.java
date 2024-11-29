@@ -18,8 +18,8 @@ public class ConnectorTypes {
                                              List<WireMaterial> wireMaterials, int width, int height, int color, ConnectorStyle style) {
         String display = size + " " + tier + " Connector";
         String id = Util.displayToId(display);
-        int energy = (int) Math.round(baseEnergy * energyMult);
-        ConnectorType result = new ConnectorType(id, display, connections, wireLength, energy, energy, wireMaterials, width, height, color, style);
+        int energyRate = (int) Math.round(baseEnergy * energyMult);
+        ConnectorType result = new ConnectorType(id, display, connections, wireLength, energyRate, wireMaterials, width, height, color, style);
         TYPES.add(result);
         return result;
     }

@@ -82,8 +82,8 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
     }
 
     @Override
-    public int getCapacity() {
-        return Math.min(type.energyIn, type.energyOut);
+    public int energyRate() {
+        return type.energyRate;
     }
 
     private class InterfaceEnergyHandler implements IEnergyStorage {
@@ -95,7 +95,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
             if (!Config.CONNECTOR_ALLOW_PASSIVE_IO.get()) return 0;
             if (getMode() != ConnectorMode.Pull) return 0;
             if (network == null) return 0;
-            maxReceive = Math.min(maxReceive, type.energyIn);
+            maxReceive = Math.min(maxReceive, type.energyRate);
             return network.push(maxReceive, simulate);
         }
 
@@ -104,19 +104,19 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
             if (!Config.CONNECTOR_ALLOW_PASSIVE_IO.get()) return 0;
             if (getMode() != ConnectorMode.Push) return 0;
             if (network == null) return 0;
-            maxExtract = Math.min(maxExtract, type.energyOut);
+            maxExtract = Math.min(maxExtract, type.energyRate);
             return network.pull(maxExtract, simulate);
         }
 
         @Override
         public int getEnergyStored() {
             if (network == null) return 0;
-            return (int) Math.min(getCapacity(), network.getBuff());
+            return (int) Math.min(energyRate(), network.getBuff());
         }
 
         @Override
         public int getMaxEnergyStored() {
-            return getCapacity();
+            return energyRate();
         }
 
         @Override
@@ -318,12 +318,12 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         if (level.isClientSide()) return;
 
         if (mode == ConnectorMode.Push) {
-            int pulled = network.pull(external.orElse(NULL_ES).receiveEnergy(type.energyOut, true));
+            int pulled = network.pull(external.orElse(NULL_ES).receiveEnergy(type.energyRate, true));
             external.orElse(NULL_ES).receiveEnergy(pulled, false);
         }
 
         if (mode == ConnectorMode.Pull) {
-            int toPush = external.orElse(NULL_ES).extractEnergy(network.push(type.energyIn, true), false);
+            int toPush = external.orElse(NULL_ES).extractEnergy(network.push(type.energyRate, true), false);
             network.push(toPush);
         }
     }
@@ -389,7 +389,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
         tooltip.add(Component.literal(spacing)
                 .append(Component.translatable(CreatePowerlines.MODID + ".tooltip.energy.usage").withStyle(ChatFormatting.GRAY)));
         tooltip.add(Component.literal(spacing).append(" ")
-                .append(Util.format(EnergyNetworkPacket.clientBuff)).append("fe/t").withStyle(ChatFormatting.AQUA));
+                .append(Util.format(EnergyNetworkPacket.clientBuff)).append(" FE/t").withStyle(ChatFormatting.AQUA));
 
         return IHaveGoggleInformation.super.addToGoggleTooltip(tooltip, isPlayerSneaking);
     }

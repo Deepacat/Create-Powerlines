@@ -102,7 +102,7 @@ public interface IWireNode {
      */
     int getNodeCount();
 
-    int getCapacity();
+    int energyRate();
 
     /**
      * Get an available node index from this {@link IWireNode}, based on the

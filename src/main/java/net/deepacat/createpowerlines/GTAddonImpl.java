@@ -26,12 +26,10 @@ import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.item.WireMaterial;
 import net.deepacat.createpowerlines.item.WireMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.ArrayList;

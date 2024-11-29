@@ -82,7 +82,7 @@ public class EnergyNetwork {
             return null; // should never matter?
         current.setNetwork(index, en);
         visited.put(posKey(current.getPos(), index), current);
-        en.inBuffCap += current.getCapacity();
+        en.inBuffCap += current.energyRate();
 
         for (int i = 0; i < current.getNodeCount(); i++) {
             IWireNode next = current.getWireNode(i);
