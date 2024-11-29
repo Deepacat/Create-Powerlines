@@ -14,7 +14,7 @@ import java.util.Map;
 public class ConnectorTypes {
     public static final List<ConnectorType> TYPES = new ArrayList<>();
 
-    private static ConnectorType registerOne(String tier, String size, int connections, int wireLength, long baseEnergy, double energyMult,
+    public static ConnectorType registerOne(String tier, String size, int connections, int wireLength, long baseEnergy, double energyMult,
                                              List<WireMaterial> wireMaterials, int width, int height, int color, ConnectorStyle style) {
         String display = size + " " + tier + " Connector";
         String id = Util.displayToId(display);
@@ -27,10 +27,10 @@ public class ConnectorTypes {
     public static ConnectorType[] registerTier(String tier, long baseEnergy, int amps, int color, List<WireMaterial> wireMaterials) {
         return new ConnectorType[]{
                 registerOne(tier, "Small", 4, 16, baseEnergy, amps, wireMaterials, 1, 0, color, ConnectorStyle.SMALL),
-                registerOne(tier, "Large", 6, 32, baseEnergy, amps * 2, wireMaterials, 2, 1, color, ConnectorStyle.SMALL),
-                registerOne(tier, "Huge", 4, 64, baseEnergy, amps * 4, wireMaterials, 3, 1, color, ConnectorStyle.LARGE),
-                registerOne(tier, "Giant", 3, 128, baseEnergy, amps * 8, wireMaterials, 3, 2, color, ConnectorStyle.LARGE),
-                registerOne(tier, "Massive", 3, 256, baseEnergy, amps * 16, wireMaterials, 3, 4, color, ConnectorStyle.LARGE)
+                registerOne(tier, "Large", 4, 32, baseEnergy, amps * 1.5, wireMaterials, 2, 1, color, ConnectorStyle.SMALL),
+                registerOne(tier, "Huge", 3, 64, baseEnergy, amps * 2, wireMaterials, 3, 1, color, ConnectorStyle.LARGE),
+                registerOne(tier, "Giant", 3, 128, baseEnergy, amps * 3, wireMaterials, 3, 2, color, ConnectorStyle.LARGE),
+                registerOne(tier, "Massive", 2, 256, baseEnergy, amps * 4, wireMaterials, 3, 4, color, ConnectorStyle.LARGE)
         };
     }
 
