@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "createpowerlines:copper_wire",
-    "createpowerlines:gold_wire",
-    "createpowerlines:iron_wire",
-    "createpowerlines:electrum_wire"
-  ]
-}

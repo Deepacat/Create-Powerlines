@@ -1,21 +1,45 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "tag": "forge:rods/gold"
-    },
-    {
-      "item": "create:andesite_alloy"
-    },
-    {
-      "item": "create:andesite_alloy"
-    },
-    {
-      "tag": "forge:slimeballs"
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:mod_loaded",
+            "modid": "gtceu"
+          }
+        },
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:rods/gold"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "ingredients": [
+          {
+            "tag": "forge:rods/gold"
+          },
+          {
+            "item": "create:andesite_alloy"
+          },
+          {
+            "item": "create:andesite_alloy"
+          },
+          {
+            "tag": "forge:slimeballs"
+          }
+        ],
+        "result": {
+          "item": "createpowerlines:large_gold_connector",
+          "count": 2
+        }
+      }
     }
-  ],
-  "result":{
-    "item": "createpowerlines:large_gold_connector",
-    "count": 2
-  }
+  ]
 }
+

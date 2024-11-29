@@ -1,0 +1,25 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "createaddition"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "createaddition:electrum_spool"
+          }
+        ],
+        "result": {
+          "item": "createpowerlines:electrum_spool"
+        }
+      }
+    }
+  ]
+}
