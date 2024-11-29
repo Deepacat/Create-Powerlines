@@ -20,6 +20,7 @@ import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.gregtechceu.gtceu.utils.GTUtil;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.deepacat.createpowerlines.blocks.connector.ConnectorStyle;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorType;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorTypes;
 import net.deepacat.createpowerlines.config.Config;
@@ -80,10 +81,17 @@ public class GTAddonImpl implements IGTAddon {
 
         // Making connectors from wires
         connectors = new ConnectorType[MAX_SUPPORTED_TIER + 1][];
-        for (int i = 0; i <= MAX_SUPPORTED_TIER; ++i) {
+        List<WireMaterial> acc = new ArrayList<>();
+        for (int i = MAX_SUPPORTED_TIER; i >= 0; --i) {
             if (tierWireMats[i].isEmpty()) continue;
-            connectors[i] = ConnectorTypes.registerTier(
-                    GTValues.VN[i], GTValues.V[i], (i + 1) * 2 + 2, tierColors[i], tierWireMats[i]);
+            acc.addAll(tierWireMats[i]);
+			connectors[i] = new ConnectorType[] {
+				ConnectorTypes.registerOne(GTValues.VN[i], "Small",   4, 16,  GTValues.V[i], 4,  List.copyOf(acc), 1, 0, tierColors[i], ConnectorStyle.SMALL),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Large",   4, 32,  GTValues.V[i], 6,  List.copyOf(acc), 2, 1, tierColors[i], ConnectorStyle.SMALL),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Huge",    3, 64,  GTValues.V[i], 8,  List.copyOf(acc), 3, 1, tierColors[i], ConnectorStyle.LARGE),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Giant",   3, 128, GTValues.V[i], 12, List.copyOf(acc), 3, 2, tierColors[i], ConnectorStyle.LARGE),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Massive", 2, 256, GTValues.V[i], 16, List.copyOf(acc), 3, 4, tierColors[i], ConnectorStyle.LARGE)
+			};
         }
     }
 
@@ -109,7 +117,6 @@ public class GTAddonImpl implements IGTAddon {
 
             TagKey<Item> hullPlate = ChemicalHelper.getTag(TagPrefix.plate, tierMat);
             TagKey<Item> wirePlate = ChemicalHelper.getTag(TagPrefix.plate, gtWireMat);
-
 
             WireMaterial wireMat = wireMats.get(gtWireMat);
             Object[] circuits = new Object[]{
@@ -140,7 +147,9 @@ public class GTAddonImpl implements IGTAddon {
             VanillaRecipeHelper.addShapedRecipe(out,
                     new ResourceLocation(CreatePowerlines.MODID, "spools/" + wireMat.spoolId()),
                     new ItemStack(wireMat.spool.get()),
-                    "WWW", "WSW", "WWW", 'S', WireMaterials.EMPTY_SPOOL.get(), 'W', wireMat.wire.get());
+                    "WWW", "WSW", "WWW",
+                    'S', WireMaterials.EMPTY_SPOOL.get(),
+                    'W', wireMat.wire.get());
         }
     }
 }
