@@ -1,23 +1,43 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " R ",
-    "ASA",
-    "ASA"
-  ],
-  "key": {
-    "A": {
-      "item": "create:andesite_alloy"
-    },
-    "S": {
-      "tag": "forge:slimeballs"
-    },
-    "R": {
-      "tag": "forge:rods/electrum"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:mod_loaded",
+            "modid": "gtceu"
+          }
+        },
+        {
+          "type": "forge:mod_loaded",
+          "modid": "createaddition"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          " R ",
+          "ASA",
+          "ASA"
+        ],
+        "key": {
+          "A": {
+            "item": "create:andesite_alloy"
+          },
+          "S": {
+            "tag": "forge:slimeballs"
+          },
+          "R": {
+            "tag": "forge:rods/electrum"
+          }
+        },
+        "result": {
+          "item": "createpowerlines:giant_electrum_connector",
+          "count": 1
+        }
+      }
     }
-  },
-  "result": {
-    "item": "createpowerlines:giant_electrum_connector",
-    "count": 1
-  }
+  ]
 }

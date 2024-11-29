@@ -1,23 +1,46 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "SRS",
-    "ARA",
-    "AAA"
-  ],
-  "key": {
-    "A": {
-      "item": "create:andesite_alloy"
-    },
-    "S": {
-      "tag": "forge:slimeballs"
-    },
-    "R": {
-      "tag": "forge:rods/gold"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:mod_loaded",
+            "modid": "gtceu"
+          }
+        },
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:rods/gold"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "SRS",
+          "ARA",
+          "AAA"
+        ],
+        "key": {
+          "A": {
+            "item": "create:andesite_alloy"
+          },
+          "S": {
+            "tag": "forge:slimeballs"
+          },
+          "R": {
+            "tag": "forge:rods/gold"
+          }
+        },
+        "result": {
+          "item": "createpowerlines:massive_gold_connector",
+          "count": 1
+        }
+      }
     }
-  },
-  "result": {
-    "item": "createpowerlines:massive_gold_connector",
-    "count": 1
-  }
+  ]
 }

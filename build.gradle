@@ -206,25 +206,26 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
     runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
-    runtimeOnly(fg.deobf("dev.emi:emi-forge:1.1.18+1.20.1"))
+    runtimeOnly(fg.deobf("dev.emi:emi-forge:1.1.18+${minecraft_version}"))
 
     implementation fg.deobf("curse.maven:createaddition-439890:5099752")
     implementation fg.deobf("curse.maven:jade-324717:5390389")
 
-    // energy meter mod for testing
+    // testing mods
     implementation fg.deobf("curse.maven:energymeter-532169:4813550")
+//    runtimeOnly(fg.deobf("curse.maven:immersive-engineering-231951:5224387"))
+
+//    runtimeOnly(fg.deobf("curse.maven:cofh-core-69162:5374122"))
+//    runtimeOnly(fg.deobf("curse.maven:thermal-expansion-69163:5372749"))
+//    runtimeOnly(fg.deobf("curse.maven:thermal-foundation-222880:5443583"))
 
     // gregtech deps
 //    compileOnly(fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}"))
 //    compileOnly(fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim"))
 //    compileOnly(fg.deobf("dev.toma.configuration:configuration-forge-1.20.1:2.2.0"))
-    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:${ldlib_version}")
+    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-${minecraft_version}:${ldlib_version}")
     implementation fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}:slim")
     implementation fg.deobf("dev.toma.configuration:configuration-forge-${minecraft_version}:2.2.0")
-
-    //runtimeOnly fg.deobf("curse.maven:cofh-core-69162:4202944")
-
-    //runtimeOnly fg.deobf("curse.maven:mantle-74924:3412365")
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
