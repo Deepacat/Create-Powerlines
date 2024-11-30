@@ -86,11 +86,11 @@ public class GTAddonImpl implements IGTAddon {
             if (tierWireMats[i].isEmpty()) continue;
             acc.addAll(tierWireMats[i]);
 			connectors[i] = new ConnectorType[] {
-				ConnectorTypes.registerOne(GTValues.VN[i], "Small",   4, 16,  GTValues.V[i], 4,  List.copyOf(acc), 1, 0, tierColors[i], ConnectorStyle.SMALL),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Large",   4, 32,  GTValues.V[i], 6,  List.copyOf(acc), 2, 1, tierColors[i], ConnectorStyle.SMALL),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Huge",    3, 64,  GTValues.V[i], 8,  List.copyOf(acc), 3, 1, tierColors[i], ConnectorStyle.LARGE),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Giant",   3, 128, GTValues.V[i], 12, List.copyOf(acc), 3, 2, tierColors[i], ConnectorStyle.LARGE),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Massive", 2, 256, GTValues.V[i], 16, List.copyOf(acc), 3, 4, tierColors[i], ConnectorStyle.LARGE)
+				ConnectorTypes.registerOne(GTValues.VN[i], "Small",   4, 16,  GTValues.V[i], 4*4,  List.copyOf(acc), 1, 0, tierColors[i], ConnectorStyle.SMALL),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Large",   4, 32,  GTValues.V[i], 4*6,  List.copyOf(acc), 2, 1, tierColors[i], ConnectorStyle.SMALL),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Huge",    3, 64,  GTValues.V[i], 4*8,  List.copyOf(acc), 3, 1, tierColors[i], ConnectorStyle.LARGE),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Giant",   3, 128, GTValues.V[i], 4*12, List.copyOf(acc), 3, 2, tierColors[i], ConnectorStyle.LARGE),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Massive", 2, 256, GTValues.V[i], 4*16, List.copyOf(acc), 3, 4, tierColors[i], ConnectorStyle.LARGE)
 			};
         }
     }
