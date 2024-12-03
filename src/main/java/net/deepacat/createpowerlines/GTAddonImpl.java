@@ -58,6 +58,26 @@ public class GTAddonImpl implements IGTAddon {
         return null;
     }
 
+    // midpoint
+    public int mp(int x, int y){
+        return ((x+y)/2);
+    }
+    // tier multiplier
+    public int tm(int tier) {
+        return switch (tier) {
+            case 9 -> 128;
+            case 8 -> 112;
+            case 7 -> 96;
+            case 6 -> 80;
+            case 5 -> 64;
+            case 4 -> 48;
+            case 3 -> 32;
+            case 2 -> 24;
+            case 1 -> 20;
+            default -> 16;
+        };
+    }
+
     @Override
     public void initializeAddon() {
         if (!Config.USE_GT_CONNECTORS.get()) return;
@@ -78,7 +98,6 @@ public class GTAddonImpl implements IGTAddon {
                 }
             }
         }
-
         // Making connectors from wires
         connectors = new ConnectorType[MAX_SUPPORTED_TIER + 1][];
         List<WireMaterial> acc = new ArrayList<>();
@@ -86,11 +105,16 @@ public class GTAddonImpl implements IGTAddon {
             if (tierWireMats[i].isEmpty()) continue;
             acc.addAll(tierWireMats[i]);
 			connectors[i] = new ConnectorType[] {
-				ConnectorTypes.registerOne(GTValues.VN[i], "Small",   4, 16,  GTValues.V[i], 4*4,  List.copyOf(acc), 1, 0, tierColors[i], ConnectorStyle.SMALL),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Large",   4, 32,  GTValues.V[i], 4*6,  List.copyOf(acc), 2, 1, tierColors[i], ConnectorStyle.SMALL),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Huge",    3, 64,  GTValues.V[i], 4*8,  List.copyOf(acc), 3, 1, tierColors[i], ConnectorStyle.LARGE),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Giant",   3, 128, GTValues.V[i], 4*12, List.copyOf(acc), 3, 2, tierColors[i], ConnectorStyle.LARGE),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Massive", 2, 256, GTValues.V[i], 4*16, List.copyOf(acc), 3, 4, tierColors[i], ConnectorStyle.LARGE)
+                ConnectorTypes.registerOne(GTValues.VN[i], "Massive", 2, 256, GTValues.V[i], 4*(tm(i)),
+                    List.copyOf(acc), 3, 4, tierColors[i], ConnectorStyle.LARGE),
+                ConnectorTypes.registerOne(GTValues.VN[i], "Giant",   3, 128, GTValues.V[i], 4*(mp(tm(i), tm(i)/2)),
+                    List.copyOf(acc), 3, 2, tierColors[i], ConnectorStyle.LARGE),
+                ConnectorTypes.registerOne(GTValues.VN[i], "Huge",    3, 64,  GTValues.V[i], 4*(tm(i)/2),
+                    List.copyOf(acc), 3, 1, tierColors[i], ConnectorStyle.LARGE),
+                ConnectorTypes.registerOne(GTValues.VN[i], "Large",   4, 32,  GTValues.V[i], 4*(mp(tm(i), tm(i)/2)/2),
+                    List.copyOf(acc), 2, 1, tierColors[i], ConnectorStyle.SMALL),
+				ConnectorTypes.registerOne(GTValues.VN[i], "Small",   4, 16,  GTValues.V[i], 4*(tm(i)/4),
+                    List.copyOf(acc), 1, 0, tierColors[i], ConnectorStyle.SMALL),
 			};
         }
     }

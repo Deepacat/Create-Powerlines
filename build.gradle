@@ -31,7 +31,7 @@ mixin {
     debug.export = true
 }
 
-version = "${minecraft_version}-1.1.1"
+version = "${minecraft_version}-1.1.2"
 
 group = 'net.deepacat.createpowerlines' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'createpowerlines'
@@ -180,9 +180,6 @@ repositories {
             includeGroup 'com.gregtechceu.gtceu'
         }
     }
-
-    //maven { url = 'https://maven.parchmentmc.org' }
-    //maven { url = 'https://repo.spongepowered.org/repository/maven-public' }
 }
 
 dependencies {
