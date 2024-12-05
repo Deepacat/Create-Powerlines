@@ -144,11 +144,11 @@ public class GTAddonImpl implements IGTAddon {
 
             WireMaterial wireMat = wireMats.get(gtWireMat);
             Object[] circuits = new Object[]{
-                    CustomTags.CIRCUITS_ARRAY[i],
-                    GTMachines.ENERGY_CONVERTER_1A[i].getItem(),
-                    GTMachines.ENERGY_CONVERTER_4A[i].getItem(),
+                    GTMachines.ENERGY_CONVERTER_16A[i].getItem(),
                     GTMachines.ENERGY_CONVERTER_8A[i].getItem(),
-                    GTMachines.ENERGY_CONVERTER_16A[i].getItem()
+                    GTMachines.ENERGY_CONVERTER_4A[i].getItem(),
+                    GTMachines.ENERGY_CONVERTER_1A[i].getItem(),
+                    CustomTags.CIRCUITS_ARRAY[i]
             };
             for (int j = 0; j < connectors.length; ++j) {
                 ConnectorType connector = connectors[j];
