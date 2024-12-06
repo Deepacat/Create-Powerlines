@@ -29,6 +29,7 @@ public class ConnectorType {
     public final int connections;
     public final int wireLength;
     public final int energyRate;
+    // Can be null, which means any wire can be accepted.
     public final Set<WireMaterial> wireMaterials;
     public final int width, height;
     public final int color;
@@ -45,7 +46,7 @@ public class ConnectorType {
         this.connections = connections;
         this.wireLength = wireLength;
         this.energyRate = energyRate;
-        this.wireMaterials = new ReferenceOpenHashSet<>(wireMaterials);
+        this.wireMaterials = wireMaterials == null ? null : new ReferenceOpenHashSet<>(wireMaterials);
         this.width = width;
         this.height = height;
         this.color = color;

@@ -176,7 +176,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
 
     @Override
     public boolean acceptsWireMaterial(WireMaterial material) {
-        return type.wireMaterials.contains(material);
+        return type.wireMaterials == null || type.wireMaterials.contains(material);
     }
 
     public int getMaxWireLength() {

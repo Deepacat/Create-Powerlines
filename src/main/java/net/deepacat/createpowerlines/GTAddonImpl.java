@@ -31,6 +31,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.ArrayList;
@@ -59,9 +61,10 @@ public class GTAddonImpl implements IGTAddon {
     }
 
     // midpoint
-    public int mp(int x, int y){
-        return ((x+y)/2);
+    public int mp(int x, int y) {
+        return ((x + y) / 2);
     }
+
     // tier multiplier
     public int tm(int tier) {
         return switch (tier) {
@@ -104,26 +107,22 @@ public class GTAddonImpl implements IGTAddon {
         for (int i = MAX_SUPPORTED_TIER; i >= 0; --i) {
             if (tierWireMats[i].isEmpty()) continue;
             acc.addAll(tierWireMats[i]);
-			connectors[i] = new ConnectorType[] {
-                ConnectorTypes.registerOne(GTValues.VN[i], "Massive", 2, 256, GTValues.V[i], 4*(tm(i)),
-                    List.copyOf(acc), 3, 4, tierColors[i], ConnectorStyle.LARGE),
-                ConnectorTypes.registerOne(GTValues.VN[i], "Giant",   3, 128, GTValues.V[i], 4*(mp(tm(i), tm(i)/2)),
-                    List.copyOf(acc), 3, 2, tierColors[i], ConnectorStyle.LARGE),
-                ConnectorTypes.registerOne(GTValues.VN[i], "Huge",    3, 64,  GTValues.V[i], 4*(tm(i)/2),
-                    List.copyOf(acc), 3, 1, tierColors[i], ConnectorStyle.LARGE),
-                ConnectorTypes.registerOne(GTValues.VN[i], "Large",   4, 32,  GTValues.V[i], 4*(mp(tm(i), tm(i)/2)/2),
-                    List.copyOf(acc), 2, 1, tierColors[i], ConnectorStyle.SMALL),
-				ConnectorTypes.registerOne(GTValues.VN[i], "Small",   4, 16,  GTValues.V[i], 4*(tm(i)/4),
-                    List.copyOf(acc), 1, 0, tierColors[i], ConnectorStyle.SMALL),
-			};
+            connectors[i] = ConnectorTypes.registerTier(GTValues.VN[i],
+                    GTValues.V[i], new double[]{
+                            4 * (tm(i) / 4),
+                            4 * (mp(tm(i), tm(i) / 2) / 2),
+                            4 * (tm(i) / 2),
+                            4 * (mp(tm(i), tm(i) / 2)),
+                            4 * (tm(i)),
+                    }, tierColors[i], List.copyOf(acc)
+            );
         }
-        ConnectorTypes.registerOne("Relay", "Powerline", 16, 64, 1, 1, List.copyOf(acc), 3, 1, 0x663e1d, ConnectorStyle.LARGE);
     }
 
     @Override
     public void addRecipes(Consumer<FinishedRecipe> out) {
         if (connectors == null) return;
-//        Base spool recipe
+        // Base spool recipe
         VanillaRecipeHelper.addShapedRecipe(out,
                 new ResourceLocation(CreatePowerlines.MODID, "empty_spool"), WireMaterials.EMPTY_SPOOL.asStack(2),
                 "III", " N ", "III",
@@ -156,9 +155,9 @@ public class GTAddonImpl implements IGTAddon {
                 VanillaRecipeHelper.addShapedRecipe(out,
                         new ResourceLocation(CreatePowerlines.MODID, connector.id), connector.blockEntry.asStack(),
                         "WWW", "PSP", "PCP",
-						'W', wirePlate,
+                        'W', wirePlate,
                         'P', hullPlate,
-						'S', wireMat.spool.get(), 'C', circuits[j]);
+                        'S', wireMat.spool.get(), 'C', circuits[j]);
             }
         }
 
@@ -175,6 +174,22 @@ public class GTAddonImpl implements IGTAddon {
                     "WWW", "WSW", "WWW",
                     'S', WireMaterials.EMPTY_SPOOL.get(),
                     'W', wireMat.wire.get());
+        }
+
+        // Gregged Relay
+        for (FluidStack fluid : new FluidStack[]{
+                GTMaterials.Polyethylene.getFluid(2304),
+                GTMaterials.Polytetrafluoroethylene.getFluid(1152),
+                GTMaterials.Polybenzimidazole.getFluid(576)
+        }) {
+            String fluidName = ForgeRegistries.FLUIDS.getKey(fluid.getFluid()).getPath();
+            GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(new ResourceLocation(CreatePowerlines.MODID, "relay/" + fluidName))
+                    .inputItems(TagPrefix.wireGtOctal, GTMaterials.Copper)
+                    .inputItems(TagPrefix.plateDense, GTMaterials.Steel)
+                    .inputItems(GTMachines.HULL[1])
+                    .inputFluids(fluid)
+                    .outputItems(ConnectorTypes.RELAY.blockEntry.get().asItem())
+                    .circuitMeta(1).duration(200).EUt(7).save(out);
         }
     }
 }
