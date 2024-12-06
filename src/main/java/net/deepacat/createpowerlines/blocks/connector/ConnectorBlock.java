@@ -33,6 +33,7 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -103,6 +104,11 @@ public class ConnectorBlock extends Block implements IBE<ConnectorBlockEntity>, 
         ConnectorMode mode = ConnectorMode.test(c.getLevel(), c.getClickedPos().relative(dir), c.getClickedFace());
         ConnectorVariant variant = ConnectorVariant.test(c.getLevel(), c.getClickedPos().relative(dir), c.getClickedFace());
         return this.defaultBlockState().setValue(FACING, dir).setValue(MODE, mode).setValue(VARIANT, variant);
+    }
+
+    @Override
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        return List.of(new ItemStack(this));
     }
 
     @Override
