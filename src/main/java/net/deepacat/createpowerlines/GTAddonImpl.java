@@ -117,6 +117,7 @@ public class GTAddonImpl implements IGTAddon {
                     List.copyOf(acc), 1, 0, tierColors[i], ConnectorStyle.SMALL),
 			};
         }
+        ConnectorTypes.registerOne("Relay", "Powerline", 16, 64, 1, 1, List.copyOf(acc), 3, 1, 0x663e1d, ConnectorStyle.LARGE);
     }
 
     @Override
