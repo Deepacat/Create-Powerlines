@@ -185,7 +185,7 @@ public class GTAddonImpl implements IGTAddon {
             String fluidName = ForgeRegistries.FLUIDS.getKey(fluid.getFluid()).getPath();
             GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(new ResourceLocation(CreatePowerlines.MODID, "relay/" + fluidName))
                     .inputItems(TagPrefix.wireGtOctal, GTMaterials.Copper)
-                    .inputItems(TagPrefix.plateDense, GTMaterials.Steel)
+                    .inputItems(TagPrefix.plateDense, GTMaterials.Steel, 2)
                     .inputItems(GTMachines.HULL[1])
                     .inputFluids(fluid)
                     .outputItems(ConnectorTypes.RELAY.blockEntry.get().asItem())
