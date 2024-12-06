@@ -1,0 +1,41 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:mod_loaded",
+            "modid": "gtceu"
+          }
+        },
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:rods/copper"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          " A ",
+          "BCB",
+          "BDB"
+        ],
+        "key": {
+          "A": { "tag": "forge:rods/copper" },
+          "B": { "item": "minecraft:dried_kelp" },
+          "C": { "tag": "forge:plates/iron" },
+          "D": { "item": "create:andesite_casing" }
+        },
+        "result": {
+          "item": "createpowerlines:powerline_relay_connector",
+          "count": 1
+        }
+      }
+    }
+  ]
+}
