@@ -7,6 +7,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 public class WireMaterial {
+    public final static String WIRE_SUFFIX = "_wire";
+    public final static String SPOOL_SUFFIX = "_spool";
+
     public final String id;
     public final String display;
     public final int color;
@@ -22,10 +25,10 @@ public class WireMaterial {
     }
 
     public String wireId() {
-        return id + "_wire";
+        return id + WIRE_SUFFIX;
     }
 
     public String spoolId() {
-        return id + "_spool";
+        return id + SPOOL_SUFFIX;
     }
 }

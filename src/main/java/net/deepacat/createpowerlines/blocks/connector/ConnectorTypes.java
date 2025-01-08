@@ -1,5 +1,6 @@
 package net.deepacat.createpowerlines.blocks.connector;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.item.WireMaterial;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ConnectorTypes {
-    public static final List<ConnectorType> TYPES = new ArrayList<>();
+    public static final Map<String, ConnectorType> TYPES = new Object2ObjectOpenHashMap<>();
     public static ConnectorType RELAY;
 
     public static ConnectorType registerOne(String tier, String size, int connections, int wireLength, long baseEnergy, double energyMult,
@@ -21,7 +22,7 @@ public class ConnectorTypes {
         String id = Util.displayToId(display);
         int energyRate = (int) Math.round(baseEnergy * energyMult);
         ConnectorType result = new ConnectorType(id, display, connections, wireLength, energyRate, wireMaterials, width, height, color, style);
-        TYPES.add(result);
+        TYPES.put(id, result);
         return result;
     }
 
@@ -92,7 +93,7 @@ public class ConnectorTypes {
             out.put(prefix + material.spoolId(), material.display + " Powerlines Spool");
         }
         prefix = "block." + CreatePowerlines.MODID + ".";
-        for (ConnectorType type : TYPES) {
+        for (ConnectorType type : TYPES.values()) {
             out.put(prefix + type.id, type.display);
         }
     }

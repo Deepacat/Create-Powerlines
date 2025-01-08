@@ -20,6 +20,8 @@ public enum ConnectorMode implements StringRepresentable {
     Pull("pull"),
     None("none");
 
+    public static final EnumCodec<ConnectorMode> CODEC = StringRepresentable.fromEnum(ConnectorMode::values);
+
     private final String name;
 
     ConnectorMode(String name) {

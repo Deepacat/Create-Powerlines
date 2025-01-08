@@ -27,7 +27,7 @@ public class DirectorySpriteSourceMixin {
     @Inject(method = "run", require = 1, at = @At("HEAD"))
     private void createpowerlines$load(ResourceManager resMgr, SpriteSource.Output out, CallbackInfo ci) {
         if (sourcePath.equals("block")) {
-            for (ConnectorType type : ConnectorTypes.TYPES) {
+            for (ConnectorType type : ConnectorTypes.TYPES.values()) {
                 for (ConnectorMode mode : ConnectorMode.values()) {
                     ConnectorSprite sprite = new ConnectorSprite(type, mode);
                     out.add(sprite.loc, sprite);
