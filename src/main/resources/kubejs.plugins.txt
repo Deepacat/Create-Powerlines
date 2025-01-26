@@ -1,1 +1,1 @@
-net.deepacat.createpowerlines.kube.ConnectorRegistryEvent
+net.deepacat.createpowerlines.integration.kubejs.PowerlinesKubeJSPlugin
