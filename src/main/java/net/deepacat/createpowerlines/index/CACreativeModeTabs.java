@@ -28,7 +28,8 @@ public class CACreativeModeTabs {
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup." + CreatePowerlines.MODID + ".main"))
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
-                    .icon(WireMaterials.MATERIALS.values().iterator().next().spool::asStack)
+                    .icon(() -> WireMaterials.MATERIALS.isEmpty() ? WireMaterials.EMPTY_SPOOL.asStack()
+                            : WireMaterials.MATERIALS.values().iterator().next().spool.asStack())
                     .displayItems(new RegistrateDisplayItemsGenerator())
                     .build());
 
