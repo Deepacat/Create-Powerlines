@@ -72,8 +72,8 @@ public class Config {
                 .define("gt_connector_recipes", true);
         GT_WIRE_RECIPES = COMMON_BUILDER.comment("If GT wires should have recipes auto generated")
                 .define("gt_wire_recipes", true);
-        GT_WIRES = COMMON_BUILDER.comment("If GT wire items should be auto generated")
-                .define("gt_wires", true);
+//        GT_WIRES = COMMON_BUILDER.comment("If GT wire items should be auto generated")
+//                .define("gt_wires", true);
         COMMON_BUILDER.pop();
 //         = COMMON_BUILDER.comment("")
 //                .define("", true);
