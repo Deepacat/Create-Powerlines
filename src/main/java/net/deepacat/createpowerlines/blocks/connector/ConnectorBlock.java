@@ -1,5 +1,6 @@
 package net.deepacat.createpowerlines.blocks.connector;
 
+import com.google.common.collect.Lists;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.energy.IWireNode;
@@ -108,7 +109,8 @@ public class ConnectorBlock extends Block implements IBE<ConnectorBlockEntity>, 
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
-        return List.of(new ItemStack(this));
+        // GT wrench needs this to be mutable.
+        return Lists.newArrayList(new ItemStack(this));
     }
 
     @Override
