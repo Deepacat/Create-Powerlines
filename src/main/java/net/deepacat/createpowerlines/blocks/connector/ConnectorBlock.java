@@ -5,7 +5,7 @@ import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.config.Config;
 import net.deepacat.createpowerlines.energy.IWireNode;
 import net.deepacat.createpowerlines.energy.NodeRotation;
-import com.simibubi.create.content.contraptions.ITransformableBlock;
+import com.simibubi.create.api.contraption.transformable.TransformableBlock;
 import com.simibubi.create.content.contraptions.StructureTransform;
 import com.simibubi.create.content.equipment.wrench.IWrenchable;
 import com.simibubi.create.foundation.block.IBE;
@@ -39,12 +39,11 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.jetbrains.annotations.Nullable;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class ConnectorBlock extends Block implements IBE<ConnectorBlockEntity>, IWrenchable, ITransformableBlock {
+public class ConnectorBlock extends Block implements IBE<ConnectorBlockEntity>, IWrenchable, TransformableBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final EnumProperty<ConnectorMode> MODE = EnumProperty.create("mode", ConnectorMode.class);
     public static final EnumProperty<ConnectorVariant> VARIANT = EnumProperty.create("variant", ConnectorVariant.class);

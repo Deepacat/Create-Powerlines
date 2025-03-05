@@ -1,5 +1,6 @@
 package net.deepacat.createpowerlines;
 
+import net.createmod.catnip.lang.FontHelper;
 import net.deepacat.createpowerlines.blocks.connector.ConnectorTypes;
 import net.deepacat.createpowerlines.item.WireMaterials;
 import net.deepacat.createpowerlines.index.*;
@@ -40,7 +41,7 @@ public class CreatePowerlines {
             .simpleChannel();
 
     static {
-        REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
+        REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
                 .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
     }
 

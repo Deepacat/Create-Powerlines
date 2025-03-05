@@ -18,9 +18,9 @@ import net.deepacat.createpowerlines.network.EnergyNetworkPacket;
 import net.deepacat.createpowerlines.network.IObserveTileEntity;
 import net.deepacat.createpowerlines.network.ObservePacket;
 import com.simibubi.create.CreateClient;
-
-import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
+import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
+import net.createmod.catnip.outliner.Outliner;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -376,6 +376,9 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
 
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+
+        String spacing = "    ";
+
         ObservePacket.send(worldPosition, 0);
 
         tooltip.add(Component.literal(spacing)
@@ -441,7 +444,7 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
                 color = 0xFF00FF;
             }
             // ca_ = Create Addition
-            CreateClient.OUTLINER.chaseAABB("ca_nodes_" + i, shape.bounds().move(pos)).lineWidth(0.0625F).colored(color);
+            Outliner.getInstance().chaseAABB("ca_nodes_" + i, shape.bounds().move(pos)).lineWidth(0.0625F).colored(color);
         }
         // Outline connected power
         BlockEntity te = level.getBlockEntity(worldPosition.relative(getBlockState().getValue(ConnectorBlock.FACING)));
@@ -452,6 +455,6 @@ public class ConnectorBlockEntity extends SmartBlockEntity implements IWireNode,
 
         if (!cap.isPresent()) return;
         VoxelShape shape = level.getBlockState(te.getBlockPos()).getBlockSupportShape(level, te.getBlockPos());
-        CreateClient.OUTLINER.chaseAABB("ca_output", shape.bounds().move(te.getBlockPos())).lineWidth(0.0625F).colored(0x5B5BFF);
+        Outliner.getInstance().chaseAABB("ca_output", shape.bounds().move(te.getBlockPos())).lineWidth(0.0625F).colored(0x5B5BFF);
     }
 }

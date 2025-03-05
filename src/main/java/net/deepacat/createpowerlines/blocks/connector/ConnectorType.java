@@ -3,13 +3,12 @@ package net.deepacat.createpowerlines.blocks.connector;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.simibubi.create.AllMovementBehaviours;
 import com.simibubi.create.foundation.data.SharedProperties;
-import com.simibubi.create.foundation.utility.VoxelShaper;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import it.unimi.dsi.fastutil.ints.IntIntPair;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
+import net.createmod.catnip.math.VoxelShaper;
 import net.deepacat.createpowerlines.CreatePowerlines;
 import net.deepacat.createpowerlines.energy.NodeMovementBehaviour;
 import net.deepacat.createpowerlines.item.WireMaterial;
@@ -22,6 +21,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
 
 public class ConnectorType {
     public final String id;
@@ -57,7 +57,7 @@ public class ConnectorType {
         shape = CAShapes.shape(min, 0, min, max, style.baseHeight + height, max).forDirectional();
         blockEntry = CreatePowerlines.REGISTRATE.block(id, props -> new ConnectorBlock(props, this))
                 .initialProperties(SharedProperties::stone)
-                .onRegister(AllMovementBehaviours.movementBehaviour(new NodeMovementBehaviour()))
+                .onRegister(movementBehaviour(new NodeMovementBehaviour()))
                 .item()
                 .transform(customItemModel())
                 .defaultLang()

@@ -26,7 +26,7 @@ public class ConnectorTypes {
         return result;
     }
 
-    public static ConnectorType[] registerTier(String tier, long baseEnergy, double[] energyMults, int color, List<WireMaterial> wireMaterials) {
+        public static ConnectorType[] registerTier(String tier, long baseEnergy, double[] energyMults, int color, List<WireMaterial> wireMaterials) {
         return new ConnectorType[]{
                 registerOne(tier, "Small", 4, 16, baseEnergy, energyMults[0], wireMaterials, 1, 0, color, ConnectorStyle.SMALL),
                 registerOne(tier, "Large", 4, 32, baseEnergy, energyMults[1], wireMaterials, 2, 1, color, ConnectorStyle.SMALL),
