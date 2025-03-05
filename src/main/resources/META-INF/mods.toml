@@ -51,15 +51,9 @@ A fork of C:C&A for improving it's wire connectors and making custom ones for mo
 [[dependencies.createpowerlines]]
     modId="create"
     mandatory=true
-    versionRange="[0.5.1.j,0.5.2)"
+    versionRange="[6.0.1,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.createpowerlines]]
-    modId="flywheel"
-    mandatory=true
-    versionRange="[0.6.9.a,0.7)"
-    ordering="AFTER"
-    side="CLIENT"
 [[dependencies.createpowerlines]]
     modId="jei"
     mandatory=false
