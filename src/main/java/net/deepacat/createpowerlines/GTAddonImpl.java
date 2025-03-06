@@ -160,9 +160,9 @@ public class GTAddonImpl implements IGTAddon {
 
         // Gregged relay manual recipe
         for (FluidStack fluid : new FluidStack[]{
-                GTMaterials.Polyethylene.getFluid(2304),
-                GTMaterials.Polytetrafluoroethylene.getFluid(1152),
-                GTMaterials.Polybenzimidazole.getFluid(576)
+                GTMaterials.Polyethylene.getFluid(1152),
+                GTMaterials.Polytetrafluoroethylene.getFluid(576),
+                GTMaterials.Polybenzimidazole.getFluid(288)
         }) {
             String fluidName = ForgeRegistries.FLUIDS.getKey(fluid.getFluid()).getPath();
             GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(new ResourceLocation(CreatePowerlines.MODID, "relay/" + fluidName))
