@@ -66,8 +66,10 @@ minecraft {
         client {
             workingDirectory project.file('run')
 
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
+
+            arg("-mixin.config=create.mixins.json")
 
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
@@ -92,6 +94,11 @@ minecraft {
         }
 
         server {
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
+
+            arg("-mixin.config=create.mixins.json")
+
             workingDirectory project.file('run')
 
             //arg '-mixin.config=createpowerlines.mixins.json'
@@ -113,6 +120,11 @@ minecraft {
         // By default, the server will crash when no gametests are provided.
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
+
+            arg("-mixin.config=create.mixins.json")
+
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'REGISTRIES'
@@ -129,6 +141,11 @@ minecraft {
         }
 
         data {
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
+
+            arg("-mixin.config=create.mixins.json")
+
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'REGISTRIES'
