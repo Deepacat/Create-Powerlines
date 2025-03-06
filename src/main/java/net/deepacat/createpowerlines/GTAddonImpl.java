@@ -159,6 +159,7 @@ public class GTAddonImpl implements IGTAddon {
         );
 
         // Gregged relay manual recipe
+        int outAmt = 1;
         for (FluidStack fluid : new FluidStack[]{
                 GTMaterials.Polyethylene.getFluid(1152),
                 GTMaterials.Polytetrafluoroethylene.getFluid(576),
@@ -170,8 +171,9 @@ public class GTAddonImpl implements IGTAddon {
                     .inputItems(TagPrefix.plateDense, GTMaterials.Steel, 2)
                     .inputItems(GTMachines.HULL[1])
                     .inputFluids(fluid)
-                    .outputItems(ConnectorTypes.RELAY.blockEntry.get().asItem())
+                    .outputItems(ConnectorTypes.RELAY.blockEntry.asStack(outAmt))
                     .circuitMeta(1).duration(200).EUt(7).save(out);
+            outAmt *= 2;
         }
 
     }
