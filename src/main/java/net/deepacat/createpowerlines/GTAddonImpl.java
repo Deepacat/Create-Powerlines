@@ -57,27 +57,6 @@ public class GTAddonImpl implements IGTAddon {
         return null;
     }
 
-    // midpoint
-    public int mp(int x, int y) {
-        return ((x + y) / 2);
-    }
-
-    // tier multiplier
-    public int tm(int tier) {
-        return switch (tier) {
-            case 9 -> 128;
-            case 8 -> 112;
-            case 7 -> 96;
-            case 6 -> 80;
-            case 5 -> 64;
-            case 4 -> 48;
-            case 3 -> 32;
-            case 2 -> 24;
-            case 1 -> 20;
-            default -> 16;
-        };
-    }
-
     @Override
     public void initializeAddon() {
         if (!Config.USE_GT_CONNECTORS.get()) return;
@@ -109,11 +88,7 @@ public class GTAddonImpl implements IGTAddon {
             acc.addAll(tierWireMats[i]);
             connectors[i] = ConnectorTypes.registerTier(GTValues.VN[i],
                     GTValues.V[i], new double[]{
-                            4 * (tm(i) / 4),
-                            4 * (mp(tm(i), tm(i) / 2) / 2),
-                            4 * (tm(i) / 2),
-                            4 * (mp(tm(i), tm(i) / 2)),
-                            4 * (tm(i)),
+                            2, 4, 8, 16, 64
                     }, TIER_COLORS[i], List.copyOf(acc)
             );
         }

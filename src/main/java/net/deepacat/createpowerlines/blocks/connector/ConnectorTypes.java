@@ -28,21 +28,21 @@ public class ConnectorTypes {
 
         public static ConnectorType[] registerTier(String tier, long baseEnergy, double[] energyMults, int color, List<WireMaterial> wireMaterials) {
         return new ConnectorType[]{
-                registerOne(tier, "Small", 4, 16, baseEnergy, energyMults[0], wireMaterials, 1, 0, color, ConnectorStyle.SMALL),
-                registerOne(tier, "Large", 4, 32, baseEnergy, energyMults[1], wireMaterials, 2, 1, color, ConnectorStyle.SMALL),
-                registerOne(tier, "Huge", 3, 64, baseEnergy, energyMults[2], wireMaterials, 3, 1, color, ConnectorStyle.LARGE),
-                registerOne(tier, "Giant", 3, 128, baseEnergy, energyMults[3], wireMaterials, 3, 2, color, ConnectorStyle.LARGE),
+                registerOne(tier, "Small", 2, 16, baseEnergy, energyMults[0], wireMaterials, 1, 0, color, ConnectorStyle.SMALL),
+                registerOne(tier, "Large", 2, 32, baseEnergy, energyMults[1], wireMaterials, 2, 1, color, ConnectorStyle.SMALL),
+                registerOne(tier, "Huge", 2, 64, baseEnergy, energyMults[2], wireMaterials, 3, 1, color, ConnectorStyle.LARGE),
+                registerOne(tier, "Giant", 2, 128, baseEnergy, energyMults[3], wireMaterials, 3, 2, color, ConnectorStyle.LARGE),
                 registerOne(tier, "Massive", 2, 256, baseEnergy, energyMults[4], wireMaterials, 3, 4, color, ConnectorStyle.LARGE)
         };
     }
-
+    // non gt connectors multi
     public static void registerTier(String tier, long baseEnergy, int amps, int color, List<WireMaterial> wireMaterials) {
         registerTier(tier, baseEnergy, new double[]{
                 amps,
-                amps * 1.5,
                 amps * 2,
-                amps * 3,
-                amps * 4
+                amps * 4,
+                amps * 8,
+                amps * 16
         }, color, wireMaterials);
     }
 
