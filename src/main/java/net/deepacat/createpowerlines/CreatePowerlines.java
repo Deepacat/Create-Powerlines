@@ -6,7 +6,6 @@ import net.deepacat.createpowerlines.item.WireMaterials;
 import net.deepacat.createpowerlines.index.*;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
-import com.simibubi.create.foundation.item.TooltipHelper;
 import net.deepacat.createpowerlines.config.Config;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;

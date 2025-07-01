@@ -10,7 +10,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.ItemMaterialInfo;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
-import com.gregtechceu.gtceu.api.data.chemical.material.stack.UnificationEntry;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.common.data.GTMachines;
@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+
+import static com.gregtechceu.gtceu.api.data.chemical.material.ItemMaterialData.ITEM_MATERIAL_INFO;
 
 @GTAddon
 public class GTAddonImpl implements IGTAddon {
@@ -102,79 +104,79 @@ public class GTAddonImpl implements IGTAddon {
             for (int i = 0; i <= Config.GT_CONNECTORS_MAX_TIER.get(); ++i) {
                 ConnectorType[] connectors = this.connectors[i];
                 if (connectors == null) continue;
-                ItemMaterialInfo hull = ChemicalHelper.getMaterialInfo(GTMachines.HULL[i].getBlock());
-                ImmutableList<MaterialStack> hullMats = hull.getMaterials();
 
-                Material gtWireMat = hullMats.get(1).material();
-                Material tierMat = hullMats.get(0).material();
+                ItemMaterialInfo hull = ITEM_MATERIAL_INFO.get(GTMachines.HULL[i].getBlock());
+                List<MaterialStack> hullMats = hull.getMaterials();
 
-                TagKey<Item> hullPlate = ChemicalHelper.getTag(TagPrefix.plate, tierMat);
-                TagKey<Item> wirePlate = ChemicalHelper.getTag(TagPrefix.plate, gtWireMat);
-
-                WireMaterial wireMat = wireMats.get(gtWireMat);
-                Object[] circuits = new Object[]{
-                        CustomTags.CIRCUITS_ARRAY[i],
-                        GTMachines.ENERGY_CONVERTER_1A[i].getItem(),
-                        GTMachines.ENERGY_CONVERTER_4A[i].getItem(),
-                        GTMachines.ENERGY_CONVERTER_8A[i].getItem(),
-                        GTMachines.ENERGY_CONVERTER_16A[i].getItem()
-                };
-                for (int j = 0; j < connectors.length; ++j) {
-                    ConnectorType connector = connectors[j];
-                    VanillaRecipeHelper.addShapedRecipe(out,
-                            new ResourceLocation(CreatePowerlines.MODID, connector.id), connector.blockEntry.asStack(),
-                            "WWW", "PSP", "PCP",
-                            'W', wirePlate,
-                            'P', hullPlate,
-                            'S', wireMat.spool.get(), 'C', circuits[j]);
-                }
+//                Material gtWireMat = hullMats.get(1).material();
+//                Material tierMat = hullMats.get(0).material();
+//
+//                TagKey<Item> hullPlate = ChemicalHelper.getTag(TagPrefix.plate, tierMat);
+//                TagKey<Item> wirePlate = ChemicalHelper.getTag(TagPrefix.plate, gtWireMat);
+//
+//                WireMaterial wireMat = wireMats.get(gtWireMat);
+//                Object[] circuits = new Object[]{
+//                        CustomTags.CIRCUITS_ARRAY[i],
+//                        GTMachines.ENERGY_CONVERTER_1A[i].getItem(),
+//                        GTMachines.ENERGY_CONVERTER_4A[i].getItem(),
+//                        GTMachines.ENERGY_CONVERTER_8A[i].getItem(),
+//                        GTMachines.ENERGY_CONVERTER_16A[i].getItem()
+//                };
+//                for (int j = 0; j < connectors.length; ++j) {
+//                    ConnectorType connector = connectors[j];
+//                    VanillaRecipeHelper.addShapedRecipe(out,
+//                            new ResourceLocation(CreatePowerlines.MODID, connector.id), connector.blockEntry.asStack(),
+//                            "WWW", "PSP", "PCP",
+//                            'W', wirePlate,
+//                            'P', hullPlate,
+//                            'S', wireMat.spool.get(), 'C', circuits[j]);
+//                }
             }
         }
 
         if (connectors == null) return;
 
-        if (Config.GT_WIRE_RECIPES.get()) {
-            for (Map.Entry<Material, WireMaterial> entry : wireMats.entrySet()) {
-                Material gtWireMat = entry.getKey();
-                WireMaterial wireMat = entry.getValue();
-                GTRecipeTypes.WIREMILL_RECIPES.recipeBuilder(new ResourceLocation(CreatePowerlines.MODID, "wires/" + wireMat.wireId()))
-                        .inputItems(TagPrefix.ingot, gtWireMat)
-                        .outputItems(new ItemStack(wireMat.wire.get(), 2))
-                        .circuitMeta(5).duration(200).EUt(7).save(out);
-                VanillaRecipeHelper.addShapedRecipe(out,
-                        new ResourceLocation(CreatePowerlines.MODID, "spools/" + wireMat.spoolId()),
-                        new ItemStack(wireMat.spool.get()),
-                        "WWW", "WSW", "WWW",
-                        'S', WireMaterials.EMPTY_SPOOL.get(),
-                        'W', wireMat.wire.get());
-            }
-        }
-
-        // Gregged spool manual recipe
-        VanillaRecipeHelper.addShapedRecipe(out,
-                new ResourceLocation(CreatePowerlines.MODID, "empty_spool"), WireMaterials.EMPTY_SPOOL.asStack(2),
-                "III", " N ", "III",
-                'I', new UnificationEntry(TagPrefix.ingot, GTMaterials.Iron),
-                'N', new UnificationEntry(TagPrefix.nugget, GTMaterials.Iron)
-        );
-
-        // Gregged relay manual recipe
-        int outAmt = 1;
-        for (FluidStack fluid : new FluidStack[]{
-                GTMaterials.Polyethylene.getFluid(1152),
-                GTMaterials.Polytetrafluoroethylene.getFluid(576),
-                GTMaterials.Polybenzimidazole.getFluid(288)
-        }) {
-            String fluidName = ForgeRegistries.FLUIDS.getKey(fluid.getFluid()).getPath();
-            GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(new ResourceLocation(CreatePowerlines.MODID, "relay/" + fluidName))
-                    .inputItems(TagPrefix.wireGtOctal, GTMaterials.Copper)
-                    .inputItems(TagPrefix.plateDense, GTMaterials.Steel, 2)
-                    .inputItems(GTMachines.HULL[1])
-                    .inputFluids(fluid)
-                    .outputItems(ConnectorTypes.RELAY.blockEntry.asStack(outAmt))
-                    .circuitMeta(1).duration(200).EUt(7).save(out);
-            outAmt *= 2;
-        }
-
+//        if (Config.GT_WIRE_RECIPES.get()) {
+//            for (Map.Entry<Material, WireMaterial> entry : wireMats.entrySet()) {
+//                Material gtWireMat = entry.getKey();
+//                WireMaterial wireMat = entry.getValue();
+//                GTRecipeTypes.WIREMILL_RECIPES.recipeBuilder(new ResourceLocation(CreatePowerlines.MODID, "wires/" + wireMat.wireId()))
+//                        .inputItems(TagPrefix.ingot, gtWireMat)
+//                        .outputItems(new ItemStack(wireMat.wire.get(), 2))
+//                        .circuitMeta(5).duration(200).EUt(7).save(out);
+//                VanillaRecipeHelper.addShapedRecipe(out,
+//                        new ResourceLocation(CreatePowerlines.MODID, "spools/" + wireMat.spoolId()),
+//                        new ItemStack(wireMat.spool.get()),
+//                        "WWW", "WSW", "WWW",
+//                        'S', WireMaterials.EMPTY_SPOOL.get(),
+//                        'W', wireMat.wire.get());
+//            }
+//        }
+//
+//        // Gregged spool manual recipe
+//        VanillaRecipeHelper.addShapedRecipe(out,
+//                new ResourceLocation(CreatePowerlines.MODID, "empty_spool"), WireMaterials.EMPTY_SPOOL.asStack(2),
+//                "III", " N ", "III",
+//                'I', new MaterialEntry(TagPrefix.ingot, GTMaterials.Iron),
+//                'N', new MaterialEntry(TagPrefix.nugget, GTMaterials.Iron)
+//        );
+//
+//        // Gregged relay manual recipe
+//        int outAmt = 1;
+//        for (FluidStack fluid : new FluidStack[]{
+//                GTMaterials.Polyethylene.getFluid(1152),
+//                GTMaterials.Polytetrafluoroethylene.getFluid(576),
+//                GTMaterials.Polybenzimidazole.getFluid(288)
+//        }) {
+//            String fluidName = ForgeRegistries.FLUIDS.getKey(fluid.getFluid()).getPath();
+//            GTRecipeTypes.ASSEMBLER_RECIPES.recipeBuilder(new ResourceLocation(CreatePowerlines.MODID, "relay/" + fluidName))
+//                    .inputItems(TagPrefix.wireGtOctal, GTMaterials.Copper)
+//                    .inputItems(TagPrefix.plateDense, GTMaterials.Steel, 2)
+//                    .inputItems(GTMachines.HULL[1])
+//                    .inputFluids(fluid)
+//                    .outputItems(ConnectorTypes.RELAY.blockEntry.asStack(outAmt))
+//                    .circuitMeta(1).duration(200).EUt(7).save(out);
+//            outAmt *= 2;
+//        }
     }
 }
