@@ -38,7 +38,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.ItemMaterialData.ITEM_MATERIAL_INFO;
 import static com.gregtechceu.gtceu.api.data.chemical.material.ItemMaterialData.getMaterialInfo;
 
 @GTAddon
